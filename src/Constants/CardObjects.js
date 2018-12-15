@@ -1,4 +1,4 @@
- const originalDeck = [
+ export const originalDeck = [
   {id: 'c1', value: 1, suit: 'club', src: './Images/Cards/c1.jpg'},
   {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'},
   {id: 'c3', value: 3, suit: 'club', src: './Images/Cards/c3.jpg'},
@@ -49,4 +49,9 @@
   {id: 'sc', value: 12, suit: 'spade', src: './Images/Cards/sc.jpg'}
 ]
 
-export default originalDeck;
+export const kings = [
+  {id: 'cd', value: 12, suit: 'club', src: './Images/Cards/cd.jpg'},
+  {id: 'dd', value: 12, suit: 'diamond', src: './Images/Cards/dd.jpg'},
+  {id: 'sd', value: 12, suit: 'spade', src: './Images/Cards/sd.jpg'},
+  {id: 'hd', value: 12, suit: 'heart', src: './Images/Cards/hd.jpg'}
+]

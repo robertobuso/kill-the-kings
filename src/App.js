@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import './App.css';
-import OriginalDeck from './Constants/CardObjects.js'
+import { originalDeck, kings } from './Constants/CardObjects.js'
 import { shuffle } from './Adapters/'
 
 
@@ -13,12 +13,12 @@ class App extends Component {
     this.state = {
       currentGame: {
         inProgress: false,
-        stock: shuffle(OriginalDeck),
+        stock: shuffle(originalDeck),
         talon: {},
-        club: {},
-        diamond: {},
-        spade: {},
-        heart: {},
+        club: kings[0],
+        diamond: kings[1],
+        spade: kings[2],
+        heart: kings[3],
         reserveOne: {},
         reserveTwo: {},
         reserveThree: {},
@@ -34,7 +34,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.currentGame.stock)
     return (
       <div className="background">
         <div className="container">
@@ -43,14 +42,16 @@ class App extends Component {
             <div className="reserve-pile"/>
             <div className="reserve-pile"/>
             <div/>
-            <img className="card" src={require(`${this.state.currentGame.stock[2].src}`)} alt="Card Pile"/>
-            <img className="card" src={require(`${this.state.currentGame.stock[14].src}`)} alt="Card Pile"/>
-            <img className="card" src={require(`${this.state.currentGame.stock[28].src}`)} alt="Card Pile"/>
-            <img className="card" src={require(`${this.state.currentGame.stock[0].src}`)} alt="Card Pile"/>
-            <img className="card" src={require(`${this.state.currentGame.stock[41].src}`)} alt="Card Pile"/>
-            <div className="reserve-pile"/>
-            <div className="reserve-pile"/>
-            <div className="reserve-pile"/>
+            <img  id="club" className="card"
+                  src={require(`${this.state.currentGame.club.src}`)} alt="Card Pile"/>
+            <img  id="diamond" className="card"
+                  src={require(`${this.state.currentGame.diamond.src}`)} alt="Card Pile"/>
+            <img  id="spade" className="card"
+                  src={require(`${this.state.currentGame.spade.src}`)} alt="Card Pile"/>
+            <img  id="heart" className="card"
+                  src={require(`${this.state.currentGame.heart.src}`)} alt="Card Pile"/>
+            <img  id="talon" className="card"
+                  src={require('./Images/Cards/logo_kk.png') }alt="Card Pile"/>
         </div>
       </div>
     );

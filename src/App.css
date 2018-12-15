@@ -16,6 +16,7 @@
 
   .card{
    border: solid red;
+   border-radius: 10px;
    width: 100%;
    max-width: 100px;
    max-height: 125px;
@@ -29,6 +30,7 @@
   .reserve-pile {
     background: rgba(203, 209, 129, 0.4);
     border: solid red;
+    border-radius: 10px;
     width: 100%;
     max-width: 100px;
     height: auto;

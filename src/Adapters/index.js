@@ -1,7 +1,3 @@
-// export const moveCard = (cardId, pileId) => {
-//   console.log('ADAPTER YEAH!')
-// }
-
 export const shuffle = (array) => {
   let currentIndex = array.length, temporaryValue, randomIndex;
 
