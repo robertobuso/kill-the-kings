@@ -1,28 +1,58 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
 import './App.css';
+import OriginalDeck from './Constants/CardObjects.js'
+
 
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentGame: {
+        inProgress: false,
+        stock: OriginalDeck,
+        talon: {},
+        club: {},
+        diamond: {},
+        spade: {},
+        heart: {},
+        reserveOne: {},
+        reserveTwo: {},
+        reserveThree: {},
+        reserveFour: {},
+        reserveFive: {},
+        reserveSix: {},
+        reserveSeven: {}
+      },
+      history: {
+        gamesPlayed: 0
+      }
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="background">
+        <div className="container">
+            <div className="reserve-pile"/>
+            <div className="reserve-pile"/>
+            <div className="reserve-pile"/>
+            <div className="reserve-pile"/>
+            <div/>
+            <img className="card" src={require(`${this.state.currentGame.stock[2].src}`)} alt="Card Pile"/>
+            <img className="card" src={require(`${this.state.currentGame.stock[14].src}`)} alt="Card Pile"/>
+            <img className="card" src={require(`${this.state.currentGame.stock[28].src}`)} alt="Card Pile"/>
+            <img className="card" src={require(`${this.state.currentGame.stock[0].src}`)} alt="Card Pile"/>
+            <img className="card" src={require(`${this.state.currentGame.stock[41].src}`)} alt="Card Pile"/>
+            <div className="reserve-pile"/>
+            <div className="reserve-pile"/>
+            <div className="reserve-pile"/>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default DragDropContext(HTML5Backend)(App)

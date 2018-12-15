@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "deck-of-cards": "^0.1.8",
     "react": "^16.6.3",
+    "react-dnd": "^7.0.2",
+    "react-dnd-html5-backend": "^7.0.2",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "semantic-ui-react": "^0.84.0"
   },
   "scripts": {
     "start": "react-scripts start",

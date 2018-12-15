@@ -1,32 +1,44 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .background {
+    background-image: url('./Images/felt2.jpg');
+    height: 825px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .container {
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 35px;
+    row-gap: 25px;
   }
+
+  .card{
+   border: solid red;
+   width: 100%;
+   max-width: 100px;
+   max-height: 125px;
+   height: auto;
+  }
+
+  .card:hover {
+    border: solid yellow;
 }
+
+  .reserve-pile {
+    background: rgba(203, 209, 129, 0.4);
+    border: solid red;
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    max-height: 125px;
+  }
+
+  .reserve-pile:hover {
+    border: solid yellow;
+  }
+
+  .king-pile {
+    height: 400px
+  }
