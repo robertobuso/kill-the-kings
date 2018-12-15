@@ -3,6 +3,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import './App.css';
 import OriginalDeck from './Constants/CardObjects.js'
+import { shuffle } from './Adapters/'
 
 
 class App extends Component {
@@ -12,7 +13,7 @@ class App extends Component {
     this.state = {
       currentGame: {
         inProgress: false,
-        stock: OriginalDeck,
+        stock: shuffle(OriginalDeck),
         talon: {},
         club: {},
         diamond: {},
@@ -33,6 +34,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.currentGame.stock)
     return (
       <div className="background">
         <div className="container">
