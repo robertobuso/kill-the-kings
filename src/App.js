@@ -33,6 +33,11 @@ class App extends Component {
     }
   }
 
+  handleTalonClick = () => {
+    this.setState( { currentGame: {...this.state.currentGame, talon: this.state.currentGame.stock.shift()
+    }}, () => console.log(this.state))
+  }
+
   render() {
     return (
       <div className="background">
@@ -41,7 +46,7 @@ class App extends Component {
             <div className="reserve-pile"/>
             <div className="reserve-pile"/>
             <div className="reserve-pile"/>
-            <div/>
+            <div />
             <img  id="club" className="card"
                   src={require(`${this.state.currentGame.club.src}`)} alt="Card Pile"/>
             <img  id="diamond" className="card"
@@ -50,8 +55,13 @@ class App extends Component {
                   src={require(`${this.state.currentGame.spade.src}`)} alt="Card Pile"/>
             <img  id="heart" className="card"
                   src={require(`${this.state.currentGame.heart.src}`)} alt="Card Pile"/>
-            <img  id="talon" className="card"
-                  src={require('./Images/Cards/logo_kk.png') }alt="Card Pile"/>
+            <img  id="stock" className="card"
+                  src={require('./Images/Cards/logo_kk.png') } alt="Card Pile"
+                  onClick={this.handleTalonClick}/>
+                  {this.state.currentGame.talon.src ?
+            <img  id="talon" className="talon-pile"
+                  src={require(`${this.state.currentGame.talon.src}`)} alt="Talon Pile"/>
+                  : null }
         </div>
       </div>
     );

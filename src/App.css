@@ -42,5 +42,20 @@
   }
 
   .king-pile {
-    height: 400px
+    height: 400px;
+  }
+
+  .talon-pile {
+    grid-column: 5/5;
+    background: rgba(203, 209, 129, 0.4);
+    border: solid red;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    max-height: 125px;
+  }
+
+  .talon-pile:hover {
+    border: solid blue;
   }
