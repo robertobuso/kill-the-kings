@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import Card from './Card.js'
+
 
 class KingPile extends Component {
 
   render() {
+
     return (
-      <img
-        className="card"
-        src={this.props.src}
-        onClick={() => this.props.handleKingClick(this.props.id)}
-        alt="King Pile"/>
-    )
-  }
+      <>
+        {this.props.cards.map( card => {
+          return <Card src={require(`../Images/Cards/${card['id']}.jpg`)}/>
+        })}
+      </>
+        )}
+
+
 }
 
 export default KingPile;

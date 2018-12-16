@@ -16,10 +16,10 @@ class App extends Component {
         inProgress: false,
         stock: shuffle(originalDeck),
         talon: {},
-        club: kings[0],
-        diamond: kings[1],
-        spade: kings[2],
-        heart: kings[3],
+        club: [kings[0], originalDeck[12], originalDeck[33]],
+        diamond: [kings[1]],
+        spade: [kings[2]],
+        heart: [kings[3]],
         reserveOne: {},
         reserveTwo: {},
         reserveThree: {},
@@ -40,8 +40,7 @@ class App extends Component {
   }
 
   handleKingClick = (id) => {
-    console.log('click')
-    console.log('id: ', id)
+
   }
 
   render() {
@@ -55,24 +54,10 @@ class App extends Component {
             <div />
             <KingPile
               id="club"
-              src={require(`${this.state.currentGame.club.src}`)}
+              cards={this.state.currentGame.club}
               handleKingClick={this.handleKingClick}
             />
-            <KingPile
-              id="diamond"
-              src={require(`${this.state.currentGame.diamond.src}`)}
-              handleKingClick={this.handleKingClick}
-            />
-            <KingPile
-              id="spade"
-              src={require(`${this.state.currentGame.spade.src}`)}
-              handleKingClick={this.handleKingClick}
-            />
-            <KingPile
-              id="heart"
-              src={require(`${this.state.currentGame.heart.src}`)}
-              handleKingClick={this.handleKingClick}
-            />
+
             <img  id="stock" className="card"
                   src={require('./Images/Cards/logo_kk.png') } alt="Card Pile"
                   onClick={this.handleTalonClick}/>
