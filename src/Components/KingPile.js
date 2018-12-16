@@ -7,6 +7,7 @@ class KingPile extends Component {
       <img
         className="card"
         src={this.props.src}
+        onClick={() => this.props.handleKingClick(this.props.id)}
         alt="King Pile"/>
     )
   }

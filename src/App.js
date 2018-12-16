@@ -39,6 +39,11 @@ class App extends Component {
     }}, () => console.log(this.state))
   }
 
+  handleKingClick = (id) => {
+    console.log('click')
+    console.log('id: ', id)
+  }
+
   render() {
     return (
       <div className="background">
@@ -51,18 +56,22 @@ class App extends Component {
             <KingPile
               id="club"
               src={require(`${this.state.currentGame.club.src}`)}
+              handleKingClick={this.handleKingClick}
             />
             <KingPile
               id="diamond"
               src={require(`${this.state.currentGame.diamond.src}`)}
+              handleKingClick={this.handleKingClick}
             />
             <KingPile
               id="spade"
               src={require(`${this.state.currentGame.spade.src}`)}
+              handleKingClick={this.handleKingClick}
             />
             <KingPile
               id="heart"
               src={require(`${this.state.currentGame.heart.src}`)}
+              handleKingClick={this.handleKingClick}
             />
             <img  id="stock" className="card"
                   src={require('./Images/Cards/logo_kk.png') } alt="Card Pile"
