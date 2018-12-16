@@ -51,13 +51,19 @@ class App extends Component {
             <KingPile
               id="club"
               src={require(`${this.state.currentGame.club.src}`)}
-              />
-            <img  id="diamond" className="card"
-                  src={require(`${this.state.currentGame.diamond.src}`)} alt="Card Pile"/>
-            <img  id="spade" className="card"
-                  src={require(`${this.state.currentGame.spade.src}`)} alt="Card Pile"/>
-            <img  id="heart" className="card"
-                  src={require(`${this.state.currentGame.heart.src}`)} alt="Card Pile"/>
+            />
+            <KingPile
+              id="diamond"
+              src={require(`${this.state.currentGame.diamond.src}`)}
+            />
+            <KingPile
+              id="spade"
+              src={require(`${this.state.currentGame.spade.src}`)}
+            />
+            <KingPile
+              id="heart"
+              src={require(`${this.state.currentGame.heart.src}`)}
+            />
             <img  id="stock" className="card"
                   src={require('./Images/Cards/logo_kk.png') } alt="Card Pile"
                   onClick={this.handleTalonClick}/>
