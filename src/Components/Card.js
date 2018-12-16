@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 class Card extends Component {
 
   render() {
-    console.log(this.props.card)
     return (
-      <img
-        className="card"
-        src={this.props.src}
-        alt="Card"/>
+        <img
+          className='inserted-card'
+          src={this.props.src}
+          alt="Card"
+          style={ {gridArea: '1 / 1 / 1 / 1',  marginTop: this.props.multiplier} }/>
     )
   }
 }

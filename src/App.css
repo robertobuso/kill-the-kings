@@ -16,6 +16,17 @@
     row-gap: 25px;
   }
 
+  .king-container {
+    display: grid;
+    border: 2px solid red;
+    border-radius: 7px;
+    width: 100%;
+    max-width: 100px;
+    min-height: 75px;
+    min-width: 35px;
+    height: auto;
+  }
+
   .card{
    border: 2px solid red;
    border-radius: 7px;
@@ -27,7 +38,7 @@
    height: auto;
   }
 
-  .card:hover {
+  .king-container:hover {
     border: 2px solid yellow;
 }
 
@@ -63,3 +74,14 @@
   .talon-pile:hover {
     border: 3px solid blue;
   }
+
+  .inserted-card{
+    width: 100%;
+    max-width: 100px;
+    max-height: 125px;
+    min-height: 75px;
+    min-width: 35px;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 10%;
+}

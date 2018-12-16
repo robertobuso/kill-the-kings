@@ -5,13 +5,17 @@ import Card from './Card.js'
 class KingPile extends Component {
 
   render() {
-
+    let x = 0
     return (
-      <>
+      <div className='king-container' onClick={() => this.props.handleKingClick(this.props.id)} >
         {this.props.cards.map( card => {
-          return <Card src={require(`../Images/Cards/${card['id']}.jpg`)}/>
+          card === this.props.cards[0] ? x = 0 : x = x + 35
+          
+          return <Card  src={require(`../Images/Cards/${card['id']}.jpg`)}
+                        key={card.id}
+                        multiplier={x}/>
         })}
-      </>
+      </div>
         )}
 
 

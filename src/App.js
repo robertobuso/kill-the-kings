@@ -34,13 +34,20 @@ class App extends Component {
     }
   }
 
-  handleTalonClick = () => {
+  handleStockClick = () => {
     this.setState( { currentGame: {...this.state.currentGame, talon: this.state.currentGame.stock.shift()
-    }}, () => console.log(this.state))
+    }})
   }
 
   handleKingClick = (id) => {
+    console.log(`this.state.currentGame.${id}.length`)
+  }
 
+  handleTalonClick = (talonCard) => {
+    this.setState( { currentGame: { ...this.state.currentGame,
+                    talon:{},
+                    club: [...this.state.currentGame.club, talonCard]
+                  }})
   }
 
   render() {
@@ -57,13 +64,29 @@ class App extends Component {
               cards={this.state.currentGame.club}
               handleKingClick={this.handleKingClick}
             />
+            <KingPile
+              id="diamond"
+              cards={this.state.currentGame.diamond}
+              handleKingClick={this.handleKingClick}
+            />
+            <KingPile
+              id="spade"
+              cards={this.state.currentGame.spade}
+              handleKingClick={this.handleKingClick}
+            />
+            <KingPile
+              id="heart"
+              cards={this.state.currentGame.heart}
+              handleKingClick={this.handleKingClick}
+            />
 
             <img  id="stock" className="card"
                   src={require('./Images/Cards/logo_kk.png') } alt="Card Pile"
-                  onClick={this.handleTalonClick}/>
+                  onClick={this.handleStockClick}/>
                   {this.state.currentGame.talon.src ?
             <img  id="talon" className="talon-pile"
-                  src={require(`${this.state.currentGame.talon.src}`)} alt="Talon Pile"/>
+                  src={require(`${this.state.currentGame.talon.src}`)} alt="Talon Pile"
+                  onClick={() => this.handleTalonClick(this.state.currentGame.talon)}/>
                   : null }
         </div>
       </div>
