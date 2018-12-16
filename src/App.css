@@ -1,6 +1,6 @@
   .background {
     background-image: url('./Images/felt2.jpg');
-    height: 825px;
+    height: 900px;
     border: 5px solid #6C5103;
     border-radius: 10px;
   }
@@ -16,16 +16,69 @@
     row-gap: 25px;
   }
 
-  .king-container {
+  .club-container {
     display: grid;
     border: 2px solid red;
     border-radius: 7px;
     width: 100%;
+    height: auto;
     max-width: 100px;
     min-height: 75px;
     min-width: 35px;
-    height: auto;
+    max-height: 130px;
   }
+
+  .club-container:hover {
+    border: 2px solid yellow;
+}
+
+.diamond-container {
+  display: grid;
+  border: 2px solid red;
+  border-radius: 7px;
+  width: 100%;
+  height: auto;
+  max-width: 100px;
+  min-height: 75px;
+  min-width: 35px;
+  max-height: 130px;
+}
+
+.diamond-container:hover {
+  border: 2px solid yellow;
+}
+
+.spade-container {
+  display: grid;
+  border: 2px solid red;
+  border-radius: 7px;
+  width: 100%;
+  height: auto;
+  max-width: 100px;
+  min-height: 75px;
+  min-width: 35px;
+  max-height: 130px;
+}
+
+.spade-container:hover {
+  border: 2px solid yellow;
+}
+
+.heart-container {
+  display: grid;
+  border: 2px solid red;
+  border-radius: 7px;
+  width: 100%;
+  height: auto;
+  max-width: 100px;
+  min-height: 75px;
+  min-width: 35px;
+  max-height: 130px;
+}
+
+.heart-container:hover {
+  border: 2px solid yellow;
+}
 
   .card{
    border: 2px solid red;
@@ -37,10 +90,6 @@
    min-width: 35px;
    height: auto;
   }
-
-  .king-container:hover {
-    border: 2px solid yellow;
-}
 
   .reserve-pile {
     background: rgba(203, 209, 129, 0.4);
@@ -54,10 +103,6 @@
 
   .reserve-pile:hover {
     border: 2px solid yellow;
-  }
-
-  .king-pile {
-    height: 400px;
   }
 
   .talon-pile {

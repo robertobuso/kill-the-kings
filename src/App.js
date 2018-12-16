@@ -5,6 +5,7 @@ import './App.css';
 import { originalDeck, kings } from './Constants/CardObjects.js'
 import { shuffle } from './Adapters/'
 import KingPile from './Components/KingPile.js'
+import TalonPile from './Components/TalonPile.js'
 
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
         inProgress: false,
         stock: shuffle(originalDeck),
         talon: {},
-        club: [kings[0], originalDeck[12], originalDeck[33]],
+        club: [kings[0]],
         diamond: [kings[1]],
         spade: [kings[2]],
         heart: [kings[3]],
@@ -59,6 +60,7 @@ class App extends Component {
             <div className="reserve-pile"/>
             <div className="reserve-pile"/>
             <div />
+
             <KingPile
               id="club"
               cards={this.state.currentGame.club}
@@ -83,11 +85,12 @@ class App extends Component {
             <img  id="stock" className="card"
                   src={require('./Images/Cards/logo_kk.png') } alt="Card Pile"
                   onClick={this.handleStockClick}/>
-                  {this.state.currentGame.talon.src ?
-            <img  id="talon" className="talon-pile"
-                  src={require(`${this.state.currentGame.talon.src}`)} alt="Talon Pile"
-                  onClick={() => this.handleTalonClick(this.state.currentGame.talon)}/>
-                  : null }
+
+            {this.state.currentGame.talon.src ?
+            <TalonPile
+              card={this.state.currentGame.talon}
+              handleTalonClick={this.handleTalonClick}
+              /> : null }
         </div>
       </div>
     );
