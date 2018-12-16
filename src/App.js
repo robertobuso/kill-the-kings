@@ -4,6 +4,7 @@ import { DragDropContext } from 'react-dnd'
 import './App.css';
 import { originalDeck, kings } from './Constants/CardObjects.js'
 import { shuffle } from './Adapters/'
+import KingPile from './Components/KingPile.js'
 
 
 class App extends Component {
@@ -47,8 +48,10 @@ class App extends Component {
             <div className="reserve-pile"/>
             <div className="reserve-pile"/>
             <div />
-            <img  id="club" className="card"
-                  src={require(`${this.state.currentGame.club.src}`)} alt="Card Pile"/>
+            <KingPile
+              id="club"
+              src={require(`${this.state.currentGame.club.src}`)}
+              />
             <img  id="diamond" className="card"
                   src={require(`${this.state.currentGame.diamond.src}`)} alt="Card Pile"/>
             <img  id="spade" className="card"
