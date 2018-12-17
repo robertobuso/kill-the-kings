@@ -23,13 +23,13 @@ class Card extends Component {
 
   render() {
     const { isDragging, connectDragSource, src, multiplier } = this.props;
-
+    const opacity = isDragging ? 0 : 1
     return connectDragSource(
         <img
           className='inserted-card'
           src={src}
           alt="Card"
-          style={ {gridArea: '1 / 1 / 1 / 1',  marginTop: multiplier} }/>
+          style={ {gridArea: '1 / 1 / 1 / 1',  marginTop: multiplier, opacity} }/>
     )
   }
 }

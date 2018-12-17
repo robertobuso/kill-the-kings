@@ -49,9 +49,9 @@ class App extends Component {
   }
 
   handleKingClick(id) {
+    console.log('ID in KinClick: ', id)
     const category = this.state.currentGame[id];
-    if (Object.keys(this.state.currentGame.sourceClick).length === 0 ||
-    this.state.currentGame.sourceClick.id === 'green_two') {
+    if (this.state.currentGame.sourceClick.id === 'green_two') {
       alert('You must select a card first.')
     } else {
       this.setState(
@@ -73,7 +73,8 @@ class App extends Component {
                         sourceClick: talonCard,
                         talonBorder: 'yellow'
                         }
-                      }
+                      },
+                      () => console.log('In Talon Click state: ', this.state.currentGame.sourceClick)
                     )
   }
 
@@ -117,11 +118,13 @@ class App extends Component {
               card={this.state.currentGame.talon}
               handleTalonClick={this.handleTalonClick}
               talonBorder={this.state.currentGame.talonBorder}
+              handleDrop={ (id) => this.handleKingClick(id)}
               /> :
             <TalonPile
               card={{id: 'green_two'}}
               handleTalonClick={this.handleTalonClick}
               talonBorder={this.state.currentGame.talonBorder}
+              handleDrop={ (id) => this.handleKingClick(id)}
             />
             }
 
