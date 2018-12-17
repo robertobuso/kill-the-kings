@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import './App.css';
+
 import { originalDeck, kings } from './Constants/CardObjects.js'
 import { shuffle } from './Adapters/'
+
 import KingPile from './Components/KingPile.js'
 import TalonPile from './Components/TalonPile.js'
 
@@ -66,7 +68,6 @@ class App extends Component {
   }
 
   handleTalonClick = (talonCard) => {
-    console.log('SHOULD BE RED')
     this.setState( { currentGame:
                         { ...this.state.currentGame,
                         sourceClick: talonCard,
@@ -117,11 +118,12 @@ class App extends Component {
               handleTalonClick={this.handleTalonClick}
               talonBorder={this.state.currentGame.talonBorder}
               /> :
-              <TalonPile
-                card={{id: 'green_two'}}
-                handleTalonClick={this.handleTalonClick}
-                talonBorder={this.state.currentGame.talonBorder}
-                /> }
+            <TalonPile
+              card={{id: 'green_two'}}
+              handleTalonClick={this.handleTalonClick}
+              talonBorder={this.state.currentGame.talonBorder}
+            />
+            }
 
         </div>
       </div>

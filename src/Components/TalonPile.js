@@ -1,20 +1,39 @@
 import React, { Component } from 'react';
+import { DragSource } from 'react-dnd';
+
+const cardSource = {
+  beginDrag(props) {
+    return props.card
+  },
+  endDrag(props, monitor, component) {
+    return props.handleDrop(props.card.id)
+  }
+}
+
+function collect(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
+    isDragging: monitor.isDragging()
+  }
+}
 
 class TalonPile extends Component {
 
   render() {
-    console.log(this.props)
-    return (
+    const { isDragging, connectDragSource, card, handleTalonClick, talonBorder } = this.props;
+
+    return connectDragSource(
       <img
         id="talon"
         className="talon-pile"
-        src={require(`../Images/Cards/${this.props.card.id}.jpg`)}
+        src={require(`../Images/Cards/${card.id}.jpg`)}
         alt="Talon Pile"
-        onClick={() => this.props.handleTalonClick(this.props.card)}
-        style={ {border: `3px solid ${this.props.talonBorder}`}}
+        onClick={() => handleTalonClick(card)}
+        style={ {border: `3px solid ${talonBorder}`}}
       />
     )
   }
 }
 
-export default TalonPile;
+export default DragSource('card', cardSource, collect)(TalonPile);;
