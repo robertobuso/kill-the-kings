@@ -32,7 +32,8 @@ class App extends Component {
         reserveSix: {},
         reserveSeven: {},
         sourceClick: {},
-        targetClick: {}
+        targetClick: {},
+        talonBorder: 'red'
       },
       history: {
         gamesPlayed: 0
@@ -56,7 +57,8 @@ class App extends Component {
           { ...this.state.currentGame,
             [id]: category.concat(this.state.currentGame.sourceClick),
             talon: {},
-            sourceClick: {}
+            sourceClick: {},
+            talonBorder: 'red'
           }
         }
       )
@@ -64,9 +66,11 @@ class App extends Component {
   }
 
   handleTalonClick = (talonCard) => {
+    console.log('SHOULD BE RED')
     this.setState( { currentGame:
                         { ...this.state.currentGame,
-                        sourceClick: talonCard
+                        sourceClick: talonCard,
+                        talonBorder: 'yellow'
                         }
                       }
                     )
@@ -111,10 +115,12 @@ class App extends Component {
             <TalonPile
               card={this.state.currentGame.talon}
               handleTalonClick={this.handleTalonClick}
+              talonBorder={this.state.currentGame.talonBorder}
               /> :
               <TalonPile
                 card={{id: 'green_two'}}
                 handleTalonClick={this.handleTalonClick}
+                talonBorder={this.state.currentGame.talonBorder}
                 /> }
 
         </div>
