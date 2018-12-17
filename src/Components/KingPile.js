@@ -6,6 +6,8 @@ class KingPile extends Component {
 
   render() {
     let x = 0
+    console.log(this.props.cards)
+    
     return (
       <div className={`${this.props.id}-container`} onClick={() => this.props.handleKingClick(this.props.id)} >
         {this.props.cards.map( card => {

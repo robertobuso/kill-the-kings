@@ -12,6 +12,9 @@ class App extends Component {
 
   constructor(props) {
     super(props)
+
+    this.handleKingClick = this.handleKingClick.bind(this)
+
     this.state = {
       currentGame: {
         inProgress: false,
@@ -27,7 +30,9 @@ class App extends Component {
         reserveFour: {},
         reserveFive: {},
         reserveSix: {},
-        reserveSeven: {}
+        reserveSeven: {},
+        sourceClick: {},
+        targetClick: {}
       },
       history: {
         gamesPlayed: 0
@@ -40,15 +45,31 @@ class App extends Component {
     }})
   }
 
-  handleKingClick = (id) => {
-    console.log(`this.state.currentGame.${id}.length`)
+  handleKingClick(id) {
+    const category = this.state.currentGame[id];
+
+    console.log('CATEGORY: ', category)
+    if (Object.keys(this.state.currentGame.sourceClick).length === 0) {
+      alert('You must select a card first.')
+    } else {
+      this.setState(
+        {currentGame:
+          { ...this.state.currentGame,
+            [id]: [category[0], this.state.currentGame.sourceClick],
+            talon: {}
+          }
+        }
+      )
+    }
   }
 
   handleTalonClick = (talonCard) => {
-    this.setState( { currentGame: { ...this.state.currentGame,
-                    talon:{},
-                    club: [...this.state.currentGame.club, talonCard]
-                  }})
+    this.setState( { currentGame:
+                        { ...this.state.currentGame,
+                        sourceClick: talonCard
+                        }
+                      }
+                    )
   }
 
   render() {
@@ -82,15 +103,20 @@ class App extends Component {
               handleKingClick={this.handleKingClick}
             />
 
-            <img  id="stock" className="card"
-                  src={require('./Images/Cards/logo_kk.png') } alt="Card Pile"
+            <img  id="stock" className="stock-pile"
+                  src={require('./Images/Cards/bc.jpg') } alt="Card Pile"
                   onClick={this.handleStockClick}/>
 
             {this.state.currentGame.talon.src ?
             <TalonPile
               card={this.state.currentGame.talon}
               handleTalonClick={this.handleTalonClick}
-              /> : null }
+              /> :
+              <TalonPile
+                card={{id: 'green_two'}}
+                handleTalonClick={this.handleTalonClick}
+                /> }
+
         </div>
       </div>
     );

@@ -22,7 +22,7 @@
   {id: 'd9', value: 9, suit: 'diamond', src: './Images/Cards/d9.jpg'},
   {id: 'da', value: 10, suit: 'diamond', src: './Images/Cards/da.jpg'},
   {id: 'db', value: 11, suit: 'diamond', src: './Images/Cards/db.jpg'},
-  {id: 'dd', value: 12, suit: 'diamond', src: './Images/Cards/dd.jpg'},
+  {id: 'dd', value: 12, suit: 'diamond', src: './Images/Cards/dc.jpg'},
   {id: 'h1', value: 1, suit: 'heart', src: './Images/Cards/h1.jpg'},
   {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'},
   {id: 'h3', value: 3, suit: 'heart', src: './Images/Cards/h3.jpg'},
