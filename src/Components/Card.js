@@ -3,10 +3,11 @@ import { DragSource } from 'react-dnd';
 
 const cardSource = {
   beginDrag(props) {
+    props.handleTalonClick(props.card)
     return props.card
   },
   endDrag(props, monitor, component) {
-    return props.handleDrop(props.card.id)
+    return props.handleDrop()
   }
 }
 

@@ -59,6 +59,7 @@ class App extends Component {
             [this.state.currentGame.targetClick]: category.concat(this.state.currentGame.sourceClick),
             talon: {},
             sourceClick: {},
+            targetClick: {},
             talonBorder: 'red'
           }
         }
@@ -67,6 +68,7 @@ class App extends Component {
   }
 
   setTarget= (card) => {
+    console.log('From setTarget: ', card)
     this.setState(
       {currentGame:
         { ...this.state.currentGame,
