@@ -47,16 +47,16 @@ class App extends Component {
 
   handleKingClick(id) {
     const category = this.state.currentGame[id];
-
-    console.log('CATEGORY: ', category)
-    if (Object.keys(this.state.currentGame.sourceClick).length === 0) {
+    if (Object.keys(this.state.currentGame.sourceClick).length === 0 ||
+    this.state.currentGame.sourceClick.id === 'green_two') {
       alert('You must select a card first.')
     } else {
       this.setState(
         {currentGame:
           { ...this.state.currentGame,
             [id]: category.concat(this.state.currentGame.sourceClick),
-            talon: {}
+            talon: {},
+            sourceClick: {}
           }
         }
       )
