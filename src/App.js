@@ -55,7 +55,7 @@ class App extends Component {
       this.setState(
         {currentGame:
           { ...this.state.currentGame,
-            [id]: [category[0], this.state.currentGame.sourceClick],
+            [id]: category.concat(this.state.currentGame.sourceClick),
             talon: {}
           }
         }
