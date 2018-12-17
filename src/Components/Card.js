@@ -3,7 +3,6 @@ import { DragSource } from 'react-dnd';
 
 const cardSource = {
   beginDrag(props) {
-    console.log('THIS IS A DRAG')
     return props.card
   },
   endDrag(props, monitor, component) {

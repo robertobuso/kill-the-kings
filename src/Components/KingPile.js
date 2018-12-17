@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import Card from './Card.js'
 
+
+
 function collect(connect, monitor) {
+
   return {
     connectDropTarget: connect.dropTarget(),
     hovered: monitor.isOver(),
@@ -10,13 +13,23 @@ function collect(connect, monitor) {
   }
 }
 
+const cardTarget = {
+  hover(targetProps, monitor) {
+    // const targetId = targetProps.id;
+    // const sourceProps = monitor.getItem();
+    // const sourceId = sourceProps.id;
+
+    targetProps.setTarget(targetProps)
+  }
+};
+
 class KingPile extends Component {
 
   render() {
     let x = 0
-    const { connectDropTarget, hovered, id, handleKingClick, cards } = this.props
+    const { connectDropTarget, id, cards } = this.props
     return connectDropTarget(
-      <div className={`${id}-container`} onClick={() => handleKingClick(id)} >
+      <div className={`${id}-container`} >
         {cards.map( newCard => {
           newCard === cards[0] ? x = 0 : x = x + 35
 
@@ -30,4 +43,4 @@ class KingPile extends Component {
 
 }
 
-export default DropTarget('card', {}, collect)(KingPile);
+export default DropTarget('card', cardTarget, collect)(KingPile);

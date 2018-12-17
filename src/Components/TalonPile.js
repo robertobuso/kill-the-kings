@@ -7,7 +7,7 @@ const cardSource = {
     return props.card
   },
   endDrag(props, monitor, component) {
-    return props.handleDrop(props.card.id)
+    return props.handleDrop()
   }
 }
 
@@ -22,7 +22,6 @@ function collect(connect, monitor) {
 class TalonPile extends Component {
 
   render() {
-    console.log('TalonPile Props: ',this.props)
     const { isDragging, connectDragSource, card, handleTalonClick, talonBorder } = this.props;
     const opacity = isDragging ? 0 : 1;
 
