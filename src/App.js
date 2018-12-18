@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import MultiBackend from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/lib/HTML5toTouch'
 
@@ -14,10 +13,8 @@ import TalonPile from './Components/TalonPile.js'
 
 
 class App extends Component {
-
   constructor(props) {
     super(props)
-
     this.handleKingClick = this.handleKingClick.bind(this)
 
     this.state = {
