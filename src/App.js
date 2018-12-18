@@ -68,7 +68,6 @@ class App extends Component {
   }
 
   setTarget= (card) => {
-    console.log('From setTarget: ', card)
     this.setState(
       {currentGame:
         { ...this.state.currentGame,

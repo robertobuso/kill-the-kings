@@ -4,6 +4,7 @@ import { DragSource } from 'react-dnd';
 const cardSource = {
   beginDrag(props) {
     props.handleTalonClick(props.card)
+    console.log(props)
     return props.card
   },
   endDrag(props, monitor, component) {
