@@ -21,11 +21,12 @@ export const isNewCardHigher = (newCard, cardOnPile) => {
 }
 
 export const isItThreeInARow = (pile) => {
-  return pile.every( card => card.value )
+  console.log(pile)
+  return pile.every( card => card.value === pile[0].value )
 }
 
 export const isItFourInARow = (pile) => {
-  if (pile.every( card => card.suit )) {
-    console.log('The four cards are the same suit!')
+  if (!pile.every( card => card.suit === pile[0].suit )) {
+    console.log('The four cards are not the same suit!')
   }
 }

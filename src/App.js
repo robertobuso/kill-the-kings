@@ -98,14 +98,21 @@ class App extends Component {
     const currentPile = this.state.currentGame[category[0]['suit']]
     const pileLength = currentPile.length
 
+    console.log("The current pile is: ", currentPile)
+    console.log("pile length is: ", pileLength)
+
     if (pileLength < 4 ) {
       console.log('We need at least three cards after King.')
       return
-    } else if (pileLength => 4) {
+    } else if (pileLength >= 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
           console.log('You killed a king with three in a row of the same value!')
         } else if (isItFourInARow(currentPile.slice(-4))) {
-          console.log('You killed a king with four in a row of descending value and the same suit!')
+        console.log('You killed a king with four in a row of descending value and the same suit!')
+        } else { console.log("FISH!")}
+    } else if (pileLength === 4) {
+        if (isItThreeInARow(currentPile.slice(-3))) {
+          console.log('You killed a king with three in a row of the same value!')
         }
     }
   }
