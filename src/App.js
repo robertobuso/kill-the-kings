@@ -35,7 +35,7 @@ class App extends Component {
         reserveSeven: {},
         sourceClick: {},
         targetClick: {},
-        talonBorder: 'red'
+        talonBorder: ''
       },
       history: {
         gamesPlayed: 0
@@ -44,8 +44,12 @@ class App extends Component {
   }
 
   handleStockClick = () => {
-    this.setState( { currentGame: {...this.state.currentGame, talon: this.state.currentGame.stock.shift()
-    }})
+    if (!this.state.currentGame.talon.src) {
+      this.setState( { currentGame: {...this.state.currentGame, talon: this.state.currentGame.stock.shift()
+      }})
+    } else {
+      alert("You must play the current card first.")
+    }
   }
 
   handleKingClick() {
@@ -59,8 +63,7 @@ class App extends Component {
             [this.state.currentGame.targetClick]: category.concat(this.state.currentGame.sourceClick),
             talon: {},
             sourceClick: {},
-            targetClick: {},
-            talonBorder: 'red'
+            targetClick: {}
           }
         }
       )
@@ -78,14 +81,14 @@ class App extends Component {
   }
 
   handleTalonClick = (talonCard) => {
-    this.setState(
-                    { currentGame:
-                      { ...this.state.currentGame,
-                      sourceClick: talonCard,
-                      talonBorder: 'yellow'
+      this.setState(
+                      { currentGame:
+                        { ...this.state.currentGame,
+                        sourceClick: talonCard,
+                        talonBorder: 'red'
+                        }
                       }
-                    }
-                  )
+                    )
   }
 
   render() {
@@ -131,13 +134,11 @@ class App extends Component {
             <TalonPile
               card={this.state.currentGame.talon}
               handleTalonClick={this.handleTalonClick}
-              talonBorder={this.state.currentGame.talonBorder}
               handleDrop={ this.handleKingClick }
               /> :
             <TalonPile
               card={{id: 'green_two'}}
               handleTalonClick={this.handleTalonClick}
-              talonBorder={this.state.currentGame.talonBorder}
               handleDrop={ this.handleKingClick }
             />
             }

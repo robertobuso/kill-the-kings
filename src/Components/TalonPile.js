@@ -10,8 +10,7 @@ class TalonPile extends Component {
     return (
       <div
         id="talon"
-        className="talon-pile"
-        style={ {border: `3px solid ${talonBorder}` }}>
+        className="talon-pile">
           <Card
             card={card}
             src={require(`../Images/Cards/${card.id}.jpg`)}
