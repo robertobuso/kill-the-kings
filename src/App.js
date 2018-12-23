@@ -98,9 +98,6 @@ class App extends Component {
     const currentPile = this.state.currentGame[category[0]['suit']]
     const pileLength = currentPile.length
 
-    console.log("The current pile is: ", currentPile)
-    console.log("pile length is: ", pileLength)
-
     if (pileLength < 4 ) {
       console.log('We need at least three cards after King.')
       return
