@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-dnd'
 import './App.css';
 
 import { originalDeck, kings } from './Constants/CardObjects.js'
-import { shuffle, isNewCardHigher, isItThreeInARow, isItFourInARow } from './Adapters/'
+import { shuffle, isNewCardHigher, isItThreeInARow, isItFourInARow, isItFiveInARow } from './Adapters/'
 
 import KingPile from './Components/KingPile.js'
 import TalonPile from './Components/TalonPile.js'
@@ -101,12 +101,21 @@ class App extends Component {
     if (pileLength < 4 ) {
       console.log('We need at least three cards after King.')
       return
-    } else if (pileLength >= 5) {
+    } else if (pileLength > 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
           console.log('You killed a king with three in a row of the same value!')
         } else if (isItFourInARow(currentPile.slice(-4))) {
         console.log('You killed a king with four in a row of descending value and the same suit!')
-        } else { console.log("FISH!")}
+        } else if (isItFiveInARow(currentPile.slice(-5))) {
+          console.log('You killed a king with five in a row of descending value and alternating color suits!')
+        }
+      }
+      else if (pileLength === 5) {
+        if (isItThreeInARow(currentPile.slice(-3))) {
+          console.log('You killed a king with three in a row of the same value!')
+        } else if (isItFourInARow(currentPile.slice(-4))) {
+        console.log('You killed a king with four in a row of descending value and the same suit!')
+      }
     } else if (pileLength === 4) {
         if (isItThreeInARow(currentPile.slice(-3))) {
           console.log('You killed a king with three in a row of the same value!')

@@ -40,3 +40,13 @@ export const isItFourInARow = (pile) => {
     return true
     }
   }
+
+  export const isItFiveInARow = (pile) => {
+    console.log('FIVE IN A ROW YO!')
+    for (let i = 0; i < pile.length - 1; i++) {
+      if (pile[i] < pile[i++]) {
+        console.log('NOT IN DESCENDING ORDER!')
+        return false
+      }
+    }
+  }
