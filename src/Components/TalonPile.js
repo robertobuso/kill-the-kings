@@ -5,7 +5,7 @@ import Card from './Card.js'
 class TalonPile extends Component {
 
   render() {
-    const { card, talonBorder, handleDrop, handleTalonClick } = this.props;
+    const { card, handleDrop, handleTalonClick } = this.props;
 
     return (
       <div

@@ -50,8 +50,8 @@
 ]
 
 export const kings = [
-  {id: 'cd', value: 12, suit: 'club', src: '../Images/Cards/cd.jpg'},
-  {id: 'dd', value: 12, suit: 'diamond', src: '../Images/Cards/dd.jpg'},
-  {id: 'sd', value: 12, suit: 'spade', src: '../Images/Cards/sd.jpg'},
-  {id: 'hd', value: 12, suit: 'heart', src: '../Images/Cards/hd.jpg'}
+  {id: 'cd', value: 13, suit: 'club', src: '../Images/Cards/cd.jpg'},
+  {id: 'dd', value: 13, suit: 'diamond', src: '../Images/Cards/dd.jpg'},
+  {id: 'sd', value: 13, suit: 'spade', src: '../Images/Cards/sd.jpg'},
+  {id: 'hd', value: 13, suit: 'heart', src: '../Images/Cards/hd.jpg'}
 ]

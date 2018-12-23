@@ -11,7 +11,7 @@ function collect(connect, monitor) {
 }
 
 const cardTarget = {
-  hover(props, monitor) {
+  drop(props, monitor) {
     // const targetId = props.id;
     // const sourceProps = monitor.getItem();
     // const sourceId = sourceProps.id;
@@ -24,7 +24,7 @@ class KingPile extends Component {
   render() {
     let x = 0
     const { connectDropTarget, id, cards } = this.props
-    
+
     return connectDropTarget (
       <div className={`${id}-container`} >
         {cards.map( newCard => {
@@ -35,9 +35,8 @@ class KingPile extends Component {
                         multiplier={x}/>
         })}
       </div>
-        )}
-
-
+    )
+  }
 }
 
 export default DropTarget('card', cardTarget, collect)(KingPile);

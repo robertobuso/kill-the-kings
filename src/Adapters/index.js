@@ -13,6 +13,19 @@ export const shuffle = (array) => {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
-
   return array;
+}
+
+export const isNewCardHigher = (newCard, cardOnPile) => {
+  return newCard.value > cardOnPile.value
+}
+
+export const isItThreeInARow = (pile) => {
+  return pile.every( card => card.value )
+}
+
+export const isItFourInARow = (pile) => {
+  if (pile.every( card => card.suit )) {
+    console.log('The four cards are the same suit!')
+  }
 }

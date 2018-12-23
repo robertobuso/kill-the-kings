@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-dnd'
 import './App.css';
 
 import { originalDeck, kings } from './Constants/CardObjects.js'
-import { shuffle } from './Adapters/'
+import { shuffle, isNewCardHigher, isItThreeInARow, isItFourInARow } from './Adapters/'
 
 import KingPile from './Components/KingPile.js'
 import TalonPile from './Components/TalonPile.js'
@@ -15,7 +15,7 @@ import TalonPile from './Components/TalonPile.js'
 class App extends Component {
   constructor(props) {
     super(props)
-    this.handleKingClick = this.handleKingClick.bind(this)
+    this.handleKingDrop = this.handleKingDrop.bind(this)
 
     this.state = {
       currentGame: {
@@ -52,34 +52,6 @@ class App extends Component {
     }
   }
 
-  handleKingClick() {
-    const category = this.state.currentGame[this.state.currentGame.targetClick];
-    if (this.state.currentGame.sourceClick.id === 'green_two') {
-      alert('You must select a card first.')
-    } else {
-      this.setState(
-        {currentGame:
-          { ...this.state.currentGame,
-            [this.state.currentGame.targetClick]: category.concat(this.state.currentGame.sourceClick),
-            talon: {},
-            sourceClick: {},
-            targetClick: {}
-          }
-        }
-      )
-    }
-  }
-
-  setTarget= (card) => {
-    this.setState(
-      {currentGame:
-        { ...this.state.currentGame,
-          targetClick: card.id
-        }
-      }
-    )
-  }
-
   handleTalonClick = (talonCard) => {
       this.setState(
                       { currentGame:
@@ -89,6 +61,53 @@ class App extends Component {
                         }
                       }
                     )
+  }
+
+    setTarget= (card) => {
+      this.setState(
+        {currentGame:
+          { ...this.state.currentGame,
+            targetClick: card.id
+          }
+        }
+      )
+    }
+
+  handleKingDrop() {
+    const category = this.state.currentGame[this.state.currentGame.targetClick]
+
+    if (this.state.currentGame.sourceClick.id === 'green_two') {
+      alert('You must select a card first.')
+    } else if (isNewCardHigher(this.state.currentGame.sourceClick, category[category.length-1])) {
+         return alert('You can only play a card lower in value than the last card on this pile.')
+    } else {
+      this.setState(
+        {currentGame:
+          { ...this.state.currentGame,
+            [this.state.currentGame.targetClick]: category.concat(this.state.currentGame.sourceClick),
+            talon: {},
+            sourceClick: {},
+            targetClick: {}
+          }
+        }, () => this.checkKillKing(category)
+      )
+    }
+  }
+
+  checkKillKing = (category) => {
+    const currentPile = this.state.currentGame[category[0]['suit']]
+    const pileLength = currentPile.length
+
+    if (pileLength < 4 ) {
+      console.log('We need at least three cards after King.')
+      return
+    } else if (pileLength => 4) {
+        if (isItThreeInARow(currentPile.slice(-3))) {
+          console.log('You killed a king with three in a row of the same value!')
+        } else if (isItFourInARow(currentPile.slice(-4))) {
+          console.log('You killed a king with four in a row of descending value and the same suit!')
+        }
+    }
   }
 
   render() {
@@ -104,25 +123,21 @@ class App extends Component {
             <KingPile
               id="club"
               cards={this.state.currentGame.club}
-              handleKingClick={this.handleKingClick}
               setTarget={(card) => this.setTarget(card)}
             />
             <KingPile
               id="diamond"
               cards={this.state.currentGame.diamond}
-              handleKingClick={this.handleKingClick}
               setTarget={(card) => this.setTarget(card)}
             />
             <KingPile
               id="spade"
               cards={this.state.currentGame.spade}
-              handleKingClick={this.handleKingClick}
               setTarget={(card) => this.setTarget(card)}
             />
             <KingPile
               id="heart"
               cards={this.state.currentGame.heart}
-              handleKingClick={this.handleKingClick}
               setTarget={(card) => this.setTarget(card)}
             />
 
@@ -134,12 +149,12 @@ class App extends Component {
             <TalonPile
               card={this.state.currentGame.talon}
               handleTalonClick={this.handleTalonClick}
-              handleDrop={ this.handleKingClick }
+              handleDrop={ this.handleKingDrop }
               /> :
             <TalonPile
               card={{id: 'green_two'}}
               handleTalonClick={this.handleTalonClick}
-              handleDrop={ this.handleKingClick }
+              handleDrop={ this.handleKingDrop }
             />
             }
 
