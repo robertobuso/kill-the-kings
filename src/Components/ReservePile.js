@@ -19,10 +19,10 @@ const cardTarget = {
 class ReservePile extends Component {
   render() {
     const { connectDropTarget, id, currentCard } = this.props
-    
+
     return connectDropTarget (
       <div className="reserve-pile" >
-          {currentCard.id ?
+          {currentCard ?
                   <Card
                     src={require(`../Images/Cards/${currentCard.id}.jpg`)}
                     key={currentCard.id}

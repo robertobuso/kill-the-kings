@@ -100,16 +100,21 @@ class App extends Component {
   }
 
   handleReserveDrop() {
-    this.setState(
-      {currentGame:
-        { ...this.state.currentGame,
-          [this.state.currentGame.targetClick]: this.state.currentGame.sourceClick,
-          talon: {},
-          sourceClick: {},
-          targetClick: {}
+    const category = this.state.currentGame[this.state.currentGame.targetClick]
+    console.log(this.state.currentGame[this.state.currentGame.targetClick])
+    if (this.state.currentGame[this.state.currentGame.targetClick].length > 0) { alert('This reserve pile is full.')}
+    else {
+      this.setState(
+        {currentGame:
+          { ...this.state.currentGame,
+            [this.state.currentGame.targetClick]: category.concat(this.state.currentGame.sourceClick),
+            talon: {},
+            sourceClick: {},
+            targetClick: {}
+          }
         }
-      }
-    )
+      )
+    }
   }
 
   checkKillKing = (category) => {
@@ -146,7 +151,7 @@ class App extends Component {
         <div className="container">
             <ReservePile
               id="reserveOne"
-              currentCard={this.state.currentGame.reserveOne}
+              currentCard={this.state.currentGame.reserveOne[0]}
               setTarget={(card) => this.setTarget(card)}
               />
             <div className="reserve-pile"/>
