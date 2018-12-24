@@ -21,7 +21,6 @@ export const isNewCardHigher = (newCard, cardOnPile) => {
 }
 
 export const isItThreeInARow = (pile) => {
-  console.log(pile)
   return pile.every( card => card.value === pile[0].value )
 }
 
