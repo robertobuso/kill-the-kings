@@ -47,6 +47,36 @@ export const isItFourInARow = (pile) => {
       if (pile[i] < pile[i++]) {
         console.log('NOT IN DESCENDING ORDER!')
         return false
+      } else {
+         const newPile = pile.map( card => {
+                switch(card.suit) {
+                  case 'spade':
+                  return 0
+                  case 'club':
+                  return 0
+                  case 'heart':
+                  return 1
+                  case 'diamond':
+                  return 1
+                }
+              })
+              console.log('The suits in the pile are: ', newPile)
+              
+      console.log('New Pile: ', newPile)
+      for (let i = 0; i < newPile.length - 1; i++) {
+        console.log(newPile[1])
+        console.log('Suit A: ', newPile[i])
+        console.log('Suit B: ', newPile[i+1])
+        console.log(newPile[i] === newPile[i+1])
+
+        if (newPile[i] === newPile[i+1]) {
+          console.log('NOT DIFFERENT SUITS!')
+          return false
+        } else {
+         console.log('AT LEAST TWO DIFFERENT SUITS!!!!')
       }
+    }
+    return true
+    }
     }
   }
