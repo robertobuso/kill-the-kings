@@ -10,6 +10,7 @@ import { shuffle, isNewCardHigher, isItThreeInARow, isItFourInARow, isItFiveInAR
 
 import KingPile from './Components/KingPile.js'
 import TalonPile from './Components/TalonPile.js'
+import ReservePile from './Components/ReservePile.js'
 
 
 class App extends Component {
@@ -26,13 +27,13 @@ class App extends Component {
         diamond: [kings[1]],
         spade: [kings[2]],
         heart: [kings[3]],
-        reserveOne: {},
-        reserveTwo: {},
-        reserveThree: {},
-        reserveFour: {},
-        reserveFive: {},
-        reserveSix: {},
-        reserveSeven: {},
+        reserveOne: [],
+        reserveTwo: [],
+        reserveThree: [],
+        reserveFour: [],
+        reserveFive: [],
+        reserveSix: [],
+        reserveSeven: [],
         sourceClick: {},
         targetClick: {},
         talonBorder: ''
@@ -76,6 +77,10 @@ class App extends Component {
   handleKingDrop() {
     const category = this.state.currentGame[this.state.currentGame.targetClick]
 
+    if (this.state.currentGame.targetClick.charAt(0) === 'r') {
+      return this.handleReserveDrop()
+    }
+
     if (this.state.currentGame.sourceClick.id === 'green_two') {
       alert('You must select a card first.')
     } else if (isNewCardHigher(this.state.currentGame.sourceClick, category[category.length-1])) {
@@ -94,12 +99,24 @@ class App extends Component {
     }
   }
 
+  handleReserveDrop() {
+    this.setState(
+      {currentGame:
+        { ...this.state.currentGame,
+          [this.state.currentGame.targetClick]: this.state.currentGame.sourceClick,
+          talon: {},
+          sourceClick: {},
+          targetClick: {}
+        }
+      }
+    )
+  }
+
   checkKillKing = (category) => {
     const currentPile = this.state.currentGame[category[0]['suit']]
     const pileLength = currentPile.length
 
     if (pileLength < 4 ) {
-      console.log('We need at least three cards after King.')
       return
     } else if (pileLength > 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
@@ -127,7 +144,11 @@ class App extends Component {
     return (
       <div className="background">
         <div className="container">
-            <div className="reserve-pile"/>
+            <ReservePile
+              id="reserveOne"
+              currentCard={this.state.currentGame.reserveOne}
+              setTarget={(card) => this.setTarget(card)}
+              />
             <div className="reserve-pile"/>
             <div className="reserve-pile"/>
             <div className="reserve-pile"/>
@@ -155,7 +176,7 @@ class App extends Component {
             />
 
             <img  id="stock" className="stock-pile"
-                  src={require('./Images/Cards/bc.jpg') } alt="Card Pile"
+                  src={require('./Images/Cards/logo_kk.jpg') } alt="Card Pile"
                   onClick={this.handleStockClick}/>
 
             {this.state.currentGame.talon.src ?
