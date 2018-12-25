@@ -101,7 +101,7 @@ class App extends Component {
 
   handleReserveDrop() {
     const category = this.state.currentGame[this.state.currentGame.targetClick]
-    console.log(this.state.currentGame[this.state.currentGame.targetClick])
+
     if (this.state.currentGame[this.state.currentGame.targetClick].length > 0) { alert('This reserve pile is full.')}
     else {
       this.setState(
@@ -127,7 +127,6 @@ class App extends Component {
         {currentGame:
           { ...this.state.currentGame,
             [this.state.currentGame.targetClick]: category.concat(this.state.currentGame.sourceClick),
-            talon: {},
             sourceClick: {},
             targetClick: {},
             [props.id]: []

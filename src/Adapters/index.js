@@ -26,16 +26,13 @@ export const isItThreeInARow = (pile) => {
 
 export const isItFourInARow = (pile) => {
   if (!pile.every( card => card.suit === pile[0].suit )) {
-    console.log('The four cards are not the same suit!')
     return false
   } else {
     for (let i = 0; i < pile.length - 1; i++) {
       if (pile[i] < pile[i++]) {
-        console.log('NOT IN DESCENDING ORDER!')
         return false
       }
     }
-    console.log('Descending order, YES!')
     return true
     }
   }

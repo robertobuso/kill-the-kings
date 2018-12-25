@@ -3,7 +3,6 @@ import { DragSource } from 'react-dnd';
 
 const cardSource = {
   beginDrag(props) {
-    console.log('Props in beginDrag: ', props)
     props.handleTalonClick(props.card)
     return props.card
   },
