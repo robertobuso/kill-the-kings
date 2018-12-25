@@ -74,7 +74,7 @@ class App extends Component {
       )
     }
 
-  handleKingDrop() {
+  handleKingDrop(props) {
     const category = this.state.currentGame[this.state.currentGame.targetClick]
 
     if (this.state.currentGame.targetClick.charAt(0) === 'r') {
@@ -117,6 +117,26 @@ class App extends Component {
     }
   }
 
+  handleKingDropFromReserve = (props) => {
+    const category = this.state.currentGame[this.state.currentGame.targetClick]
+
+    if (isNewCardHigher(this.state.currentGame.sourceClick, category[category.length-1])) {
+      return alert('You can only play a card lower in value than the last card on this pile.')
+    } else {
+      this.setState(
+        {currentGame:
+          { ...this.state.currentGame,
+            [this.state.currentGame.targetClick]: category.concat(this.state.currentGame.sourceClick),
+            talon: {},
+            sourceClick: {},
+            targetClick: {},
+            [props.id]: []
+          }
+        }, () => this.checkKillKing(category)
+      )
+    }
+  }
+
   checkKillKing = (category) => {
     const currentPile = this.state.currentGame[category[0]['suit']]
     const pileLength = currentPile.length
@@ -153,21 +173,29 @@ class App extends Component {
             id="reserveOne"
             currentCard={this.state.currentGame.reserveOne[0]}
             setTarget={(card) => this.setTarget(card)}
+            handleDrop={ this.handleKingDropFromReserve }
+            handleTalonClick={this.handleTalonClick}
             />
           <ReservePile
             id="reserveTwo"
             currentCard={this.state.currentGame.reserveTwo[0]}
             setTarget={(card) => this.setTarget(card)}
+            handleDrop={ this.handleKingDropFromReserve }
+            handleTalonClick={this.handleTalonClick}
             />
           <ReservePile
             id="reserveThree"
             currentCard={this.state.currentGame.reserveThree[0]}
             setTarget={(card) => this.setTarget(card)}
+            handleDrop={ this.handleKingDropFromReserve }
+            handleTalonClick={this.handleTalonClick}
             />
           <ReservePile
             id="reserveFour"
             currentCard={this.state.currentGame.reserveFour[0]}
             setTarget={(card) => this.setTarget(card)}
+            handleDrop={ this.handleKingDropFromReserve }
+            handleTalonClick={this.handleTalonClick}
             />
             <div />
 

@@ -3,6 +3,7 @@ import { DragSource } from 'react-dnd';
 
 const cardSource = {
   beginDrag(props) {
+    console.log('Props in beginDrag: ', props)
     props.handleTalonClick(props.card)
     return props.card
   },
@@ -10,7 +11,7 @@ const cardSource = {
     if(!monitor.didDrop()) {
       return
     }
-    return props.handleDrop()
+    return props.handleDrop(props)
   }
 }
 
@@ -28,7 +29,6 @@ class Card extends Component {
 
     const { isDragging, connectDragSource, src, multiplier } = this.props;
     const opacity = isDragging ? 0 : 1
-
     return connectDragSource(
         <img
           className='inserted-card'
