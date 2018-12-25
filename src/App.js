@@ -149,14 +149,26 @@ class App extends Component {
     return (
       <div className="background">
         <div className="container">
-            <ReservePile
-              id="reserveOne"
-              currentCard={this.state.currentGame.reserveOne[0]}
-              setTarget={(card) => this.setTarget(card)}
-              />
-            <div className="reserve-pile"/>
-            <div className="reserve-pile"/>
-            <div className="reserve-pile"/>
+          <ReservePile
+            id="reserveOne"
+            currentCard={this.state.currentGame.reserveOne[0]}
+            setTarget={(card) => this.setTarget(card)}
+            />
+          <ReservePile
+            id="reserveTwo"
+            currentCard={this.state.currentGame.reserveTwo[0]}
+            setTarget={(card) => this.setTarget(card)}
+            />
+          <ReservePile
+            id="reserveThree"
+            currentCard={this.state.currentGame.reserveThree[0]}
+            setTarget={(card) => this.setTarget(card)}
+            />
+          <ReservePile
+            id="reserveFour"
+            currentCard={this.state.currentGame.reserveFour[0]}
+            setTarget={(card) => this.setTarget(card)}
+            />
             <div />
 
             <KingPile
