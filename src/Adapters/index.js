@@ -22,7 +22,9 @@ export const isNewCardHigher = (newCard, cardOnPile) => {
 
 export const isNewCardSameColorDifferentSuit = (newCard, cardOnPile) => {
   if ((newCard.suit === 'club' && cardOnPile.suit === 'spade') || (newCard.suit === 'spade' && cardOnPile.suit === 'club') || (newCard.suit === 'heart' && cardOnPile.suit === 'diamond') || (newCard.suit === 'diamond' && cardOnPile.suit === 'heart') ) {
-    return true
+    if (newCard.value != cardOnPile.value) {
+      return false
+    }
   } else {
   return false
   }

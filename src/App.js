@@ -36,7 +36,9 @@ class App extends Component {
         reserveSeven: [],
         sourceClick: {},
         targetClick: {},
-        talonBorder: ''
+        talonBorder: '',
+        kingKilled: false,
+        currentPile: ''
       },
       history: {
         gamesPlayed: 0
@@ -148,7 +150,12 @@ class App extends Component {
       return
     } else if (pileLength > 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          alert('You killed a king with three in a row of the same value!')
+          this.setState( {
+            currentGame:
+              { ...this.state.currentGame,
+                kingKilled: true,
+                currentPile: category[0]['suit']}
+            })
         } else if (isItFourInARow(currentPile.slice(-4))) {
         alert('You killed a king with four in a row of descending value and the same suit!')
         } else if (isItFiveInARow(currentPile.slice(-5))) {
@@ -157,13 +164,23 @@ class App extends Component {
       }
       else if (pileLength === 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          alert('You killed a king with three in a row of the same value!')
+          this.setState( {
+            currentGame:
+              { ...this.state.currentGame,
+                kingKilled: true,
+                currentPile: category[0]['suit']}
+            })
         } else if (isItFourInARow(currentPile.slice(-4))) {
         alert('You killed a king with four in a row of descending value and the same suit!')
       }
     } else if (pileLength === 4) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          alert('You killed a king with three in a row of the same value!')
+          this.setState( {
+            currentGame:
+              { ...this.state.currentGame,
+                kingKilled: true,
+                currentPile: category[0]['suit']}
+            })
         }
     }
   }
@@ -206,24 +223,32 @@ class App extends Component {
               id="club"
               cards={this.state.currentGame.club}
               setTarget={(card) => this.setTarget(card)}
+              kingKilled= {this.state.currentGame.kingKilled}
+              currentPile= {this.state.currentGame.currentPile}
             />
             <KingPile
               id="diamond"
               cards={this.state.currentGame.diamond}
               setTarget={(card) => this.setTarget(card)}
+              kingKilled= {this.state.currentGame.kingKilled}
+              currentPile= {this.state.currentGame.currentPile}
             />
             <KingPile
               id="spade"
               cards={this.state.currentGame.spade}
               setTarget={(card) => this.setTarget(card)}
+              kingKilled= {this.state.currentGame.kingKilled}
+              currentPile= {this.state.currentGame.currentPile}
             />
             <KingPile
               id="heart"
               cards={this.state.currentGame.heart}
               setTarget={(card) => this.setTarget(card)}
+              kingKilled= {this.state.currentGame.kingKilled}
+              currentPile= {this.state.currentGame.currentPile}
             />
 
-            <img  id="stock" className="stock-pile animated infinite bounce delay-2s"
+            <img  id="stock" className="stock-pile"
                   src={require('./Images/Cards/logo_kk.jpg') } alt="Card Pile"
                   onClick={this.handleStockClick}/>
 
