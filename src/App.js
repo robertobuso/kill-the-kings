@@ -185,16 +185,16 @@ class App extends Component {
           kingKilled: true,
           currentPile: currentPile
           }
-        }, () => this.changeKingIntoReservePile(newIdArr, newId))
+        }, () => this.changeKingIntoReservePile(newIdArr, newId) )
   }
 
   changeKingIntoReservePile = (newIdArr, newId) => {
-     this.setState( {
+     setTimeout(() => this.setState( {
        currentGame:
        { ...this.state.currentGame,
         idArray: newIdArr,
         newReserveId: newId
-        }})
+      }}), 1750)
   }
 
   render() {
