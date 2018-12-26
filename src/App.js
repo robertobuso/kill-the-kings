@@ -182,6 +182,10 @@ class App extends Component {
   }
 
   theKingIsDead = (currentPile) => {
+    const idx = this.state.currentGame.idArray.indexOf(currentPile)
+    const newIdArr = this.state.currentGame.idArray
+    newIdArr[idx] = 'reserve6'
+    console.log('New Array = ', newIdArr)
     this.setState( {
       currentGame:
         { ...this.state.currentGame,
@@ -215,28 +219,27 @@ class App extends Component {
             kingKilled= {this.state.currentGame.kingKilled}
             currentPile= {this.state.currentGame.currentPile}
           />
+        })}
+        <img
+          id="stock" className="stock-pile"
+          src={require('./Images/Cards/logo_kk.jpg') } alt="Card Pile"
+          onClick={this.handleStockClick}
+        />
+
+        {this.state.currentGame.talon.src ?
+        <TalonPile
+          card={this.state.currentGame.talon}
+          handleTalonClick={this.handleTalonClick}
+          handleDrop={ this.handleKingDrop }
+          /> :
+        <TalonPile
+          card={{id: 'green_two'}}
+          handleTalonClick={this.handleTalonClick}
+          handleDrop={ this.handleKingDrop }
+        />
         }
-    )
-  }
-
-            <img  id="stock" className="stock-pile"
-                  src={require('./Images/Cards/logo_kk.jpg') } alt="Card Pile"
-                  onClick={this.handleStockClick}/>
-
-            {this.state.currentGame.talon.src ?
-            <TalonPile
-              card={this.state.currentGame.talon}
-              handleTalonClick={this.handleTalonClick}
-              handleDrop={ this.handleKingDrop }
-              /> :
-            <TalonPile
-              card={{id: 'green_two'}}
-              handleTalonClick={this.handleTalonClick}
-              handleDrop={ this.handleKingDrop }
-            />
-            }
-        </div>
       </div>
+    </div>
     )
   }
 }
