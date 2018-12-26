@@ -33,7 +33,8 @@ class KingPile extends Component {
           return <Card
                     src={require(`../Images/Cards/${newCard['id']}.jpg`)}
                     key={newCard.id}
-                    multiplier={x}/>
+                    multiplier={x}
+                    draggable='false'/>
         })}
       </div>
     )

@@ -31,6 +31,7 @@ class ReservePile extends Component {
                     handleDrop={ handleDrop }
                     handleTalonClick={ handleTalonClick }
                     id={ id }
+                    draggable='true'
                    />
             : null}
       </div>

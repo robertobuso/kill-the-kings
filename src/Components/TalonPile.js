@@ -16,6 +16,7 @@ class TalonPile extends Component {
             src={require(`../Images/Cards/${card.id}.jpg`)}
             handleDrop={ handleDrop }
             handleTalonClick={ handleTalonClick }
+            draggable='true'
           />
       </div>
     )

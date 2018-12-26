@@ -60,6 +60,8 @@ export const isItFourInARow = (pile) => {
                 return 1
                 case 'diamond':
                 return 1
+                default:
+                return
               }
             })
         for (let i = 0; i < newPile.length - 1; i++) {
