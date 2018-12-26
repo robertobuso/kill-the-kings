@@ -22,7 +22,7 @@ const cardTarget = {
 class KingPile extends Component {
 
 wasKingKilled = () => {
-  if (this.props.kingKilled === false || (this.props.currentPile != this.props.id)) {
+  if (this.props.kingKilled === false || (this.props.currentPile !== this.props.id)) {
     return `${this.props.id}-container`
   } else {
     return `${this.props.id}-container animated zoomOutDown slower`

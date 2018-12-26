@@ -39,7 +39,8 @@ class App extends Component {
         talonBorder: '',
         kingKilled: false,
         currentPile: '',
-        idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart']
+        idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
+        newReserveId: 4
       },
       history: {
         gamesPlayed: 0
@@ -151,47 +152,49 @@ class App extends Component {
       return
     } else if (pileLength > 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          this.theKingIsDead(category[0]['suit'])
+          this.theKingIsDead(currentPile[0]['suit'])
         } else if (isItFourInARow(currentPile.slice(-4))) {
-        alert('You killed a king with four in a row of descending value and the same suit!')
+          this.theKingIsDead(currentPile[0]['suit'])
         } else if (isItFiveInARow(currentPile.slice(-5))) {
-          alert('You killed a king with five in a row of descending value and alternating color suits!')
+          this.theKingIsDead(currentPile[0]['suit'])
         }
       }
       else if (pileLength === 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          this.setState( {
-            currentGame:
-              { ...this.state.currentGame,
-                kingKilled: true,
-                currentPile: category[0]['suit']}
-            })
+          this.theKingIsDead(currentPile[0]['suit'])
         } else if (isItFourInARow(currentPile.slice(-4))) {
-        alert('You killed a king with four in a row of descending value and the same suit!')
+          this.theKingIsDead(currentPile[0]['suit'])
       }
     } else if (pileLength === 4) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          this.setState( {
-            currentGame:
-              { ...this.state.currentGame,
-                kingKilled: true,
-                currentPile: category[0]['suit']}
-            })
+          this.theKingIsDead(currentPile[0]['suit'])
         }
+      }
     }
-  }
 
   theKingIsDead = (currentPile) => {
+    const newId = this.state.currentGame.newReserveId + 1
     const idx = this.state.currentGame.idArray.indexOf(currentPile)
-    const newIdArr = this.state.currentGame.idArray
-    newIdArr[idx] = 'reserve6'
-    console.log('New Array = ', newIdArr)
+    const newIdArr = [...this.state.currentGame.idArray]
+    newIdArr[idx] = `reserve${newId}`
+      console.log('DEAD!')
+      console.log('Current pile: ', currentPile)
     this.setState( {
       currentGame:
         { ...this.state.currentGame,
           kingKilled: true,
-          currentPile: currentPile}
-      }, )
+          currentPile: currentPile
+          }
+        }, () => this.changeKingIntoReservePile(newIdArr, newId))
+  }
+
+  changeKingIntoReservePile = (newIdArr, newId) => {
+     this.setState( {
+       currentGame:
+       { ...this.state.currentGame,
+        idArray: newIdArr,
+        newReserveId: newId
+        }})
   }
 
   render() {
@@ -220,23 +223,22 @@ class App extends Component {
             currentPile= {this.state.currentGame.currentPile}
           />
         })}
-        <img
-          id="stock" className="stock-pile"
-          src={require('./Images/Cards/logo_kk.jpg') } alt="Card Pile"
-          onClick={this.handleStockClick}
-        />
-
-        {this.state.currentGame.talon.src ?
-        <TalonPile
-          card={this.state.currentGame.talon}
-          handleTalonClick={this.handleTalonClick}
-          handleDrop={ this.handleKingDrop }
-          /> :
-        <TalonPile
-          card={{id: 'green_two'}}
-          handleTalonClick={this.handleTalonClick}
-          handleDrop={ this.handleKingDrop }
-        />
+          <img
+            id="stock" className="stock-pile"
+            src={require('./Images/Cards/logo_kk.jpg') } alt="Card Pile"
+            onClick={this.handleStockClick}
+          />
+          {this.state.currentGame.talon.src ?
+          <TalonPile
+            card={this.state.currentGame.talon}
+            handleTalonClick={this.handleTalonClick}
+            handleDrop={ this.handleKingDrop }
+            /> :
+          <TalonPile
+            card={{id: 'green_two'}}
+            handleTalonClick={this.handleTalonClick}
+            handleDrop={ this.handleKingDrop }
+          />
         }
       </div>
     </div>
