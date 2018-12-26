@@ -22,8 +22,6 @@ const cardTarget = {
 class KingPile extends Component {
 
 wasKingKilled = () => {
-  console.log(this.props.kingKilled)
-  console.log(this.props.currentPile)
   if (this.props.kingKilled === false || (this.props.currentPile != this.props.id)) {
     return `${this.props.id}-container`
   } else {
