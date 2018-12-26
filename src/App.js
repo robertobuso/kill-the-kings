@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-dnd'
 import './App.css';
 
 import { originalDeck, kings } from './Constants/CardObjects.js'
-import { shuffle, isNewCardHigher, isItThreeInARow, isItFourInARow, isItFiveInARow } from './Adapters/'
+import { shuffle, isNewCardHigher, isNewCardSameColorDifferentSuit, isItThreeInARow, isItFourInARow, isItFiveInARow } from './Adapters/'
 
 import KingPile from './Components/KingPile.js'
 import TalonPile from './Components/TalonPile.js'
@@ -85,6 +85,8 @@ class App extends Component {
       alert('You must select a card first.')
     } else if (isNewCardHigher(this.state.currentGame.sourceClick, category[category.length-1])) {
          return alert('You can only play a card lower in value than the last card on this pile.')
+    } else if (isNewCardSameColorDifferentSuit(this.state.currentGame.sourceClick, category[category.length-1])) {
+      return alert('You cannot play a card of the same color but different suit than the last card on this pile.')
     } else {
       this.setState(
         {currentGame:
@@ -122,6 +124,8 @@ class App extends Component {
 
     if (isNewCardHigher(this.state.currentGame.sourceClick, category[category.length-1])) {
       return alert('You can only play a card lower in value than the last card on this pile.')
+    } else if (isNewCardSameColorDifferentSuit(this.state.currentGame.sourceClick, category[category.length-1])) {
+      return alert('You cannot play a card of the same color but different suit than the last card on this pile.')
     } else {
       this.setState(
         {currentGame:
@@ -144,22 +148,22 @@ class App extends Component {
       return
     } else if (pileLength > 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          console.log('You killed a king with three in a row of the same value!')
+          alert('You killed a king with three in a row of the same value!')
         } else if (isItFourInARow(currentPile.slice(-4))) {
-        console.log('You killed a king with four in a row of descending value and the same suit!')
+        alert('You killed a king with four in a row of descending value and the same suit!')
         } else if (isItFiveInARow(currentPile.slice(-5))) {
-          console.log('You killed a king with five in a row of descending value and alternating color suits!')
+          alert('You killed a king with five in a row of descending value and alternating color suits!')
         }
       }
       else if (pileLength === 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          console.log('You killed a king with three in a row of the same value!')
+          alert('You killed a king with three in a row of the same value!')
         } else if (isItFourInARow(currentPile.slice(-4))) {
-        console.log('You killed a king with four in a row of descending value and the same suit!')
+        alert('You killed a king with four in a row of descending value and the same suit!')
       }
     } else if (pileLength === 4) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          console.log('You killed a king with three in a row of the same value!')
+          alert('You killed a king with three in a row of the same value!')
         }
     }
   }
@@ -219,7 +223,7 @@ class App extends Component {
               setTarget={(card) => this.setTarget(card)}
             />
 
-            <img  id="stock" className="stock-pile"
+            <img  id="stock" className="stock-pile animated infinite bounce delay-2s"
                   src={require('./Images/Cards/logo_kk.jpg') } alt="Card Pile"
                   onClick={this.handleStockClick}/>
 

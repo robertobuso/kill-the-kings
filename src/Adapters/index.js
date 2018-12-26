@@ -20,6 +20,14 @@ export const isNewCardHigher = (newCard, cardOnPile) => {
   return newCard.value > cardOnPile.value
 }
 
+export const isNewCardSameColorDifferentSuit = (newCard, cardOnPile) => {
+  if ((newCard.suit === 'club' && cardOnPile.suit === 'spade') || (newCard.suit === 'spade' && cardOnPile.suit === 'club') || (newCard.suit === 'heart' && cardOnPile.suit === 'diamond') || (newCard.suit === 'diamond' && cardOnPile.suit === 'heart') ) {
+    return true
+  } else {
+  return false
+  }
+}
+
 export const isItThreeInARow = (pile) => {
   return pile.every( card => card.value === pile[0].value )
 }

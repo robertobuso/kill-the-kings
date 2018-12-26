@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animate.css": "^3.7.0",
     "deck-of-cards": "^0.1.8",
     "react": "^16.6.3",
     "react-dnd": "^7.0.2",
