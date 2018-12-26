@@ -17,11 +17,19 @@ const cardTarget = {
 };
 
 class ReservePile extends Component {
+
+  shouldWeFadeIn = () => {
+    if (this.props === false) {
+      return 'reserve-pile'
+    } else {
+      return 'reserve-pile animated fadeInUp slower'
+    }
+  }
   render() {
     const { connectDropTarget, id, currentCard, handleDrop, handleTalonClick } = this.props
 
     return connectDropTarget (
-      <div className="reserve-pile" >
+      <div className={this.shouldWeFadeIn()} >
           {currentCard ?
                   <Card
                     card={currentCard}

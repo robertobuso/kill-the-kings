@@ -67,6 +67,7 @@
 
   .reserve-pile {
     background: rgba(203, 209, 129, 0.4);
+    border: 2px solid red;
     border-radius: 10px;
     width: 100%;
     max-width: 100px;

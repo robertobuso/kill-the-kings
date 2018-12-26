@@ -36,11 +36,11 @@ class App extends Component {
         reserve7: [],
         sourceClick: {},
         targetClick: {},
-        talonBorder: '',
         kingKilled: false,
         currentPile: '',
         idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
-        newReserveId: 4
+        newReserveId: 4,
+        fadeIn: false
       },
       history: {
         gamesPlayed: 0
@@ -177,8 +177,10 @@ class App extends Component {
     const idx = this.state.currentGame.idArray.indexOf(currentPile)
     const newIdArr = [...this.state.currentGame.idArray]
     newIdArr[idx] = `reserve${newId}`
-      console.log('DEAD!')
-      console.log('Current pile: ', currentPile)
+
+    if (newId > 7) {
+      return this.gameOver
+    } else {
     this.setState( {
       currentGame:
         { ...this.state.currentGame,
@@ -186,6 +188,11 @@ class App extends Component {
           currentPile: currentPile
           }
         }, () => this.changeKingIntoReservePile(newIdArr, newId) )
+    }
+  }
+
+  gameOver = () => {
+    alert('REGICIDE!!!!')
   }
 
   changeKingIntoReservePile = (newIdArr, newId) => {
@@ -193,8 +200,10 @@ class App extends Component {
        currentGame:
        { ...this.state.currentGame,
         idArray: newIdArr,
-        newReserveId: newId
-      }}), 1750)
+        newReserveId: newId,
+        kingKilled: false,
+        fadeIn: true
+      }}), 800)
   }
 
   render() {

@@ -31,7 +31,7 @@ class Card extends Component {
   render() {
 
     const { isDragging, connectDragSource, src, multiplier } = this.props;
-    const opacity = isDragging ? 0 : 1
+    const opacity = isDragging ? 0.5 : 1
     return connectDragSource(
         <img
           className='inserted-card'
