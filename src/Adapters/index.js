@@ -79,10 +79,14 @@ export const isItFourInARow = (pile) => {
   export const didYouLose = (props) => {
     const pileArray = [props.club[props.club.length - 1], props.diamond[props.diamond.length - 1], props.spade[props.spade.length - 1], props.heart[props.heart.length - 1]]
 
-    console.log(pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
-    }).length === pileArray.length)
-
-    return pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
-    }).length === pileArray.length
-
-  }
+    if (pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
+    }).length === pileArray.length) {
+      return true
+    }
+    else if (pileArray.filter((card) => { return isNewCardSameColorDifferentSuit(props.talon,card) === true
+      }).length === pileArray.length) {
+        return true
+      } else {
+        return false
+      }
+    }
