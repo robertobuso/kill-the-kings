@@ -3,7 +3,7 @@ import { DragSource } from 'react-dnd';
 
 const cardSource = {
   beginDrag(props) {
-    if (props.draggable==='true') {
+  if (props.draggable==='true') {
       props.handleTalonClick(props.card)
       return props.card
   } else {

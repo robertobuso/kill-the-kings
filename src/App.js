@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-dnd'
 import './App.css';
 
 import { originalDeck, kings } from './Constants/CardObjects.js'
-import { shuffle, isNewCardHigher, isNewCardSameColorDifferentSuit, isItThreeInARow, isItFourInARow, isItFiveInARow } from './Adapters/'
+import { shuffle, isNewCardHigher, isNewCardSameColorDifferentSuit, isItThreeInARow, isItFourInARow, isItFiveInARow, didYouLose } from './Adapters/'
 
 import KingPile from './Components/KingPile.js'
 import TalonPile from './Components/TalonPile.js'
@@ -40,7 +40,8 @@ class App extends Component {
         currentPile: '',
         idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
         newReserveId: 4,
-        fadeIn: false
+        fadeIn: false,
+        gameOver: ''
       },
       history: {
         gamesPlayed: 0
@@ -50,7 +51,9 @@ class App extends Component {
 
   handleStockClick = () => {
     if (!this.state.currentGame.talon.src) {
-      this.setState( { currentGame: {...this.state.currentGame, talon: this.state.currentGame.stock.shift()
+      this.setState( { currentGame: {...this.state.currentGame,
+        talon: this.state.currentGame.stock.shift(),
+        gameOver:'loss'
       }})
     } else {
       alert("You must play the current card first.")
@@ -61,10 +64,9 @@ class App extends Component {
       this.setState(
                       { currentGame:
                         { ...this.state.currentGame,
-                        sourceClick: talonCard,
-                        talonBorder: 'red'
+                        sourceClick: talonCard
                         }
-                      }
+                      }, () => didYouLose(this.state.currentGame) ? alert('LOSER') : null
                     )
   }
 
@@ -187,7 +189,7 @@ class App extends Component {
           kingKilled: true,
           currentPile: currentPile
           }
-        }, () => this.changeKingIntoReservePile(newIdArr, newId) )
+        }, () => this.changeKingIntoReservePile(newIdArr, newId, currentPile) )
     }
   }
 
@@ -195,14 +197,15 @@ class App extends Component {
     alert('REGICIDE!!!!')
   }
 
-  changeKingIntoReservePile = (newIdArr, newId) => {
+  changeKingIntoReservePile = (newIdArr, newId, currentPile) => {
      setTimeout(() => this.setState( {
        currentGame:
        { ...this.state.currentGame,
         idArray: newIdArr,
         newReserveId: newId,
         kingKilled: false,
-        fadeIn: true
+        fadeIn: true,
+        [currentPile]: [{value: 20}, {suit: ''}]
       }}), 800)
   }
 

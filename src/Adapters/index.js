@@ -23,7 +23,7 @@ export const isNewCardHigher = (newCard, cardOnPile) => {
 export const isNewCardSameColorDifferentSuit = (newCard, cardOnPile) => {
   if ((newCard.suit === 'club' && cardOnPile.suit === 'spade') || (newCard.suit === 'spade' && cardOnPile.suit === 'club') || (newCard.suit === 'heart' && cardOnPile.suit === 'diamond') || (newCard.suit === 'diamond' && cardOnPile.suit === 'heart') ) {
     if (newCard.value !== cardOnPile.value) {
-      return false
+      return true
     }
   } else {
   return false
@@ -74,4 +74,15 @@ export const isItFourInARow = (pile) => {
         return true
       }
     }
+  }
+
+  export const didYouLose = (props) => {
+    const pileArray = [props.club[props.club.length - 1], props.diamond[props.diamond.length - 1], props.spade[props.spade.length - 1], props.heart[props.heart.length - 1]]
+
+    console.log(pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
+    }).length === pileArray.length)
+
+    return pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
+    }).length === pileArray.length
+
   }
