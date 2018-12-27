@@ -205,8 +205,8 @@ class App extends Component {
         newReserveId: newId,
         kingKilled: false,
         fadeIn: true,
-        [currentPile]: [{value: 20}, {suit: ''}]
-      }}), 800)
+        [currentPile]: []
+      }}), 750)
   }
 
   render() {
@@ -236,7 +236,7 @@ class App extends Component {
           />
         })}
           <img
-            id="stock" className="stock-pile"
+            id="stock" className="stock-pile animated fadeInRightBig slower"
             src={require('./Images/Cards/logo_kk.jpg') } alt="Card Pile"
             onClick={this.handleStockClick}
           />

@@ -77,7 +77,16 @@ export const isItFourInARow = (pile) => {
   }
 
   export const didYouLose = (props) => {
-    const pileArray = [props.club[props.club.length - 1], props.diamond[props.diamond.length - 1], props.spade[props.spade.length - 1], props.heart[props.heart.length - 1]]
+    let pileArray = [props.club[props.club.length - 1], props.diamond[props.diamond.length - 1], props.spade[props.spade.length - 1], props.heart[props.heart.length - 1]]
+
+    pileArray = pileArray.filter( card => card !== undefined)
+
+    console.log('PILE ARRAY: ', pileArray)
+    console.log('Number: ', pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
+    }).length === pileArray.length)
+
+    console.log('Suit and Color: ', pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
+    }).length === pileArray.length)
 
     if (pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
     }).length === pileArray.length) {
