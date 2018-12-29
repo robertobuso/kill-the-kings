@@ -9,7 +9,7 @@ import { originalDeck, kings } from './Constants/CardObjects.js'
 import { shuffle, isNewCardHigher, isNewCardSameColorDifferentSuit, isItThreeInARow, isItFourInARow, isItFiveInARow, didYouLose } from './Adapters/'
 
 import KingPile from './Components/KingPile.js'
-import TalonPile from './Components/TalonPile.js'
+import PopupExampleHtml from './Components/TalonPile.js'
 import ReservePile from './Components/ReservePile.js'
 
 
@@ -102,14 +102,13 @@ class App extends Component {
             sourceClick: {},
             targetClick: {}
           }
-        }, () => this.checkKillKing(category)
+        }
       )
     }
   }
 
   handleReserveDrop() {
     const category = this.state.currentGame[this.state.currentGame.targetClick]
-
     if (this.state.currentGame[this.state.currentGame.targetClick].length > 0) { alert('This reserve pile is full.')}
     else {
       this.setState(
@@ -127,8 +126,9 @@ class App extends Component {
 
   handleKingDropFromReserve = (props) => {
     const category = this.state.currentGame[this.state.currentGame.targetClick]
-
-    if (isNewCardHigher(this.state.currentGame.sourceClick, category[category.length-1])) {
+    if (this.state.currentGame.targetClick.charAt(0) === 'r' ){
+      return
+    } else if (isNewCardHigher(this.state.currentGame.sourceClick, category[category.length-1])) {
       return alert('You can only play a card lower in value than the last card on this pile.')
     } else if (isNewCardSameColorDifferentSuit(this.state.currentGame.sourceClick, category[category.length-1])) {
       return alert('You cannot play a card of the same color but different suit than the last card on this pile.')
@@ -241,12 +241,12 @@ class App extends Component {
             onClick={this.handleStockClick}
           />
           {this.state.currentGame.talon.src ?
-          <TalonPile
+          <PopupExampleHtml
             card={this.state.currentGame.talon}
             handleTalonClick={this.handleTalonClick}
             handleDrop={ this.handleKingDrop }
             /> :
-          <TalonPile
+          <PopupExampleHtml
             card={{id: 'green_two'}}
             handleTalonClick={this.handleTalonClick}
             handleDrop={ this.handleKingDrop }

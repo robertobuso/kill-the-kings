@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Card from './Card.js'
+import { Popup, Rating } from 'semantic-ui-react'
 
-
-class TalonPile extends Component {
+class PopupExampleHtml extends Component {
 
   render() {
     const { card, handleDrop, handleTalonClick } = this.props;
 
-    return (
+    const IndividualCard = (
       <div
         id="talon"
         className="talon-pile">
@@ -20,7 +20,16 @@ class TalonPile extends Component {
           />
       </div>
     )
+
+    return (
+      <Popup trigger={IndividualCard} inverted>
+        <Popup.Header>This is the Talon Pile</Popup.Header>
+        <Popup.Content>
+          <Rating icon='star' defaultRating={3} maxRating={4} />
+        </Popup.Content>
+      </Popup>
+    )
   }
 }
 
-export default TalonPile;
+export default PopupExampleHtml;

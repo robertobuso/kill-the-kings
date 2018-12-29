@@ -78,8 +78,8 @@ export const isItFourInARow = (pile) => {
 
   export const didYouLose = (props) => {
 
-    let pileArray = props.idArray.map( pile => {
-      return props[pile] ? props[pile][0] : undefined})
+  let pileArray = props.idArray.map( pile => {
+    return props[pile] ? props[pile][0] : undefined})
 
     pileArray = pileArray.filter( card => card !== undefined)
 

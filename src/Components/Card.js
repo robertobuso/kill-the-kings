@@ -3,6 +3,7 @@ import { DragSource } from 'react-dnd';
 
 const cardSource = {
   beginDrag(props) {
+
   if (props.draggable==='true') {
       props.handleTalonClick(props.card)
       return props.card
@@ -11,6 +12,7 @@ const cardSource = {
   }
   },
   endDrag(props, monitor, component) {
+
     if(!monitor.didDrop() || props.draggable === 'false') {
       return
     }
