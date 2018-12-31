@@ -77,27 +77,40 @@ export const isItFourInARow = (pile) => {
   }
 
   export const didYouLose = (props) => {
+    const playableCards = []
+    const pileCards = []
+    let reservePileIsAvailable = 'false'
 
-  let pileArray = props.idArray.map( pile => {
-    return props[pile] ? props[pile][0] : undefined})
+    props.idArray.forEach( pile => {
+      if ( reservePileIsAvailable === 'true')
+      {return false}
+       else if (pile.charAt(0) === 'r') {
+        if (props[pile][0]) {
+          playableCards.push(props[pile][0])
+        } else {reservePileIsAvailable = 'true'}
+      } else if (pile === 'blank') {
+        return
+      } else if (props[pile]){
+        pileCards.push(props[pile][props[pile].length-1])
+      } else {reservePileIsAvailable = 'true'}
+    })
 
-    pileArray = pileArray.filter( card => card !== undefined)
-
-    console.log('PILE ARRAY: ', pileArray)
-    console.log('Number: ', pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
-    }).length === pileArray.length)
-
-    console.log('Suit and Color: ', pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
-    }).length === pileArray.length)
-
-    if (pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
-    }).length === pileArray.length) {
-      return true
+    if (playableCards.length < 1) {
+      console.log('KEEP PLAYING YO!')
+      return false
     }
-    else if (pileArray.filter((card) => { return isNewCardSameColorDifferentSuit(props.talon,card) === true
-      }).length === pileArray.length) {
-        return true
-      } else {
-        return false
-      }
+    console.log('Now were checking if you lost!')
+    console.log('playableCards: ', playableCards)
+    console.log('pileCards: ', pileCards)
+    //
+    // if (pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
+    // }).length === pileArray.length) {
+    //   return true
+    // }
+    // else if (pileArray.filter((card) => { return isNewCardSameColorDifferentSuit(props.talon,card) === true
+    //   }).length === pileArray.length) {
+    //     return true
+    //   } else {
+    //     return false
+    //   }
     }

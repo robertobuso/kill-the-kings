@@ -71,8 +71,8 @@
     border-radius: 10px;
     width: 100%;
     max-width: 100px;
-    height: auto;
-    max-height: 125px;
+    min-height: 75px;
+    max-height: 129px;
   }
 
   .talon-pile {

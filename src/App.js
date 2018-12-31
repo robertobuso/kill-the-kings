@@ -102,7 +102,7 @@ class App extends Component {
             sourceClick: {},
             targetClick: {}
           }
-        }
+        }, () => this.checkKillKing(category)
       )
     }
   }
@@ -149,7 +149,7 @@ class App extends Component {
   checkKillKing = (category) => {
     const currentPile = this.state.currentGame[category[0]['suit']]
     const pileLength = currentPile.length
-
+    
     if (pileLength < 4 ) {
       return
     } else if (pileLength > 5) {
@@ -179,7 +179,7 @@ class App extends Component {
     const idx = this.state.currentGame.idArray.indexOf(currentPile)
     const newIdArr = [...this.state.currentGame.idArray]
     newIdArr[idx] = `reserve${newId}`
-console.log("Reserve Piles: ", newId)
+
     if (newId > 7) {
       return this.gameOver()
     } else {
