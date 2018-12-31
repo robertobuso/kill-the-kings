@@ -77,7 +77,7 @@ export const isItFourInARow = (pile) => {
   }
 
   export const didYouLose = (props) => {
-    const playableCards = []
+    const playableCards = [props.talon]
     const pileCards = []
     let reservePileIsAvailable = 'false'
 
@@ -95,13 +95,13 @@ export const isItFourInARow = (pile) => {
       } else {reservePileIsAvailable = 'true'}
     })
 
-    if (playableCards.length < 1) {
+    if (playableCards.length < 2) {
       console.log('KEEP PLAYING YO!')
       return false
     }
     console.log('Now were checking if you lost!')
-    console.log('playableCards: ', playableCards)
-    console.log('pileCards: ', pileCards)
+    console.log(playableCards)
+
     //
     // if (pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
     // }).length === pileArray.length) {
