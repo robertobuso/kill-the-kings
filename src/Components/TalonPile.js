@@ -22,7 +22,7 @@ class PopupExampleHtml extends Component {
     )
 
     return (
-      <Popup trigger={IndividualCard} inverted>
+      <Popup trigger={IndividualCard} inverted >
         <Popup.Header>This is the Talon Pile</Popup.Header>
         <Popup.Content>
           <Rating icon='star' defaultRating={3} maxRating={4} />

@@ -179,15 +179,16 @@ class App extends Component {
     const idx = this.state.currentGame.idArray.indexOf(currentPile)
     const newIdArr = [...this.state.currentGame.idArray]
     newIdArr[idx] = `reserve${newId}`
-
+console.log("Reserve Piles: ", newId)
     if (newId > 7) {
-      return this.gameOver
+      return this.gameOver()
     } else {
     this.setState( {
       currentGame:
         { ...this.state.currentGame,
           kingKilled: true,
-          currentPile: currentPile
+          currentPile: currentPile,
+          newReserveId: newId
           }
         }, () => this.changeKingIntoReservePile(newIdArr, newId, currentPile) )
     }
