@@ -16,11 +16,6 @@
     row-gap: 25px;
   }
 
-  .win-or-lose-modal {
-  grid-column: 2/4;
-  grid-row: 2;
-  }
-
   .club-container {
     display: grid;
     width: 100%;
