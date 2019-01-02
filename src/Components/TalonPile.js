@@ -4,13 +4,21 @@ import { Popup, Rating } from 'semantic-ui-react'
 
 class PopupExampleHtml extends Component {
 
+  shouldWeFadeIn = () => {
+    if (this.props.status === true) {
+      return `talon-pile animated fadeInRightBig slower`
+    } else {
+      return `talon-pile`
+    }
+  }
+
   render() {
     const { card, handleDrop, handleTalonClick } = this.props;
 
     const IndividualCard = (
       <div
         id="talon"
-        className="talon-pile">
+        className={this.shouldWeFadeIn()}>
           <Card
             card={card}
             src={require(`../Images/Cards/${card.id}.jpg`)}

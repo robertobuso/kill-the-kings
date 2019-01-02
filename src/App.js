@@ -198,7 +198,7 @@ class App extends Component {
           currentPile: currentPile,
           newReserveId: newId
           }
-        }, () => this.changeKingIntoReservePile(newIdArr, newId, currentPile) )
+        }, () => this.changeKingIntoReservePile(newIdArr, newId, newIdArr[idx]) )
     }
   }
 
@@ -220,8 +220,8 @@ class App extends Component {
         newReserveId: newId,
         kingKilled: false,
         fadeIn: true,
-        [currentPile]: []
-      }}), 750)
+        currentPile: currentPile
+      }}), 350)
   }
 
   startNewGame = () => {
@@ -270,7 +270,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("new Game: ",this.state.currentGame.newGame)
     return (
       <div className="background">
         <div className="container">
@@ -284,6 +283,8 @@ class App extends Component {
             handleDrop={ this.handleKingDropFromReserve }
             handleTalonClick={this.handleTalonClick}
             status={this.state.currentGame.newGame}
+            fadeIn={this.state.currentGame.fadeIn}
+            newId={this.state.currentGame.currentPile}
           />
           :
           id === 'blank' ?
@@ -299,7 +300,7 @@ class App extends Component {
           />
         })}
           <img
-            id="stock" className={this.state.currentGame.newGame === true ? "stock-pile animated fadeInRightBig slow" : "stock-pile"}
+            id="stock" className="stock-pile"
             src={require('./Images/Cards/logo_kk.jpg') } alt="Card Pile"
             onClick={this.handleStockClick}
           />
@@ -308,11 +309,13 @@ class App extends Component {
             card={this.state.currentGame.talon}
             handleTalonClick={this.handleTalonClick}
             handleDrop={ this.handleKingDrop }
+            status={this.state.currentGame.newGame}
             /> :
           <PopupExampleHtml
             card={{id: 'green_two'}}
             handleTalonClick={this.handleTalonClick}
             handleDrop={ this.handleKingDrop }
+            status={this.state.currentGame.newGame}
           />
         }
         {this.state.currentGame.gameOver !== '' ?

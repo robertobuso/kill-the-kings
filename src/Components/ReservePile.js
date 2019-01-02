@@ -19,10 +19,12 @@ const cardTarget = {
 class ReservePile extends Component {
 
   shouldWeFadeIn = () => {
-    if (this.props.status === false) {
-      return 'reserve-pile'
-    } else {
+    if (this.props.status === true) {
       return 'reserve-pile animated fadeInDownBig slow'
+    } else if (this.props.fadeIn === true &&    this.props.newId === this.props.id) {
+      return 'reserve-pile animated fadeInUpBig slow'
+    } else {
+      return 'reserve-pile'
     }
   }
   render() {
