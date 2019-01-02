@@ -79,28 +79,37 @@ export const isItFourInARow = (pile) => {
   export const didYouLose = (props) => {
     const playableCards = [props.talon]
     const pileCards = []
+    const allPiles = [...props.idArray]
     let reservePileIsAvailable = 'false'
 
-    props.idArray.forEach( pile => {
-      if ( reservePileIsAvailable === 'true')
-      {return false}
-       else if (pile.charAt(0) === 'r') {
-        if (props[pile][0]) {
-          playableCards.push(props[pile][0])
-        } else {reservePileIsAvailable = 'true'}
-      } else if (pile === 'blank') {
-        return
-      } else if (props[pile]){
-        pileCards.push(props[pile][props[pile].length-1])
-      } else {reservePileIsAvailable = 'true'}
-    })
 
-    if (playableCards.length < 2) {
-      console.log('KEEP PLAYING YO!')
-      return false
+    for (let i=0; i < allPiles.length; i++) {
+      const pile = allPiles[i]
+      console.log('allPiles: ', allPiles)
+      console.log('pileCards: ', pileCards)
+      if (reservePileIsAvailable === 'true') {
+        reservePileIsAvailable = 'false'
+        return false
+      } else if (pile.charAt(0) === 'r') {
+          if (props[pile][0]) {
+            playableCards.push(props[pile][0])
+          } else {
+          reservePileIsAvailable = 'true'}
+      } else if (pile === 'blank') {
+          const index = allPiles.indexOf(pile)
+          allPiles.splice(index, 1)
+          i--;
+      } else if (props[pile]) {
+          console.log('Pushing into pileCards: ', props[pile])
+          pileCards.push(props[pile][props[pile].length-1])
+      } else {
+      reservePileIsAvailable = 'true'
+      }
     }
+
     console.log('Now were checking if you lost!')
-    console.log(playableCards)
+    console.log('playableCards: ', playableCards)
+    console.log('pileCards: ', pileCards)
 
     //
     // if (pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
