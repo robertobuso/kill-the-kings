@@ -110,7 +110,10 @@ export const isItFourInARow = (pile) => {
         if (isNewCardHigher(playableCards[i], pileCards[x]) === false) {
           for (let i=0; i < playableCards.length; i++) {
             for (let x=0; x < pileCards.length; x++) {
-              if (isNewCardSameColorDifferentSuit(playableCards[i], pileCards[x]) === false) {
+              console.log('Playable Cards: ', playableCards[i])
+              console.log('Pile Cards: ', pileCards[x])
+              console.log(isNewCardSameColorDifferentSuit(playableCards[i], pileCards[x]))
+              if (isNewCardSameColorDifferentSuit(playableCards[i], pileCards[x]) === true) {
                 return false
               }
             }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TransitionablePortal, Segment, Header } from 'semantic-ui-react'
+import { TransitionablePortal, Segment, Header, Button } from 'semantic-ui-react'
 
 class WinModal extends Component {
 
@@ -19,6 +19,7 @@ class WinModal extends Component {
         <p>You killed all the kings. You are a WINNER.</p>
         </>
       }
+      <Button floated='right' basic color='green' onClick={this.props.startNewGame}>New Game</Button>
       </Segment>
     </TransitionablePortal>
   }

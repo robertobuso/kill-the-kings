@@ -42,7 +42,8 @@ class App extends Component {
         idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
         newReserveId: 4,
         fadeIn: false,
-        gameOver: ''
+        gameOver: '',
+        newGame: true
       },
       history: {
         gamesPlayed: 0
@@ -54,7 +55,7 @@ class App extends Component {
     if (!this.state.currentGame.talon.src) {
       this.setState( { currentGame: {...this.state.currentGame,
         talon: this.state.currentGame.stock.shift()
-      }})
+      }}, () => this.isItANewGame() )
     } else {
       alert("You must play the current card first.")
     }
@@ -223,7 +224,53 @@ class App extends Component {
       }}), 750)
   }
 
+  startNewGame = () => {
+    this.setState({
+      currentGame: {
+        inProgress: false,
+        stock: shuffle(originalDeck),
+        talon: {},
+        club: [kings[0]],
+        diamond: [kings[1]],
+        spade: [kings[2]],
+        heart: [kings[3]],
+        reserve1: [],
+        reserve2: [],
+        reserve3: [],
+        reserve4: [],
+        reserve5: [],
+        reserve6: [],
+        reserve7: [],
+        sourceClick: {},
+        targetClick: {},
+        kingKilled: false,
+        currentPile: '',
+        idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
+        newReserveId: 4,
+        fadeIn: false,
+        gameOver: '',
+        newGame: true
+      },
+      history: {
+        gamesPlayed: this.state.history.gamesPlayed + 1
+      }
+    })
+  }
+
+  isItANewGame = () => {
+    if (this.state.currentGame.newGame === true) {
+      this.setState(
+                { currentGame:
+                  {...this.state.currentGame,
+                  newGame: false
+                  }
+                }
+      )
+    }
+  }
+
   render() {
+    console.log("new Game: ",this.state.currentGame.newGame)
     return (
       <div className="background">
         <div className="container">
@@ -236,6 +283,7 @@ class App extends Component {
             setTarget={(card) => this.setTarget(card)}
             handleDrop={ this.handleKingDropFromReserve }
             handleTalonClick={this.handleTalonClick}
+            status={this.state.currentGame.newGame}
           />
           :
           id === 'blank' ?
@@ -247,10 +295,11 @@ class App extends Component {
             setTarget={(card) => this.setTarget(card)}
             kingKilled= {this.state.currentGame.kingKilled}
             currentPile= {this.state.currentGame.currentPile}
+            status={this.state.currentGame.newGame}
           />
         })}
           <img
-            id="stock" className="stock-pile animated fadeInRightBig slower"
+            id="stock" className={this.state.currentGame.newGame === true ? "stock-pile animated fadeInRightBig slow" : "stock-pile"}
             src={require('./Images/Cards/logo_kk.jpg') } alt="Card Pile"
             onClick={this.handleStockClick}
           />
@@ -267,7 +316,8 @@ class App extends Component {
           />
         }
         {this.state.currentGame.gameOver !== '' ?
-          <WinModal status={this.state.currentGame.gameOver}/>
+          <WinModal status={this.state.currentGame.gameOver}
+          startNewGame={this.startNewGame}/>
         : null
         }
       </div>

@@ -22,17 +22,17 @@ const cardTarget = {
 class KingPile extends Component {
 
 wasKingKilled = () => {
-  if (this.props.kingKilled === false || (this.props.currentPile !== this.props.id)) {
-    return `${this.props.id}-container`
+  if (this.props.kingKilled === true || this.props.status === true) {
+    return `${this.props.id}-container animated fadeInUpBig slower`
   } else {
-    return `${this.props.id}-container animated zoomOutDown slower`
+    return `${this.props.id}-container`
   }
 }
 
   render() {
     let x = 0
     const { connectDropTarget, cards } = this.props
-
+    console.log('KingPile Class: ', this.wasKingKilled())
     return connectDropTarget (
       <div className={this.wasKingKilled()} >
         {cards.map( newCard => {
