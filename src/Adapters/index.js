@@ -82,11 +82,8 @@ export const isItFourInARow = (pile) => {
     const allPiles = [...props.idArray]
     let reservePileIsAvailable = 'false'
 
-
     for (let i=0; i < allPiles.length; i++) {
       const pile = allPiles[i]
-      console.log('allPiles: ', allPiles)
-      console.log('pileCards: ', pileCards)
       if (reservePileIsAvailable === 'true') {
         reservePileIsAvailable = 'false'
         return false
@@ -100,26 +97,34 @@ export const isItFourInARow = (pile) => {
           allPiles.splice(index, 1)
           i--;
       } else if (props[pile]) {
-          console.log('Pushing into pileCards: ', props[pile])
           pileCards.push(props[pile][props[pile].length-1])
       } else {
       reservePileIsAvailable = 'true'
       }
     }
 
-    console.log('Now were checking if you lost!')
-    console.log('playableCards: ', playableCards)
-    console.log('pileCards: ', pileCards)
+// Now we check if the player has lost
 
-    //
-    // if (pileArray.filter((card) => { return isNewCardHigher(props.talon,card) === true
-    // }).length === pileArray.length) {
-    //   return true
-    // }
-    // else if (pileArray.filter((card) => { return isNewCardSameColorDifferentSuit(props.talon,card) === true
-    //   }).length === pileArray.length) {
-    //     return true
-    //   } else {
-    //     return false
-    //   }
+    for (let i=0; i < playableCards.length; i++) {
+      for (let x=0; x < pileCards.length; x++) {
+        if (isNewCardHigher(playableCards[i], pileCards[x]) === false) {
+          console.log('The card is smaller than some of the piles! Lets check suits')
+          for (let i=0; i < playableCards.length; i++) {
+            for (let x=0; x < pileCards.length; x++) {
+              if (isNewCardSameColorDifferentSuit(playableCards[i], pileCards[x]) === false) {
+                console.log('Playable card is: ', playableCards[i])
+                console.log('Pile card is: ', pileCards[i])
+                console.log("Card is not same color same suit!")
+                return false
+              }
+            }
+          }
+          return false
+        }
+      }
     }
+
+
+    console.log('You lose!')
+    return true
+  }
