@@ -11,6 +11,7 @@ import { shuffle, isNewCardHigher, isNewCardSameColorDifferentSuit, isItThreeInA
 import KingPile from './Components/KingPile.js'
 import PopupExampleHtml from './Components/TalonPile.js'
 import ReservePile from './Components/ReservePile.js'
+import WinModal from './Components/WinModal.js'
 
 
 class App extends Component {
@@ -52,8 +53,7 @@ class App extends Component {
   handleStockClick = () => {
     if (!this.state.currentGame.talon.src) {
       this.setState( { currentGame: {...this.state.currentGame,
-        talon: this.state.currentGame.stock.shift(),
-        gameOver:'loss'
+        talon: this.state.currentGame.stock.shift()
       }})
     } else {
       alert("You must play the current card first.")
@@ -66,7 +66,14 @@ class App extends Component {
                         { ...this.state.currentGame,
                         sourceClick: talonCard
                         }
-                      }, () => didYouLose(this.state.currentGame) ? alert('LOSER') : null
+                      }, () => didYouLose(this.state.currentGame) ?
+                      this.setState( {
+                        currentGame:
+                          { ...this.state.currentGame,
+                            gameOver: 'lose'
+                          }
+                        }, () => console.log('LOSER!!!!')
+                      ) : null
                     )
   }
 
@@ -149,7 +156,7 @@ class App extends Component {
   checkKillKing = (category) => {
     const currentPile = this.state.currentGame[category[0]['suit']]
     const pileLength = currentPile.length
-    
+
     if (pileLength < 4 ) {
       return
     } else if (pileLength > 5) {
@@ -195,7 +202,13 @@ class App extends Component {
   }
 
   gameOver = () => {
-    alert('REGICIDE!!!!')
+    this.setState( {
+      currentGame:
+        { ...this.state.currentGame,
+          gameOver: 'win'
+        }
+      }, () => console.log('REGICIDE!!!!')
+    )
   }
 
   changeKingIntoReservePile = (newIdArr, newId, currentPile) => {
@@ -211,6 +224,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.currentGame.gameOver)
     return (
       <div className="background">
         <div className="container">
@@ -252,6 +266,10 @@ class App extends Component {
             handleTalonClick={this.handleTalonClick}
             handleDrop={ this.handleKingDrop }
           />
+        }
+        {this.state.currentGame.gameOver !== '' ?
+          <WinModal status={this.state.currentGame.gameOver}/>
+        : null
         }
       </div>
     </div>

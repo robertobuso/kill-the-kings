@@ -1,6 +1,6 @@
   .background {
     background-image: url('./Images/felt2.jpg');
-    height: 900px;
+    height: 1000px;
     border: 5px solid #6C5103;
     border-radius: 10px;
   }
@@ -14,6 +14,11 @@
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 10px;
     row-gap: 25px;
+  }
+
+  .win-or-lose-modal {
+  grid-column: 2/4;
+  grid-row: 2;
   }
 
   .club-container {
