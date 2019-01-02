@@ -72,7 +72,7 @@ class App extends Component {
                           { ...this.state.currentGame,
                             gameOver: 'lose'
                           }
-                        }, () => console.log('LOSER!!!!')
+                        }
                       ) : null
                     )
   }
@@ -207,7 +207,7 @@ class App extends Component {
         { ...this.state.currentGame,
           gameOver: 'win'
         }
-      }, () => console.log('REGICIDE!!!!')
+      }
     )
   }
 
@@ -224,7 +224,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.currentGame.gameOver)
     return (
       <div className="background">
         <div className="container">
