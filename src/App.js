@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import MultiBackend from 'react-dnd-multi-backend';
-import HTML5toTouch from 'react-dnd-multi-backend/lib/HTML5toTouch'
+import HTML5Backend from 'react-dnd-html5-backend'
 
 import { DragDropContext } from 'react-dnd'
 import './App.css';
@@ -12,6 +11,7 @@ import KingPile from './Components/KingPile.js'
 import TalonPile from './Components/TalonPile.js'
 import ReservePile from './Components/ReservePile.js'
 import WinModal from './Components/WinModal.js'
+import Alert from './Components/Alert.js'
 
 
 class App extends Component {
@@ -329,4 +329,4 @@ class App extends Component {
   }
 }
 
-export default DragDropContext(MultiBackend(HTML5toTouch))(App)
+export default DragDropContext(HTML5Backend)(App)
