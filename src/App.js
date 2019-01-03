@@ -43,7 +43,9 @@ class App extends Component {
         newReserveId: 4,
         fadeIn: false,
         gameOver: '',
-        newGame: true
+        newGame: true,
+        alertStatus: false,
+        alertKind: ''
       },
       history: {
         gamesPlayed: 0
@@ -57,7 +59,15 @@ class App extends Component {
         talon: this.state.currentGame.stock.shift()
       }}, () => this.isItANewGame() )
     } else {
-      alert("You must play the current card first.")
+      this.setState(
+                      { currentGame:
+                        { ...this.state.currentGame,
+                        alertStatus: true,
+                        alertKind: 'talon'
+                        }
+                      }
+                    )
+      // alert("")
     }
   }
 
@@ -249,7 +259,9 @@ class App extends Component {
         newReserveId: 4,
         fadeIn: false,
         gameOver: '',
-        newGame: true
+        newGame: true,
+        alertStatus: false,
+        alertKind: ''
       },
       history: {
         gamesPlayed: this.state.history.gamesPlayed + 1
@@ -269,10 +281,26 @@ class App extends Component {
     }
   }
 
+  clearAlert = () => {
+    this.setState(
+            { currentGame:
+              {...this.state.currentGame,
+              alertStatus: false,
+              alertKind: ''
+              }
+            }
+    )
+  }
+
   render() {
     return (
       <div className="background">
         <div className="container">
+        {this.state.currentGame.alertStatus === true ?
+          <Alert alertStatus={this.state.currentGame.alertStatus}
+          alertKind={this.state.currentGame.alertKind}
+          clearAlert={this.clearAlert} />
+        : null}
         {this.state.currentGame.idArray.map(id => {
           return id.charAt(0) === 'r' ?
           <ReservePile
