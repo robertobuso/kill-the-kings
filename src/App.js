@@ -67,7 +67,6 @@ class App extends Component {
                         }
                       }
                     )
-      // alert("")
     }
   }
 
@@ -108,9 +107,23 @@ class App extends Component {
     if (this.state.currentGame.sourceClick.id === 'green_two') {
       alert('You must select a card first.')
     } else if (isNewCardHigher(this.state.currentGame.sourceClick, category[category.length-1])) {
-         return alert('You can only play a card lower in value than the last card on this pile.')
+      this.setState(
+                      { currentGame:
+                        { ...this.state.currentGame,
+                        alertStatus: true,
+                        alertKind: 'cardIsHigher'
+                        }
+                      }
+                    )
     } else if (isNewCardSameColorDifferentSuit(this.state.currentGame.sourceClick, category[category.length-1])) {
-      return alert('You cannot play a card of the same color but different suit than the last card on this pile.')
+      this.setState(
+                      { currentGame:
+                        { ...this.state.currentGame,
+                        alertStatus: true,
+                        alertKind: 'sameColorDifferentSuit'
+                        }
+                      }
+                    )
     } else {
       this.setState(
         {currentGame:

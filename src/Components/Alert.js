@@ -7,15 +7,20 @@ class Alert extends Component {
     switch (this.props.alertKind) {
       case 'talon':
         return 'You must play the current card first.';
-        break;
-      
+      case 'cardIsHigher':
+        return 'You can only play a card lower in value than the last card on this pile.';
+      case 'sameColorDifferentSuit':
+        return 'You cannot play a card of the same color but different suit than the last card on this pile.';
+        default:
+        return
+
     }
   }
   render() {
     return (
-    <TransitionablePortal size='mini'       open={this.props.alertStatus}
-    transition={{ animation: 'zoom', duration: 500 }} >
-      <Segment style={{ left: '40%', position: 'fixed', top: '40%', zIndex: 1000 }}>
+    <TransitionablePortal     open={this.props.alertStatus}
+    transition={{ animation: 'fade', duration: 500 }} >
+      <Segment size='mini' style={{ left: '20%', position: 'fixed', top: '40%', zIndex: 1000 }}>
         <Image wrapped size='medium' src={require('../Images/OtherImages/killthekings_header.png')} />
         <Header>{this.alertContent()}</Header>
         <br/>
