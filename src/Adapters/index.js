@@ -104,23 +104,25 @@ export const isItFourInARow = (pile) => {
     }
 
 // Now we check if the player has lost
-
+  let noMove = 0
     for (let i=0; i < playableCards.length; i++) {
       for (let x=0; x < pileCards.length; x++) {
-        if (isNewCardHigher(playableCards[i], pileCards[x]) === false) {
-          for (let i=0; i < playableCards.length; i++) {
-            for (let x=0; x < pileCards.length; x++) {
-              console.log('Playable Cards: ', playableCards[i])
-              console.log('Pile Cards: ', pileCards[x])
-              console.log(isNewCardSameColorDifferentSuit(playableCards[i], pileCards[x]))
-              if (isNewCardSameColorDifferentSuit(playableCards[i], pileCards[x]) === true) {
-                return false
-              }
-            }
+        if (isNewCardHigher(playableCards[i], pileCards[x]) === true) {
+          noMove = noMove + 1
+          console.log(noMove, 'Higher card!', playableCards[i])
+        } else {
+          if (isNewCardSameColorDifferentSuit(playableCards[i], pileCards[x]) === true) {
+            noMove = noMove + 1
+            console.log(noMove, 'Same color different suit!', playableCards[i], ' vs ', pileCards[x])
           }
-          return false
         }
       }
     }
-    return true
-  }
+    console.log('NoMove: ', noMove)
+    console.log((playableCards.length) * (pileCards.length))
+    if ((playableCards.length) * (pileCards.length) === noMove) {
+      return true
+    } else {
+      return false
+    }
+      }
