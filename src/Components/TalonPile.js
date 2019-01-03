@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Card from './Card.js'
-import { Popup, Rating } from 'semantic-ui-react'
 
-class PopupExampleHtml extends Component {
+class TalonPile extends Component {
 
   shouldWeFadeIn = () => {
     if (this.props.status === true) {
@@ -15,7 +14,7 @@ class PopupExampleHtml extends Component {
   render() {
     const { card, handleDrop, handleTalonClick } = this.props;
 
-    const IndividualCard = (
+    return (
       <div
         id="talon"
         className={this.shouldWeFadeIn()}>
@@ -28,16 +27,7 @@ class PopupExampleHtml extends Component {
           />
       </div>
     )
-
-    return (
-      <Popup trigger={IndividualCard} inverted >
-        <Popup.Header>This is the Talon Pile</Popup.Header>
-        <Popup.Content>
-          <Rating icon='star' defaultRating={3} maxRating={4} />
-        </Popup.Content>
-      </Popup>
-    )
   }
 }
 
-export default PopupExampleHtml;
+export default TalonPile;

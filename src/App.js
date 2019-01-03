@@ -9,7 +9,7 @@ import { originalDeck, kings } from './Constants/CardObjects.js'
 import { shuffle, isNewCardHigher, isNewCardSameColorDifferentSuit, isItThreeInARow, isItFourInARow, isItFiveInARow, didYouLose } from './Adapters/'
 
 import KingPile from './Components/KingPile.js'
-import PopupExampleHtml from './Components/TalonPile.js'
+import TalonPile from './Components/TalonPile.js'
 import ReservePile from './Components/ReservePile.js'
 import WinModal from './Components/WinModal.js'
 
@@ -305,13 +305,13 @@ class App extends Component {
             onClick={this.handleStockClick}
           />
           {this.state.currentGame.talon.src ?
-          <PopupExampleHtml
+          <TalonPile
             card={this.state.currentGame.talon}
             handleTalonClick={this.handleTalonClick}
             handleDrop={ this.handleKingDrop }
             status={this.state.currentGame.newGame}
             /> :
-          <PopupExampleHtml
+          <TalonPile
             card={{id: 'green_two'}}
             handleTalonClick={this.handleTalonClick}
             handleDrop={ this.handleKingDrop }
