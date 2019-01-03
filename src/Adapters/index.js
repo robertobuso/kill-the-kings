@@ -109,20 +109,16 @@ export const isItFourInARow = (pile) => {
       for (let x=0; x < pileCards.length; x++) {
         if (isNewCardHigher(playableCards[i], pileCards[x]) === true) {
           noMove = noMove + 1
-          console.log(noMove, 'Higher card!', playableCards[i])
         } else {
           if (isNewCardSameColorDifferentSuit(playableCards[i], pileCards[x]) === true) {
             noMove = noMove + 1
-            console.log(noMove, 'Same color different suit!', playableCards[i], ' vs ', pileCards[x])
           }
         }
       }
     }
-    console.log('NoMove: ', noMove)
-    console.log((playableCards.length) * (pileCards.length))
     if ((playableCards.length) * (pileCards.length) === noMove) {
       return true
     } else {
       return false
     }
-      }
+  }

@@ -221,7 +221,7 @@ class App extends Component {
         kingKilled: false,
         fadeIn: true,
         currentPile: currentPile
-      }}), 350)
+      }}), 850)
   }
 
   startNewGame = () => {
