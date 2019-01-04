@@ -12,6 +12,8 @@ import TalonPile from './Components/TalonPile.js'
 import ReservePile from './Components/ReservePile.js'
 import WinModal from './Components/WinModal.js'
 import Alert from './Components/Alert.js'
+import AppNav from './Components/AppNav.js'
+import Rules from './Components/Rules.js'
 
 
 class App extends Component {
@@ -45,7 +47,8 @@ class App extends Component {
         gameOver: '',
         newGame: true,
         alertStatus: false,
-        alertKind: ''
+        alertKind: '',
+        showRules: false
       },
       history: {
         gamesPlayed: 0
@@ -296,7 +299,8 @@ class App extends Component {
         gameOver: '',
         newGame: true,
         alertStatus: false,
-        alertKind: ''
+        alertKind: '',
+        showRules: false
       },
       history: {
         gamesPlayed: this.state.history.gamesPlayed + 1
@@ -327,6 +331,16 @@ class App extends Component {
     )
   }
 
+  showRules = (arg) => {
+    this.setState(
+            { currentGame:
+              {...this.state.currentGame,
+              showRules: arg
+              }
+            }
+    )
+  }
+
   render() {
     return (
       <div className="background">
@@ -351,7 +365,8 @@ class App extends Component {
           />
           :
           id === 'blank' ?
-          <div key={id} id={id}/> :
+          <AppNav key={id} id={id} handleGameClick={this.startNewGame}
+          handleRulesClick={this.showRules} /> :
           <KingPile
             key={id}
             id={id}
@@ -384,6 +399,12 @@ class App extends Component {
         {this.state.currentGame.gameOver !== '' ?
           <WinModal status={this.state.currentGame.gameOver}
           startNewGame={this.startNewGame}/>
+        : null
+        }
+        {this.state.currentGame.showRules === true ?
+          <Rules status={this.state.currentGame.gameOver}
+          startNewGame={this.startNewGame}
+          handleClose={this.showRules}/>
         : null
         }
       </div>
