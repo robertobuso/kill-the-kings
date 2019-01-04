@@ -17,7 +17,9 @@ class Rules extends Component {
         <p>The play's the thing wherein you'll catch the conscience of the king.</p>
         <br/>
 
-      <Button size='tiny' floated='left' basic color='green' onClick={() => alert('Full Rules Coming Soon')}>Full Rules</Button>
+      <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit'>
+      <Button size='tiny' floated='left' basic color='green'>Full Rules</Button>
+      </a>
       <Button size='tiny' floated='right' basic color='green' onClick={() => this.props.handleClose(false)}>Continue</Button>
       </Segment>
     </TransitionablePortal>
