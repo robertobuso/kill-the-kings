@@ -24,7 +24,7 @@ class Alert extends Component {
     transition={{ animation: 'fade', duration: 500 }} >
       <Segment size='mini' style={{ left: '20%', position: 'fixed', top: '40%', zIndex: 1000 }}>
         <Image wrapped size='medium' src={require('../Images/OtherImages/killthekings_header.png')} />
-        <Header>{this.alertContent()}</Header>
+        <Header textAlign='center'>{this.alertContent()}</Header>
         <br/>
         <Button basic color='green' floated='right' content='Continue'
           onClick={this.props.clearAlert} />
