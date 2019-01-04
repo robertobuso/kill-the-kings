@@ -11,7 +11,9 @@ class Alert extends Component {
         return 'You can only play a card lower in value than the last card on this pile.';
       case 'sameColorDifferentSuit':
         return 'You cannot play a card of the same color but different suit than the last card on this pile.';
-        default:
+      case 'fullReserve':
+        return 'This reserve pile is full.';
+      default:
         return
 
     }
