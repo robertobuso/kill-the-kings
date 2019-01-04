@@ -14,6 +14,7 @@ class Rules extends Component {
         <p>3 in a row of the same number</p>
         <p>4 in a row, descending value, same suit</p>
         <p>5 in a row, descending value, different color</p>
+        <p>The play's the thing wherein you'll catch the conscience of the king.</p>
         <br/>
 
       <Button size='tiny' floated='left' basic color='green' onClick={() => alert('Full Rules Coming Soon')}>Full Rules</Button>
