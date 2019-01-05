@@ -13,6 +13,8 @@ class Alert extends Component {
         return 'You cannot play a card of the same color but different suit than the last card on this pile.';
       case 'fullReserve':
         return 'This reserve pile is full.';
+      case 'selectCard':
+        return 'You must select a card first.';
       default:
         return
 
@@ -23,10 +25,10 @@ class Alert extends Component {
     <TransitionablePortal     open={this.props.alertStatus}
     transition={{ animation: 'fade', duration: 500 }} >
       <Segment size='mini' style={{ left: '20%', position: 'fixed', top: '40%', zIndex: 1000 }}>
-        <Image wrapped size='medium' src={require('../Images/OtherImages/killthekings_header.png')} />
+        <Image wrapped size='small' src={require('../Images/OtherImages/killthekings_header.png')} />
         <Header textAlign='center'>{this.alertContent()}</Header>
         <br/>
-        <Button basic color='green' floated='right' content='Continue'
+        <Button size='tiny' basic color='green' floated='right' content='Continue'
           onClick={this.props.clearAlert} />
       </Segment>
     </TransitionablePortal>

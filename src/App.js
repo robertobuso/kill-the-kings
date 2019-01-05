@@ -108,7 +108,14 @@ class App extends Component {
     }
 
     if (this.state.currentGame.sourceClick.id === 'green_two') {
-      alert('You must select a card first.')
+      this.setState(
+                      { currentGame:
+                        { ...this.state.currentGame,
+                        alertStatus: true,
+                        alertKind: 'selectCard'
+                        }
+                      }
+                    )
     } else if (isNewCardHigher(this.state.currentGame.sourceClick, category[category.length-1])) {
       this.setState(
                       { currentGame:
@@ -152,7 +159,16 @@ class App extends Component {
                         }
                       }
                     )}
-    else {
+    else if (this.state.currentGame.sourceClick.id === 'green_two') {
+        this.setState(
+                        { currentGame:
+                          { ...this.state.currentGame,
+                          alertStatus: true,
+                          alertKind: 'selectCard'
+                          }
+                        }
+                      )
+      } else {
       this.setState(
         {currentGame:
           { ...this.state.currentGame,
