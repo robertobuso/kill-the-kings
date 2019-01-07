@@ -4,7 +4,9 @@ import Card from './Card.js'
 class TalonPile extends Component {
 
   shouldWeFadeIn = () => {
-    if (this.props.status === true) {
+    if (this.props.gameOver === 'winBeforeModal') {
+      return `${this.props.id}-container animated hinge slower`
+    } else if (this.props.newGame === true) {
       return `talon-pile animated fadeInRightBig slower`
     } else {
       return `talon-pile`

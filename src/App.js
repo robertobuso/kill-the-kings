@@ -253,7 +253,7 @@ class App extends Component {
     newIdArr[idx] = `reserve${newId}`
 
     if (newId > 7) {
-      return this.gameOver()
+      return this.gameOver(currentPile)
     } else {
     this.setState( {
       currentGame:
@@ -266,14 +266,26 @@ class App extends Component {
     }
   }
 
-  gameOver = () => {
+  gameOver = (currentPile) => {
     this.setState( {
+      currentGame:
+        { ...this.state.currentGame,
+          gameOver: 'winBeforeModal',
+          currentPile: currentPile
+        }
+      },
+      () => this.showWinModal()
+    )
+  }
+
+  showWinModal = () => {
+    console.log('why am i here?')
+    setTimeout( () => this.setState( {
       currentGame:
         { ...this.state.currentGame,
           gameOver: 'win'
         }
-      }
-    )
+      }), 2000 )
   }
 
   changeKingIntoReservePile = (newIdArr, newId, currentPile) => {
@@ -375,14 +387,16 @@ class App extends Component {
             setTarget={(card) => this.setTarget(card)}
             handleDrop={ this.handleKingDropFromReserve }
             handleTalonClick={this.handleTalonClick}
-            status={this.state.currentGame.newGame}
+            newGame={this.state.currentGame.newGame}
             fadeIn={this.state.currentGame.fadeIn}
             newId={this.state.currentGame.currentPile}
+            gameOver={this.state.currentGame.gameOver}
           />
           :
           id === 'blank' ?
           <AppNav key={id} id={id} handleGameClick={this.startNewGame}
-          handleRulesClick={this.showRules} /> :
+          handleRulesClick={this.showRules}
+          gameOver={this.state.currentGame.gameOver} /> :
           <KingPile
             key={id}
             id={id}
@@ -390,7 +404,7 @@ class App extends Component {
             setTarget={(card) => this.setTarget(card)}
             kingKilled= {this.state.currentGame.kingKilled}
             currentPile= {this.state.currentGame.currentPile}
-            status={this.state.currentGame.newGame}
+            newGame={this.state.currentGame.newGame}
           />
         })}
           <img
@@ -403,22 +417,24 @@ class App extends Component {
             card={this.state.currentGame.talon}
             handleTalonClick={this.handleTalonClick}
             handleDrop={ this.handleKingDrop }
-            status={this.state.currentGame.newGame}
+            newGame={this.state.currentGame.newGame}
+            gameOver={this.state.currentGame.gameOver}
             /> :
           <TalonPile
             card={{id: 'green_two'}}
             handleTalonClick={this.handleTalonClick}
             handleDrop={ this.handleKingDrop }
-            status={this.state.currentGame.newGame}
+            newGame={this.state.currentGame.newGame}
+            gameOver={this.state.currentGame.gameOver}
           />
         }
-        {this.state.currentGame.gameOver !== '' ?
-          <WinModal status={this.state.currentGame.gameOver}
+        {this.state.currentGame.gameOver === 'win'  || this.state.currentGame.gameOver === 'lose' ?
+          <WinModal gameOver={this.state.currentGame.gameOver}
           startNewGame={this.startNewGame}/>
         : null
         }
         {this.state.currentGame.showRules === true ?
-          <Rules status={this.state.currentGame.gameOver}
+          <Rules
           startNewGame={this.startNewGame}
           handleClose={this.showRules}/>
         : null

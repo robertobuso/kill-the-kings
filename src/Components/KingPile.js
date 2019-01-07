@@ -22,8 +22,10 @@ const cardTarget = {
 class KingPile extends Component {
 
 wasKingKilled = () => {
-  if (this.props.kingKilled === false || (this.props.currentPile !== this.props.id)) {
-    if (this.props.status === true) {
+  if (this.props.gameOver === 'winBeforeModal') {
+    return `${this.props.id}-container animated hinge slower`
+  } else if (this.props.kingKilled === false || (this.props.currentPile !== this.props.id)) {
+    if (this.props.newGame === true) {
       return `${this.props.id}-container animated fadeInUpBig slow`
     } else
       { return `${this.props.id}-container`

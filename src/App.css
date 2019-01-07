@@ -66,13 +66,16 @@
   }
 
   .reserve-pile {
+    display: grid;
+    width: 100%;
+    max-width: 100px;
+    max-height: 129px;
+    min-height: 75px;
+    min-width: 35px;
+    height: auto;
     background: rgba(203, 209, 129, 0.4);
     border: 2px solid yellow;
     border-radius: 10px;
-    width: 100%;
-    max-width: 100px;
-    min-height: 75px;
-    max-height: 129px;
   }
 
   .talon-pile {
@@ -98,6 +101,7 @@
 }
 
 .stock-pile{
+  display: grid;
   border-radius: 10%;
    width: 100%;
    max-width: 100px;

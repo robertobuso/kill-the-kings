@@ -3,7 +3,9 @@ import { Button } from 'semantic-ui-react'
 
 class AppNav extends Component {
   render() {
-    return <div>                              <Button.Group vertical>
+    return <div className={ this.props.gameOver === 'winBeforeModal' ? 'animated hinge slower' : null
+      }>
+    <Button.Group vertical>
     <br/>
     <Button size ='mini' basic color='blue'
     onClick={()=> this.props.handleRulesClick(true)}>

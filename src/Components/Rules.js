@@ -17,7 +17,7 @@ class Rules extends Component {
         <p>The play's the thing wherein you'll catch the conscience of the king.</p>
         <br/>
 
-      <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank">
+      <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer">
       <Button size='tiny' floated='left' basic color='green'>Full Rules</Button>
       </a>
       <Button size='tiny' floated='right' basic color='green' onClick={() => this.props.handleClose(false)}>Continue</Button>

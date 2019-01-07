@@ -19,7 +19,9 @@ const cardTarget = {
 class ReservePile extends Component {
 
   shouldWeFadeIn = () => {
-    if (this.props.status === true) {
+    if (this.props.gameOver === 'winBeforeModal') {
+      return `${this.props.id}-container animated hinge slower`
+    } else if (this.props.newGame === true) {
       return 'reserve-pile animated fadeInDownBig slow'
     } else if (this.props.fadeIn === true &&    this.props.newId === this.props.id) {
       return 'reserve-pile animated fadeInUpBig slow'
