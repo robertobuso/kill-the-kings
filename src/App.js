@@ -267,11 +267,12 @@ class App extends Component {
   }
 
   gameOver = (currentPile) => {
+    console.log('IdArray: ',this.state.currentGame.idArray)
+    console.log('currentPile: ', currentPile)
     this.setState( {
       currentGame:
         { ...this.state.currentGame,
-          gameOver: 'winBeforeModal',
-          currentPile: currentPile
+          gameOver: 'winBeforeModal'
         }
       },
       () => this.showWinModal()
@@ -279,7 +280,6 @@ class App extends Component {
   }
 
   showWinModal = () => {
-    console.log('why am i here?')
     setTimeout( () => this.setState( {
       currentGame:
         { ...this.state.currentGame,
@@ -378,7 +378,8 @@ class App extends Component {
           alertKind={this.state.currentGame.alertKind}
           clearAlert={this.clearAlert} />
         : null}
-        {this.state.currentGame.idArray.map(id => {
+        {this.state.currentGame.gameOver === 'win' ? null :
+        this.state.currentGame.idArray.map(id => {
           return id.charAt(0) === 'r' ?
           <ReservePile
             key={id}

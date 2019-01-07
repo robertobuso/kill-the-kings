@@ -20,7 +20,13 @@ class WinModal extends Component {
         <p>You killed all the kings. You are a WINNER.</p>
         </>
       : null }
-      <Button floated='right' basic color='green' onClick={this.props.startNewGame}>New Game</Button>
+      <br/>
+      <Button floated='left' basic color='green'>
+        Main Menu
+      </Button>
+      <Button floated='right' basic color='green' onClick={this.props.startNewGame}>
+        New Game
+      </Button>
       </Segment>
     </TransitionablePortal>
   }
