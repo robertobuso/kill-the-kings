@@ -77,7 +77,7 @@ export const isItFourInARow = (pile) => {
   }
 
   export const didYouLose = (props) => {
-    const playableCards = [props.talon]
+    let playableCards = [props.talon]
     const pileCards = []
     const allPiles = [...props.idArray]
     let reservePileIsAvailable = 'false'
@@ -105,6 +105,10 @@ export const isItFourInARow = (pile) => {
 
 // Now we check if the player has lost
   let noMove = 0
+//If a card is on Talon Pile, only check against that card.
+  if (Object.keys(props.talon).length > 0) {
+    playableCards = [props.talon]
+  }
     for (let i=0; i < playableCards.length; i++) {
       for (let x=0; x < pileCards.length; x++) {
         if (isNewCardHigher(playableCards[i], pileCards[x]) === true) {
