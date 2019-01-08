@@ -23,7 +23,7 @@ class KingPile extends Component {
 
 wasKingKilled = () => {
   if (this.props.gameOver === 'winBeforeModal') {
-    return `${this.props.id}-container animated hinge slower`
+    return `${this.props.id}-container animated flipOutY slower`
   } else if (this.props.kingKilled === false || (this.props.currentPile !== this.props.id)) {
     if (this.props.newGame === true) {
       return `${this.props.id}-container animated fadeInUpBig slow`

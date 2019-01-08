@@ -8,7 +8,7 @@ const cardSource = {
       props.handleTalonClick(props.card)
       return props.card
   } else {
-    return {}
+    return props.showAlert()
   }
   },
   endDrag(props, monitor, component) {

@@ -182,6 +182,18 @@ class App extends Component {
     }
   }
 
+  handleReserveDropWithTalonCard = () => {
+    {
+      this.setState(
+                      { currentGame:
+                        { ...this.state.currentGame,
+                        alertStatus: true,
+                        alertKind: 'talon'
+                        }
+                      }
+                    )}
+  }
+
   handleKingDropFromReserve = (props) => {
     const category = this.state.currentGame[this.state.currentGame.targetClick]
     if (this.state.currentGame.targetClick.charAt(0) === 'r' ){
@@ -392,6 +404,8 @@ class App extends Component {
             fadeIn={this.state.currentGame.fadeIn}
             newId={this.state.currentGame.currentPile}
             gameOver={this.state.currentGame.gameOver}
+            talon={this.state.currentGame.talon}
+            showAlert={this.handleReserveDropWithTalonCard}
           />
           :
           id === 'blank' ?

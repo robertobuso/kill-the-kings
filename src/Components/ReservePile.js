@@ -30,7 +30,7 @@ class ReservePile extends Component {
     }
   }
   render() {
-    const { connectDropTarget, id, currentCard, handleDrop, handleTalonClick } = this.props
+    const { connectDropTarget, id, currentCard, handleDrop, handleTalonClick, talon, showAlert } = this.props
 
     return connectDropTarget (
       <div className={this.shouldWeFadeIn()} >
@@ -43,7 +43,8 @@ class ReservePile extends Component {
                     handleDrop={ handleDrop }
                     handleTalonClick={ handleTalonClick }
                     id={ id }
-                    draggable='true'
+                    draggable={Object.keys(talon).length === 0  ? 'true' : 'false'}
+                    showAlert={ showAlert }
                    />
             : null}
       </div>
