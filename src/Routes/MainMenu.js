@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Header, Container, Image } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom';
+
 
 class MainMenu extends Component {
 
+  handleClick = () => {
+    this.props.history.push('/game')
+  }
+
+
   render() {
-    return <Container textAlign='center' className='animated fadeIn slower'>
+    return <Container textAlign='center' className='main-menu-background animated fadeIn slower'>
     <br/><br/>
     <Image
       src={require('../Images/OtherImages/killthekings_header.png') } alt='Title'
@@ -17,14 +24,16 @@ class MainMenu extends Component {
     This Will Be the Home Page
     </Header>
     <br/>
-    <NavLink to='/game'>Play Game</NavLink>
+    <Button size='large' basic color='red' onClick={this.handleClick}>Play Game</Button>
     <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer">
     <br/><br/>
-    <Button size='tiny' basic color='green'>Full Rules</Button>
+    <Button size='large' basic color='red'>Full Rules</Button>
     </a>
+    <br/><br/>
+    <Image src={ require('../Images/OtherImages/four_kings_one.jpg')} />
     </Container>
   }
 
 }
 
-export default MainMenu;
+export default withRouter(MainMenu);

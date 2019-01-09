@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 class WinModal extends Component {
 
   handleClick = () => {
-    console.log('CLICK!')
     this.props.history.push('/')
   }
 

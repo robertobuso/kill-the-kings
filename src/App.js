@@ -12,12 +12,12 @@ class App extends Component {
 
   render() {
     return (
-      <>
+      <div className='main-menu-container'>
       <Switch>
         <Route path='/' exact component={ MainMenu } />
         <Route path='/game' exact component={ GamePage } />
       </Switch>
-      </>
+      </div>
     )
   }
 }
