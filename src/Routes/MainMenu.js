@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import { Button, Header, Container, Image } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 
 
 class MainMenu extends Component {
 
-  handleClick = () => {
+  handleGameClick = () => {
     this.props.history.push('/game')
+  }
+
+  handleTutorialClick = () => {
+    this.props.history.push('/tutorial')
   }
 
 
@@ -25,9 +28,11 @@ class MainMenu extends Component {
     This Will Be the Home Page
     </Header>
     <br/>
-    <Button size='large' basic color='red' onClick={this.handleClick}>Play Game</Button>
-    <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer">
+    <Button size='large' basic color='red' onClick={this.handleGameClick}>Play Game</Button>
     <br/><br/>
+    <Button size='large' basic color='red' onClick={this.handleTutorialClick}>Tutorial</Button>
+    <br/><br/>
+    <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer">
     <Button size='large' basic color='red'>Full Rules</Button>
     </a>
     <br/><br/><br/>
