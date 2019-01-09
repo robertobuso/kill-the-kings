@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { TransitionablePortal, Segment, Header, Button } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom';
+
 
 class WinModal extends Component {
 
+  handleClick = () => {
+    console.log('CLICK!')
+    this.props.history.push('/')
+  }
+
   render() {
-    return                            <TransitionablePortal
+    return                                                                                      <TransitionablePortal
         open={true}
         transition={{ animation: 'zoom', duration: 500 }}>
       <Segment style={{ left: '40%', position: 'fixed', top: '40%', zIndex: 1000 }}>
@@ -21,7 +28,7 @@ class WinModal extends Component {
         </>
       : null }
       <br/>
-      <Button floated='left' basic color='green'>
+      <Button floated='left' basic color='green' onClick={this.handleClick}>
         Main Menu
       </Button>
       <Button floated='right' basic color='green' onClick={this.props.startNewGame}>
@@ -33,4 +40,4 @@ class WinModal extends Component {
 
 }
 
-  export default WinModal;
+  export default withRouter(WinModal);
