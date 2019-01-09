@@ -12,7 +12,8 @@ class MainMenu extends Component {
 
 
   render() {
-    return <Container textAlign='center' className='main-menu-background animated fadeIn slower'>
+    return <div className='main-menu-background animated fadeIn slower'>
+    <Container textAlign='center'>
     <br/><br/>
     <Image
       src={require('../Images/OtherImages/killthekings_header.png') } alt='Title'
@@ -29,9 +30,10 @@ class MainMenu extends Component {
     <br/><br/>
     <Button size='large' basic color='red'>Full Rules</Button>
     </a>
-    <br/><br/>
+    <br/><br/><br/>
     <Image src={ require('../Images/OtherImages/four_kings_one.jpg')} />
     </Container>
+    </div>
   }
 
 }

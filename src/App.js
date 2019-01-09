@@ -12,7 +12,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className='main-menu-container'>
+      <div>
       <Switch>
         <Route path='/' exact component={ MainMenu } />
         <Route path='/game' exact component={ GamePage } />
