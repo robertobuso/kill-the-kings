@@ -5,7 +5,7 @@ import { Button, Header, Container, Image } from 'semantic-ui-react'
 class MainMenu extends Component {
 
   render() {
-    return <Container textAlign='center'>
+    return <Container textAlign='center' className='animated fadeIn slower'>
     <br/><br/>
     <Image
       src={require('../Images/OtherImages/killthekings_header.png') } alt='Title'
