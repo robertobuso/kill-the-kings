@@ -28,7 +28,7 @@ wasKingKilled = () => {
     if (this.props.newGame === true) {
       return `${this.props.id}-container animated fadeInUpBig slow`
     } else
-      { return `${this.props.id}-container`
+      { return `${this.props.id}-container emphasis`
     }
   } else {
     return `${this.props.id}-container animated zoomOutDown slower`

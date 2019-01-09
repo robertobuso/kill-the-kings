@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Dimmer, Container } from 'semantic-ui-react'
 
 import { originalDeck, kings } from '../Constants/CardObjects.js'
 import { shuffle } from '../Adapters/'
@@ -8,7 +9,6 @@ import KingPile from '../Components/KingPile.js'
 import TalonPile from '../Components/TalonPile.js'
 import ReservePile from '../Components/ReservePile.js'
 import AppNav from '../Components/AppNav.js'
-import Rules from '../Components/Rules.js'
 
 class Tutorial extends Component {
   state = {
@@ -39,7 +39,9 @@ class Tutorial extends Component {
 
 render() {
   return (
-    <div className="background animated fadeIn slower">
+  <>
+
+    <div className="background animated fadeInUp dimmed">
       <div className="container">
       {this.state.currentGame.idArray.map(id => {
         return id.charAt(0) === 'r' ?
@@ -47,27 +49,18 @@ render() {
           key={id}
           id={id}
           currentCard={this.state.currentGame[id][0]}
-          setTarget={(card) => this.setTarget(card)}
-          handleDrop={ this.handleKingDropFromReserve }
-          handleTalonClick={this.handleTalonClick}
-          newGame={this.state.currentGame.newGame}
-          fadeIn={this.state.currentGame.fadeIn}
-          newId={this.state.currentGame.currentPile}
-          gameOver={this.state.currentGame.gameOver}
           talon={this.state.currentGame.talon}
-          showAlert={this.handleReserveDropWithTalonCard}
         />
         :
         id === 'blank' ?
-        <AppNav key={id} id={id} handleGameClick={this.startNewGame}
-        handleRulesClick={this.showRules}
+        <AppNav key={id} id={id}
+        handleGameClick={this.handleClick}
+        handleRulesClick={this.handleClick}
         gameOver={this.state.currentGame.gameOver} /> :
         <KingPile
           key={id}
           id={id}
           cards={this.state.currentGame[id]}
-          setTarget={(card) => this.setTarget(card)}
-          kingKilled= {this.state.currentGame.kingKilled}
           currentPile= {this.state.currentGame.currentPile}
           newGame={this.state.currentGame.newGame}
         />
@@ -75,32 +68,18 @@ render() {
         <img
           id="stock" className="stock-pile"
           src={require('../Images/Cards/logo_kk.jpg') } alt="Card Pile"
-          onClick={this.handleStockClick}
         />
         {this.state.currentGame.talon.src ?
         <TalonPile
           card={this.state.currentGame.talon}
-          handleTalonClick={this.handleTalonClick}
-          handleDrop={ this.handleKingDrop }
-          newGame={this.state.currentGame.newGame}
-          gameOver={this.state.currentGame.gameOver}
           /> :
         <TalonPile
           card={{id: 'green_two'}}
-          handleTalonClick={this.handleTalonClick}
-          handleDrop={ this.handleKingDrop }
-          newGame={this.state.currentGame.newGame}
-          gameOver={this.state.currentGame.gameOver}
         />
-      }
-      {this.state.currentGame.showRules === true ?
-        <Rules
-        startNewGame={this.startNewGame}
-        handleClose={this.showRules}/>
-      : null
       }
     </div>
   </div>
+  </>
   )
 }
 }
