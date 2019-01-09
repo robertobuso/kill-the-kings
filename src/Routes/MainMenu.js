@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Header, Container } from 'semantic-ui-react'
+import { Button, Header, Container, Image } from 'semantic-ui-react'
 
 class MainMenu extends Component {
 
   render() {
     return <Container textAlign='center'>
     <br/><br/>
+    <Image
+      src={require('../Images/OtherImages/killthekings_header.png') } alt='Title'
+      onClick={this.handleStockClick}
+      size='large'
+      centered
+    />
     <Header>
     This Will Be the Home Page
     </Header>
