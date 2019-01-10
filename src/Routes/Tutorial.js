@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { TransitionablePortal, Header, Segment } from 'semantic-ui-react'
+import { TransitionablePortal, Header, Segment, Grid, Button } from 'semantic-ui-react'
 
 import { originalDeck, kings } from '../Constants/CardObjects.js'
 import { shuffle } from '../Adapters/'
@@ -35,8 +35,16 @@ class Tutorial extends Component {
     }
   }
 
-  handleClick = () => {
+  handleMenuClick = () => {
     this.props.history.push('/')
+  }
+
+  handleGameClick = () => {
+    this.props.history.push('/game')
+  }
+
+  handleNextClick = () => {
+    alert('Tutorial Rules Coming Soon!')
   }
 
   showTutorialBox = () => {
@@ -99,6 +107,20 @@ render() {
     <Header>WELCOME TO THE BEST GAME EVER</Header>
     <p>If I were you, I'd fix myself a strong ass drink.</p>
     </>
+    <br/>
+    <Grid columns={3} centered>
+    <Grid.Row>
+    <Grid.Column>
+    <Button size='tiny' basic color='green' onClick={this.handleMenuClick}>Main Menu</Button>
+    </Grid.Column>
+    <Grid.Column>
+    <Button size='tiny' basic color='green' onClick={this.handleGameClick}>Play Game</Button>
+    </Grid.Column>
+    <Grid.Column>
+    <Button size='tiny' basic color='green' onClick={this.handleNextClick}>Next {<br/>}Rule</Button>
+    </Grid.Column>
+    </Grid.Row>
+    </Grid>
     </Segment>
     </TransitionablePortal>
   </>
