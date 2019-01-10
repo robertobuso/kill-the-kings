@@ -20,11 +20,28 @@ class Alert extends Component {
     }
   }
 
+  leftMargin = () => {
+    switch (this.props.alertKind) {
+      case 'talon':
+        return '40%';
+      case 'cardIsHigher':
+        return '35%';
+      case 'sameColorDifferentSuit':
+        return '28%';
+      case 'fullReserve':
+        return '40%';
+      case 'selectCard':
+        return '40%';
+      default:
+        return
+    }
+  }
+
   render() {
     return (
     <TransitionablePortal     open={this.props.alertStatus}
     transition={{ animation: 'fade', duration: 500 }} >
-      <Segment size='mini' style={{ left: '20%', position: 'fixed', top: '40%', zIndex: 1000 }}>
+      <Segment size='mini' style={{ left: this.leftMargin(), position: 'fixed', top: '40%', zIndex: 1000 }}>
         <Image wrapped size='small' src={require('../Images/OtherImages/killthekings_header.png')} />
         <Header textAlign='center'>{this.alertContent()}</Header>
         <br/>

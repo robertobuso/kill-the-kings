@@ -13,7 +13,7 @@ class Rules extends Component {
         open={true}
         onClose={() => this.props.handleClose(false)}
         transition={{ animation: 'slide up', duration: 500 }}>
-      <Segment style={{ left: '40%', position: 'fixed', top: '40%', zIndex: 1000 }}>
+      <Segment style={{ left: '33%', position: 'fixed', top: '40%', zIndex: 1000 }}>
 
         <Header textAlign='center'>HOW TO KILL A KING</Header>
         <p>Place 3 cards in a row of the same number.</p>
