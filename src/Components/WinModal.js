@@ -17,7 +17,7 @@ class WinModal extends Component {
       {this.props.gameOver === 'lose' ?
         <>
         <Header>LOSER</Header>
-        <p>You just lost the game, you dumb son of a bitch.</p>
+        <p>The Kings are safe and you are not. But there's still hope: play another game!</p>
         </>
         :
         this.props.gameOver === 'win' ?

@@ -104,8 +104,8 @@ render() {
       transition={{ animation: 'swing right', duration: 500 }}>
     <Segment style={{ left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }}>
     <>
-    <Header>WELCOME TO THE BEST GAME EVER</Header>
-    <p>If I were you, I'd fix myself a strong ass drink.</p>
+    <Header>WELCOME TO THE TUTORIAL</Header>
+    <p>Here is where we will walk the user through basic gameplay...</p>
     </>
     <br/>
     <Grid columns={3} centered>
