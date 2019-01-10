@@ -19,6 +19,7 @@ class Alert extends Component {
         return
     }
   }
+
   render() {
     return (
     <TransitionablePortal     open={this.props.alertStatus}

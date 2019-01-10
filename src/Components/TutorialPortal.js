@@ -55,11 +55,28 @@ class TutorialPortal extends Component {
     }
   }
 
+  leftMargin = () => {
+    switch (this.state.lesson) {
+      case 0:
+        return '35%';
+      case 1:
+        return '30%';
+      case 2:
+        return '25%';
+      case 3:
+        return '30%';
+      case 4:
+        return '35%';
+      default:
+        return
+    }
+  }
+
   render() {
     return                          <TransitionablePortal
       open={this.props.open}
       transition={{ animation: 'swing right', duration: 500 }}>
-    <Segment style={{ left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }}>
+    <Segment style={{ position: 'fixed', left: this.leftMargin(), top: '40%', zIndex: 1000 }}>
     <>
     <Header>{this.showHeader()}</Header>
     <p>{this.showContent()}</p>
@@ -73,9 +90,11 @@ class TutorialPortal extends Component {
     <Grid.Column>
     <Button size='tiny' basic color='green' onClick={this.handleGameClick}>Play Game</Button>
     </Grid.Column>
+    {this.state.lesson < 4 ?
     <Grid.Column>
     <Button size='tiny' basic color='green' onClick={this.handleNextClick}>Next {<br/>}Rule</Button>
     </Grid.Column>
+    : null }
     </Grid.Row>
     </Grid>
     </Segment>
