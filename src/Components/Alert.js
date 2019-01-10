@@ -6,7 +6,7 @@ class Alert extends Component {
   alertContent = () => {
     switch (this.props.alertKind) {
       case 'talon':
-        return 'You must play the current card first.';
+        return 'You must play the current card in the talon pile first.';
       case 'cardIsHigher':
         return 'You can only play a card lower in value than the last card on this pile.';
       case 'sameColorDifferentSuit':
@@ -23,7 +23,7 @@ class Alert extends Component {
   leftMargin = () => {
     switch (this.props.alertKind) {
       case 'talon':
-        return '40%';
+        return '35%';
       case 'cardIsHigher':
         return '35%';
       case 'sameColorDifferentSuit':

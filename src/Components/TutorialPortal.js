@@ -24,9 +24,9 @@ class TutorialPortal extends Component {
   showHeader = () => {
     switch (this.state.lesson) {
       case 0:
-        return 'You must play the current card first.';
+        return 'Kill the Kings!';
       case 1:
-        return 'You can only play a card lower in value than the last card on this pile.';
+        return 'Click on Deck';
       case 2:
         return 'You cannot play a card of the same color but different suit than the last card on this pile.';
       case 3:
@@ -41,9 +41,9 @@ class TutorialPortal extends Component {
   showContent = () => {
     switch (this.state.lesson) {
       case 0:
-        return 'You must play the current card first.';
+        return 'Your goal is to kill all four kings by placing specific combinations of cards under them.';
       case 1:
-        return 'You can only play a card lower in value than the last card on this pile.';
+        return 'Click on the deck and a card will be dealt to the talon pile.';
       case 2:
         return 'You cannot play a card of the same color but different suit than the last card on this pile.';
       case 3:
@@ -92,7 +92,7 @@ class TutorialPortal extends Component {
     </Grid.Column>
     {this.state.lesson < 4 ?
     <Grid.Column>
-    <Button size='tiny' basic color='green' onClick={this.handleNextClick}>Next {<br/>}Rule</Button>
+    <Button size='tiny' basic color='green' onClick={this.handleNextClick}>Next Rule</Button>
     </Grid.Column>
     : null }
     </Grid.Row>
