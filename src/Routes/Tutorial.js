@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { TransitionablePortal, Header, Segment, Grid, Button } from 'semantic-ui-react'
 
 import { originalDeck, kings } from '../Constants/CardObjects.js'
 import { shuffle } from '../Adapters/'
@@ -9,6 +8,7 @@ import KingPile from '../Components/KingPile.js'
 import TalonPile from '../Components/TalonPile.js'
 import ReservePile from '../Components/ReservePile.js'
 import AppNav from '../Components/AppNav.js'
+import TutorialPortal from '../Components/TutorialPortal.js'
 
 class Tutorial extends Component {
   state = {
@@ -35,24 +35,12 @@ class Tutorial extends Component {
     }
   }
 
-  handleMenuClick = () => {
-    this.props.history.push('/')
-  }
-
-  handleGameClick = () => {
-    this.props.history.push('/game')
-  }
-
-  handleNextClick = () => {
-    alert('Tutorial Rules Coming Soon!')
-  }
-
   showTutorialBox = () => {
     if (this.state.currentGame.startTutorial === true) {
       return setTimeout(() =>
         this.setState( {currentGame: {...this.state.currentGame,
           showTutorialBox: true,
-          startTutorial: false}} ), 1000
+          startTutorial: false}} ), 800
       )
     }
   }
@@ -97,35 +85,12 @@ render() {
         />
       }
     </div>
-  </div>
+    </div>
     {this.showTutorialBox()}
-  <TransitionablePortal
-      open={this.state.currentGame.showTutorialBox}
-      transition={{ animation: 'swing right', duration: 500 }}>
-    <Segment style={{ left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }}>
-    <>
-    <Header>WELCOME TO THE TUTORIAL</Header>
-    <p>Here is where we will walk the user through basic gameplay...</p>
+    <TutorialPortal open={this.state.currentGame.showTutorialBox} />
     </>
-    <br/>
-    <Grid columns={3} centered>
-    <Grid.Row>
-    <Grid.Column>
-    <Button size='tiny' basic color='green' onClick={this.handleMenuClick}>Main Menu</Button>
-    </Grid.Column>
-    <Grid.Column>
-    <Button size='tiny' basic color='green' onClick={this.handleGameClick}>Play Game</Button>
-    </Grid.Column>
-    <Grid.Column>
-    <Button size='tiny' basic color='green' onClick={this.handleNextClick}>Next {<br/>}Rule</Button>
-    </Grid.Column>
-    </Grid.Row>
-    </Grid>
-    </Segment>
-    </TransitionablePortal>
-  </>
-  )
-}
+    )
+  }
 }
 
 export default withRouter(Tutorial);

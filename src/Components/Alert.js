@@ -17,7 +17,6 @@ class Alert extends Component {
         return 'You must select a card first.';
       default:
         return
-
     }
   }
   render() {

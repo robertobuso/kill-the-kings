@@ -10,7 +10,7 @@ class WinModal extends Component {
   }
 
   render() {
-    return                                                                                      <TransitionablePortal
+    return                                            <TransitionablePortal
         open={true}
         transition={{ animation: 'zoom', duration: 500 }}>
       <Segment style={{ left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }}>
@@ -36,7 +36,6 @@ class WinModal extends Component {
       </Segment>
     </TransitionablePortal>
   }
-
 }
 
   export default withRouter(WinModal);
