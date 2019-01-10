@@ -13,7 +13,7 @@ class WinModal extends Component {
     return                                                                                      <TransitionablePortal
         open={true}
         transition={{ animation: 'zoom', duration: 500 }}>
-      <Segment style={{ left: '40%', position: 'fixed', top: '40%', zIndex: 1000 }}>
+      <Segment style={{ left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }}>
       {this.props.gameOver === 'lose' ?
         <>
         <Header>LOSER</Header>

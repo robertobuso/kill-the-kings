@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Dimmer, Container } from 'semantic-ui-react'
+import { TransitionablePortal, Header, Segment } from 'semantic-ui-react'
 
 import { originalDeck, kings } from '../Constants/CardObjects.js'
 import { shuffle } from '../Adapters/'
@@ -29,7 +29,9 @@ class Tutorial extends Component {
       sourceClick: {},
       targetClick: {},
       currentPile: '',
-      idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart']
+      idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
+      showTutorialBox: false,
+      startTutorial: true
     }
   }
 
@@ -37,10 +39,19 @@ class Tutorial extends Component {
     this.props.history.push('/')
   }
 
+  showTutorialBox = () => {
+    if (this.state.currentGame.startTutorial === true) {
+      return setTimeout(() =>
+        this.setState( {currentGame: {...this.state.currentGame,
+          showTutorialBox: true,
+          startTutorial: false}} ), 1000
+      )
+    }
+  }
+
 render() {
   return (
   <>
-
     <div className="background animated fadeInUp dimmed">
       <div className="container">
       {this.state.currentGame.idArray.map(id => {
@@ -79,6 +90,17 @@ render() {
       }
     </div>
   </div>
+    {this.showTutorialBox()}
+  <TransitionablePortal
+      open={this.state.currentGame.showTutorialBox}
+      transition={{ animation: 'swing right', duration: 500 }}>
+    <Segment style={{ left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }}>
+    <>
+    <Header>WELCOME TO THE BEST GAME EVER</Header>
+    <p>If I were you, I'd fix myself a strong ass drink.</p>
+    </>
+    </Segment>
+    </TransitionablePortal>
   </>
   )
 }
