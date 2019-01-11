@@ -14,7 +14,7 @@ class Tutorial extends Component {
   state = {
     currentGame: {
       stock: shuffle(originalDeck),
-      talon: {},
+      talon: [],
       club: [kings[0]],
       diamond: [kings[1]],
       spade: [kings[2]],
@@ -32,7 +32,8 @@ class Tutorial extends Component {
       idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
       showTutorialBox: false,
       startTutorial: true,
-      emphasis: 'kings'
+      emphasis: 'kings',
+      cards: []
     }
   }
 
@@ -46,12 +47,16 @@ class Tutorial extends Component {
     }
   }
 
-  showEmphasis = (pile) => {
+  showEmphasis = (pile, oldPile, currentPile, cards) => {
+    const pileArray=this.state.currentGame[currentPile]
+
     this.setState( {currentGame:
       {...this.state.currentGame,
         emphasis: pile,
+        [currentPile]: pileArray.concat(cards),
+        [oldPile]: []
       }
-    }
+    }, () => console.log(oldPile)
     )
   }
 
@@ -89,9 +94,9 @@ render() {
           id="stock" className={this.state.currentGame.emphasis === 'stock-pile' ? 'stock-pile emphasis' : 'stock-pile'}
           src={require('../Images/Cards/logo_kk.jpg') } alt="Card Pile"
         />
-        {this.state.currentGame.talon.src ?
+        {this.state.currentGame.talon.length > 0 ?
         <TalonPile
-          card={this.state.currentGame.talon}
+          card={this.state.currentGame.talon[0]}
           emphasis={this.state.currentGame.emphasis}
           /> :
         <TalonPile

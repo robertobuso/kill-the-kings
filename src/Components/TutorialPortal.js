@@ -27,19 +27,22 @@ class TutorialPortal extends Component {
         return this.setState( {
           header: 'Click on Deck',
           content: 'When you click on the deck...'
-        }, () => this.props.showEmphasis('stock-pile') );
+        }, () => this.props.showEmphasis('stock-pile', '', 'diamond', []) );
       case 2:
       return this.setState( {
         header: 'Card on Talon Pile',
         content: '...a card will be dealt to the talon pile. Once a card is dealt, it *must* be played.'
-      }, () => this.props.showEmphasis('talon-pile') );
+      }, () => this.props.showEmphasis('talon-pile','', 'talon', [{id: 'ha', value: 10, suit: 'heart', src: './Images/Cards/ha.jpg'}]) );
       case 3:
       return this.setState( {
         header: 'Reserves',
         content: 'The text of this next RULE!'
-      }, () => this.props.showEmphasis('reserves') );
+      }, () => this.props.showEmphasis('reserves','talon','reserve1', [{id: 'ha', value: 10, suit: 'heart', src: './Images/Cards/ha.jpg'}]) );
       case 4:
-        return 'You must select a card first.';
+      return this.setState( {
+        header: 'Reserves',
+        content: 'The text of this next RULE!'
+      }, () => this.props.showEmphasis('kings','reserve1','spade', [{id: 'ha', value: 10, suit: 'heart', src: './Images/Cards/ha.jpg'}]) );
       default:
         return
       }
