@@ -35,14 +35,24 @@ class TutorialPortal extends Component {
       }, () => this.props.showEmphasis('talon-pile','', 'talon', [{id: 'ha', value: 10, suit: 'heart', src: './Images/Cards/ha.jpg'}]) );
       case 3:
       return this.setState( {
-        header: 'Reserves',
-        content: 'The text of this next RULE!'
+        header: 'Reserve Piles',
+        content: 'If a Reserve Pile is free, you may place the card in it.'
       }, () => this.props.showEmphasis('reserves','talon','reserve1', [{id: 'ha', value: 10, suit: 'heart', src: './Images/Cards/ha.jpg'}]) );
       case 4:
       return this.setState( {
-        header: 'Reserves',
-        content: 'The text of this next RULE!'
+        header: 'King Piles',
+        content: 'You may also place the card in one of the King Piles if it follows one of three combinations that kill the kings.'
       }, () => this.props.showEmphasis('kings','reserve1','spade', [{id: 'ha', value: 10, suit: 'heart', src: './Images/Cards/ha.jpg'}]) );
+      case 5:
+      return this.setState( {
+        header: 'Three of a Kind',
+        content: 'Place 3 cards in a row of the same number.'
+      }, () => this.props.showEmphasis('kings','','spade', [ {id: 'ca', value: 10, suit: 'club', src: './Images/Cards/ca.jpg'}, {id: 'da', value: 10, suit: 'diamond', src: './Images/Cards/da.jpg'}]) );
+      case 6:
+      return this.setState( {
+        header: 'To Be Continued',
+        content: 'More Rules to Come!'
+      }, () => this.props.showEmphasis('stock-pile','','', []) );
       default:
         return
       }
@@ -66,7 +76,7 @@ class TutorialPortal extends Component {
     <Grid.Column>
     <Button size='tiny' basic color='green' onClick={this.handleGameClick}>Play Game</Button>
     </Grid.Column>
-    {this.state.lesson < 4 ?
+    {this.state.lesson < 6 ?
     <Grid.Column>
     <Button size='tiny' basic color='green' onClick={this.handleNextClick}>Next Rule</Button>
     </Grid.Column>
