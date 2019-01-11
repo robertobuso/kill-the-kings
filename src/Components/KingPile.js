@@ -29,7 +29,7 @@ wasKingKilled = () => {
       return `${this.props.id}-container animated fadeInUpBig slow`
     } else if (this.props.emphasis === 'kings')
       { return `${this.props.id}-container emphasis`
-    }
+    } else {return `${this.props.id}-container`}
   } else {
     return `${this.props.id}-container animated zoomOutDown slower`
   }

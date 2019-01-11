@@ -45,29 +45,11 @@ class TutorialPortal extends Component {
       }
   }
 
-
-  leftMargin = () => {
-    switch (this.state.lesson) {
-      case 0:
-        return '35%';
-      case 1:
-        return '30%';
-      case 2:
-        return '25%';
-      case 3:
-        return '30%';
-      case 4:
-        return '35%';
-      default:
-        return
-    }
-  }
-
   render() {
     return                          <TransitionablePortal
       open={this.props.open}
       transition={{ animation: 'swing right', duration: 500 }}>
-    <Segment style={{ position: 'fixed', left: this.leftMargin(), top: '40%', zIndex: 1000 }}>
+    <Segment style={{ position: 'fixed', left: '5%', top: '50%', zIndex: 1000 }}>
     <>
     <Header>{this.state.header}</Header>
     <p>{this.state.content}</p>
