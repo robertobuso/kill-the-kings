@@ -27,7 +27,7 @@ wasKingKilled = () => {
   } else if (this.props.kingKilled === false || (this.props.currentPile !== this.props.id)) {
     if (this.props.newGame === true) {
       return `${this.props.id}-container animated fadeInUpBig slow`
-    } else
+    } else if (this.props.emphasis === 'kings')
       { return `${this.props.id}-container emphasis`
     }
   } else {

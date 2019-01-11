@@ -31,7 +31,8 @@ class Tutorial extends Component {
       currentPile: '',
       idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
       showTutorialBox: false,
-      startTutorial: true
+      startTutorial: true,
+      emphasis: 'kings'
     }
   }
 
@@ -43,6 +44,15 @@ class Tutorial extends Component {
           startTutorial: false}} ), 800
       )
     }
+  }
+
+  showEmphasis = (pile) => {
+    this.setState( {currentGame:
+      {...this.state.currentGame,
+        emphasis: pile,
+      }
+    }
+    )
   }
 
 render() {
@@ -57,23 +67,26 @@ render() {
           id={id}
           currentCard={this.state.currentGame[id][0]}
           talon={this.state.currentGame.talon}
+          emphasis={this.state.currentGame.emphasis}
         />
         :
         id === 'blank' ?
         <AppNav key={id} id={id}
         handleGameClick={this.handleClick}
         handleRulesClick={this.handleClick}
-        gameOver={this.state.currentGame.gameOver} /> :
+        gameOver={this.state.currentGame.gameOver}
+        emphasis={this.state.currentGame.emphasis} /> :
         <KingPile
           key={id}
           id={id}
           cards={this.state.currentGame[id]}
           currentPile= {this.state.currentGame.currentPile}
           newGame={this.state.currentGame.newGame}
+          emphasis={this.state.currentGame.emphasis}
         />
       })}
         <img
-          id="stock" className="stock-pile"
+          id="stock" className={this.state.currentGame.emphasis === 'stock-pile' ? 'stock-pile emphasis' : 'stock-pile'}
           src={require('../Images/Cards/logo_kk.jpg') } alt="Card Pile"
         />
         {this.state.currentGame.talon.src ?
@@ -87,7 +100,8 @@ render() {
     </div>
     </div>
     {this.showTutorialBox()}
-    <TutorialPortal open={this.state.currentGame.showTutorialBox} />
+    <TutorialPortal open={this.state.currentGame.showTutorialBox}
+    showEmphasis={this.showEmphasis} />
     </>
     )
   }

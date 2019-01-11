@@ -18,7 +18,22 @@ class TutorialPortal extends Component {
   }
 
   handleNextClick = () => {
-    this.setState( { lesson: this.state.lesson + 1})
+    this.setState( { lesson: this.state.lesson + 1}, () => this.changeEmphasis(this.state.lesson))
+  }
+
+  changeEmphasis = (lesson) => {
+    switch (this.state.lesson) {
+      case 1:
+        return this.props.showEmphasis('stock-pile');
+      case 2:
+        return 'kings';
+      case 3:
+        return 'This reserve pile is full.';
+      case 4:
+        return 'You must select a card first.';
+      default:
+        return
+      }
   }
 
   showHeader = () => {
