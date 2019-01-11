@@ -45,7 +45,7 @@ class Alert extends Component {
         <Image wrapped size='small' src={require('../Images/OtherImages/killthekings_header.png')} />
         <Header textAlign='center'>{this.alertContent()}</Header>
         <br/>
-        <Button size='tiny' basic color='green' floated='right' content='Continue'
+        <Button size='tiny' basic color='red' floated='right' content='Continue'
           onClick={this.props.clearAlert} />
       </Segment>
     </TransitionablePortal>

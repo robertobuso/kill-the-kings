@@ -71,14 +71,14 @@ class TutorialPortal extends Component {
     <Grid columns={3} centered>
     <Grid.Row>
     <Grid.Column>
-    <Button size='tiny' basic color='green' onClick={this.handleMenuClick}>Main Menu</Button>
+    <Button size='tiny' basic color='red' onClick={this.handleMenuClick}>{'Main Menu'}</Button>
     </Grid.Column>
     <Grid.Column>
-    <Button size='tiny' basic color='green' onClick={this.handleGameClick}>Play Game</Button>
+    <Button size='tiny' basic color='red' onClick={this.handleGameClick}>{'Play Game'}</Button>
     </Grid.Column>
     {this.state.lesson < 6 ?
     <Grid.Column>
-    <Button size='tiny' basic color='green' onClick={this.handleNextClick}>Next Rule</Button>
+    <Button size='tiny' basic color='red' onClick={this.handleNextClick}>Next Rule</Button>
     </Grid.Column>
     : null }
     </Grid.Row>

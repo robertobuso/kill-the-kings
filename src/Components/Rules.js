@@ -24,14 +24,14 @@ class Rules extends Component {
       <Grid.Row>
       <Grid.Column>
       <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer">
-      <Button size='tiny' basic color='green'>Full Rules</Button>
+      <Button size='tiny' basic color='red'>Full Rules</Button>
       </a>
       </Grid.Column>
       <Grid.Column>
-      <Button size='tiny' basic color='green' onClick={this.handleTutorialClick}>Tutorial</Button>
+      <Button size='tiny' basic color='red' onClick={this.handleTutorialClick}>Tutorial</Button>
       </Grid.Column>
       <Grid.Column>
-      <Button size='tiny' basic color='green' onClick={() => this.props.handleClose(false)}>Continue</Button>
+      <Button size='tiny' basic color='red' onClick={() => this.props.handleClose(false)}>Continue</Button>
       </Grid.Column>
       </Grid.Row>
       </Grid>
