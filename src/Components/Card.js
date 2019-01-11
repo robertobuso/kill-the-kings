@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 
 const cardSource = {
+
   beginDrag(props) {
 
   if (props.draggable==='true') {
       props.handleTalonClick(props.card)
       return props.card
-  } else {
+  } else if (props.showAlert){
     return props.showAlert()
-  }
+  } else { return {} }
   },
   endDrag(props, monitor, component) {
 
     if(!monitor.didDrop() || props.draggable === 'false') {
-      return
+      return {}
     }
     return props.handleDrop(props)
   }
