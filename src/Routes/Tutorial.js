@@ -92,9 +92,11 @@ render() {
         {this.state.currentGame.talon.src ?
         <TalonPile
           card={this.state.currentGame.talon}
+          emphasis={this.state.currentGame.emphasis}
           /> :
         <TalonPile
           card={{id: 'green_two'}}
+          emphasis={this.state.currentGame.emphasis}
         />
       }
     </div>

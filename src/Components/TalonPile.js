@@ -8,6 +8,8 @@ class TalonPile extends Component {
       return `${this.props.id}-container animated hinge slower`
     } else if (this.props.newGame === true) {
       return `talon-pile animated fadeInRightBig slower`
+    } else if (this.props.emphasis === 'talon-pile')
+      { return 'talon-pile emphasis'
     } else {
       return `talon-pile`
     }

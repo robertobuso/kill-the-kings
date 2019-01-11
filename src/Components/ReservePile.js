@@ -25,6 +25,8 @@ class ReservePile extends Component {
       return 'reserve-pile animated fadeInDownBig slow'
     } else if (this.props.fadeIn === true &&    this.props.newId === this.props.id) {
       return 'reserve-pile animated fadeInUpBig slow'
+    } else if (this.props.emphasis === 'reserves')
+      { return 'reserve-pile emphasis'
     } else {
       return 'reserve-pile'
     }

@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 
 class TutorialPortal extends Component {
 
-  state = { header: '',
-            content: '',
+  state = { header: 'Kill the Kings!',
+            content: 'Your goal is to kill all four kings by placing specific combinations of cards under them.',
             lesson: 0}
 
   handleMenuClick = () => {
@@ -24,11 +24,20 @@ class TutorialPortal extends Component {
   changeEmphasis = (lesson) => {
     switch (this.state.lesson) {
       case 1:
-        return this.props.showEmphasis('stock-pile');
+        return this.setState( {
+          header: 'Click on Deck',
+          content: 'When you click on the deck...'
+        }, () => this.props.showEmphasis('stock-pile') );
       case 2:
-        return 'kings';
+      return this.setState( {
+        header: 'Card on Talon Pile',
+        content: '...a card will be dealt to the talon pile. Once a card is dealt, it *must* be played.'
+      }, () => this.props.showEmphasis('talon-pile') );
       case 3:
-        return 'This reserve pile is full.';
+      return this.setState( {
+        header: 'Reserves',
+        content: 'The text of this next RULE!'
+      }, () => this.props.showEmphasis('reserves') );
       case 4:
         return 'You must select a card first.';
       default:
@@ -36,39 +45,6 @@ class TutorialPortal extends Component {
       }
   }
 
-  showHeader = () => {
-    switch (this.state.lesson) {
-      case 0:
-        return 'Kill the Kings!';
-      case 1:
-        return 'Click on Deck';
-      case 2:
-        return 'You cannot play a card of the same color but different suit than the last card on this pile.';
-      case 3:
-        return 'This reserve pile is full.';
-      case 4:
-        return 'You must select a card first.';
-      default:
-        return
-    }
-  }
-
-  showContent = () => {
-    switch (this.state.lesson) {
-      case 0:
-        return 'Your goal is to kill all four kings by placing specific combinations of cards under them.';
-      case 1:
-        return 'Click on the deck and a card will be dealt to the talon pile.';
-      case 2:
-        return 'You cannot play a card of the same color but different suit than the last card on this pile.';
-      case 3:
-        return 'This reserve pile is full.';
-      case 4:
-        return 'You must select a card first.';
-      default:
-        return
-    }
-  }
 
   leftMargin = () => {
     switch (this.state.lesson) {
@@ -93,8 +69,8 @@ class TutorialPortal extends Component {
       transition={{ animation: 'swing right', duration: 500 }}>
     <Segment style={{ position: 'fixed', left: this.leftMargin(), top: '40%', zIndex: 1000 }}>
     <>
-    <Header>{this.showHeader()}</Header>
-    <p>{this.showContent()}</p>
+    <Header>{this.state.header}</Header>
+    <p>{this.state.content}</p>
     </>
     <br/>
     <Grid columns={3} centered>
