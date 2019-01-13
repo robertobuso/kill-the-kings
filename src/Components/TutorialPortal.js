@@ -21,6 +21,10 @@ class TutorialPortal extends Component {
     this.setState({ open: false, lesson: this.state.lesson + 1 }, () => setTimeout( ()=> this.changeEmphasis(this.state.lesson), 500) )
   }
 
+  handleClose = () => {
+    this.setState({ open: false, lesson: this.state.lesson + 1 }, ()=> this.changeEmphasis(this.state.lesson) )
+  }
+
   changeEmphasis = (lesson) => {
     switch (this.state.lesson) {
       case 1:
@@ -76,7 +80,7 @@ class TutorialPortal extends Component {
     return                          <TransitionablePortal
       open={this.state.open}
       transition={{ animation: this.chooseAnimation(), duration: 500 }}
-      onClose={this.handleNextClick}>
+      onClose={this.handleClose}>
     <Segment style={{ position: 'fixed', left: '5%', top: '50%', zIndex: 1000 }}>
     <>
     <Header>{this.state.header}</Header>
