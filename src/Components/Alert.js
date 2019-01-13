@@ -3,6 +3,12 @@ import { Button, TransitionablePortal, Image, Segment, Header } from 'semantic-u
 
 class Alert extends Component {
 
+state = { open: this.props.alertStatus }
+
+handleClick = () => this.setState({ open: false }, () => setTimeout(()=> this.props.clearAlert(), 2000) )
+
+handleClose = () => this.setState({ open: false }, () => this.props.clearAlert())
+
   alertContent = () => {
     switch (this.props.alertKind) {
       case 'talon':
@@ -39,14 +45,16 @@ class Alert extends Component {
 
   render() {
     return (
-    <TransitionablePortal     open={this.props.alertStatus}
-    transition={{ animation: 'fade', duration: 500 }} >
+    <TransitionablePortal
+    open={this.state.open}
+    transition={{ animation: 'fade', duration: 500 }}
+    onClose={this.handleClose} >
       <Segment size='mini' style={{ left: this.leftMargin(), position: 'fixed', top: '40%', zIndex: 1000 }}>
         <Image wrapped size='small' src={require('../Images/OtherImages/killthekings_header.png')} />
         <Header textAlign='center'>{this.alertContent()}</Header>
         <br/>
         <Button size='tiny' basic color='red' floated='right' content='Continue'
-          onClick={this.props.clearAlert} />
+          onClick={this.handleClick} />
       </Segment>
     </TransitionablePortal>
     )

@@ -11,6 +11,7 @@ import AppNav from '../Components/AppNav.js'
 import TutorialPortal from '../Components/TutorialPortal.js'
 
 class Tutorial extends Component {
+
   state = {
     currentGame: {
       stock: shuffle(originalDeck),
@@ -37,16 +38,6 @@ class Tutorial extends Component {
     }
   }
 
-  showTutorialBox = () => {
-    if (this.state.currentGame.startTutorial === true) {
-      return setTimeout(() =>
-        this.setState( {currentGame: {...this.state.currentGame,
-          showTutorialBox: true,
-          startTutorial: false}} ), 800
-      )
-    }
-  }
-
   showEmphasis = (pile, oldPile, currentPile, cards) => {
     const pileArray=this.state.currentGame[currentPile]
 
@@ -56,7 +47,7 @@ class Tutorial extends Component {
         [currentPile]: pileArray.concat(cards),
         [oldPile]: []
       }
-    }, () => console.log(oldPile)
+    }
     )
   }
 
@@ -106,7 +97,6 @@ render() {
       }
     </div>
     </div>
-    {this.showTutorialBox()}
     <TutorialPortal open={this.state.currentGame.showTutorialBox}
     showEmphasis={this.showEmphasis} />
     </>
