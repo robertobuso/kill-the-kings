@@ -10,6 +10,7 @@ import WinModal from '../Components/WinModal.js'
 import Alert from '../Components/Alert.js'
 import AppNav from '../Components/AppNav.js'
 import Rules from '../Components/Rules.js'
+import StockPile from '../Components/StockPile.js'
 
 
 class GamePage extends Component {
@@ -275,8 +276,6 @@ class GamePage extends Component {
   }
 
   gameOver = (currentPile) => {
-    console.log('IdArray: ',this.state.currentGame.idArray)
-    console.log('currentPile: ', currentPile)
     this.setState( {
       currentGame:
         { ...this.state.currentGame,
@@ -418,10 +417,9 @@ class GamePage extends Component {
             newGame={this.state.currentGame.newGame}
           />
         })}
-          <img
-            id="stock" className="stock-pile"
-            src={require('../Images/Cards/logo_kk.jpg') } alt="Card Pile"
-            onClick={this.handleStockClick}
+          <StockPile
+            src={require('../Images/Cards/logo_kk.jpg')}
+            handleStockClick={this.handleStockClick}
           />
           {this.state.currentGame.talon.src ?
           <TalonPile
