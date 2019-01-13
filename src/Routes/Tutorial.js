@@ -12,7 +12,9 @@ import TutorialPortal from '../Components/TutorialPortal.js'
 
 class Tutorial extends Component {
 
-  state = {
+  constructor() {
+    super()
+    this.state = {
     currentGame: {
       stock: shuffle(originalDeck),
       talon: [],
@@ -31,11 +33,19 @@ class Tutorial extends Component {
       targetClick: {},
       currentPile: '',
       idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
-      showTutorialBox: false,
       startTutorial: true,
       emphasis: 'kings',
-      cards: []
+      cards: [],
+      showTutorialBox: false
     }
+  }
+}
+
+  componentDidMount() {
+    setTimeout( () => this.setState( { currentGame: {
+      ...this.state.currentGame,
+      showTutorialBox: true
+    }}), 1000)
   }
 
   showEmphasis = (pile, oldPile, currentPile, cards) => {
@@ -97,8 +107,9 @@ render() {
       }
     </div>
     </div>
-    <TutorialPortal open={this.state.currentGame.showTutorialBox}
-    showEmphasis={this.showEmphasis} />
+    {this.state.currentGame.showTutorialBox === true ?
+    <TutorialPortal showEmphasis={this.showEmphasis} />
+    : null }
     </>
     )
   }

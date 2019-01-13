@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { TransitionablePortal, Segment, Header, Button, Grid } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 
-
 class TutorialPortal extends Component {
 
   state = { header: 'Kill the Kings!',
@@ -19,7 +18,7 @@ class TutorialPortal extends Component {
   }
 
   handleNextClick = () => {
-    this.setState({ open: false, lesson: this.state.lesson + 1 }, () => setTimeout( ()=> this.changeEmphasis(this.state.lesson), 2000) )
+    this.setState({ open: false, lesson: this.state.lesson + 1 }, () => setTimeout( ()=> this.changeEmphasis(this.state.lesson), 500) )
   }
 
   changeEmphasis = (lesson) => {
@@ -74,7 +73,6 @@ class TutorialPortal extends Component {
   }
 
   render() {
-    console.log('Open in State: ', this.state.open)
     return                          <TransitionablePortal
       open={this.state.open}
       transition={{ animation: this.chooseAnimation(), duration: 500 }}
