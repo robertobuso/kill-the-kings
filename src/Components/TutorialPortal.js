@@ -43,13 +43,13 @@ class TutorialPortal extends Component {
       return this.setState( {
         open: true,
         header: 'Reserve Piles',
-        content: 'If a Reserve Pile is free, you may place the card in it.'
+        content: 'If a Reserve Pile is free, you may drag the card and place it on that pile.'
       }, () => this.props.showEmphasis('reserves','talon','reserve1', [{id: 'ha', value: 10, suit: 'heart', src: './Images/Cards/ha.jpg'}]) );
       case 4:
       return this.setState( {
         open: true,
         header: 'King Piles',
-        content: 'You may also place the card in one of the King Piles if it follows one of three combinations that kill the kings.'
+        content: 'You may also place the card on one of the King Piles if it follows one of three combinations that kill the kings.'
       }, () => this.props.showEmphasis('kings','reserve1','spade', [{id: 'ha', value: 10, suit: 'heart', src: './Images/Cards/ha.jpg'}]) );
       case 5:
       return this.setState( {
@@ -77,32 +77,39 @@ class TutorialPortal extends Component {
   }
 
   render() {
-    return                          <TransitionablePortal
+
+    return                              <TransitionablePortal
       open={this.state.open}
       transition={{ animation: this.chooseAnimation(), duration: 500 }}
       onClose={this.handleClose}>
-    <Segment style={{ position: 'fixed', left: '5%', top: '50%', zIndex: 1000 }}>
-    <>
-    <Header>{this.state.header}</Header>
-    <p>{this.state.content}</p>
-    </>
-    <br/>
-    <Grid columns={3} centered>
-    <Grid.Row>
-    <Grid.Column>
-    <Button size='tiny' basic color='red' onClick={this.handleMenuClick}>{'Main Menu'}</Button>
-    </Grid.Column>
-    <Grid.Column>
-    <Button size='tiny' basic color='red' onClick={this.handleGameClick}>{'Play Game'}</Button>
-    </Grid.Column>
-    {this.state.lesson < 6 ?
-    <Grid.Column>
-    <Button size='tiny' basic color='red' onClick={this.handleNextClick}>Next Rule</Button>
-    </Grid.Column>
-    : null }
-    </Grid.Row>
-    </Grid>
-    </Segment>
+
+      <Segment style={{ position: 'fixed', left: '5%', top: '50%', zIndex: 1000 }}>
+      <>
+        <Header>{this.state.header}</Header>
+        <p>{this.state.content}</p>
+        <br/>
+      </>
+
+      <Grid columns={3} centered>
+        <Grid.Row>
+
+          <Grid.Column>
+          <Button size='tiny' basic color='red' onClick={this.handleMenuClick}>{'Main Menu'}</Button>
+          </Grid.Column>
+
+          <Grid.Column>
+          <Button size='tiny' basic color='red' onClick={this.handleGameClick}>{'Play Game'}</Button>
+          </Grid.Column>
+
+          {this.state.lesson < 6 ?
+          <Grid.Column>
+          <Button size='tiny' basic color='red' onClick={this.handleNextClick}>Next Rule</Button>
+          </Grid.Column>
+          : null }
+
+        </Grid.Row>
+      </Grid>
+      </Segment>
     </TransitionablePortal>
   }
 }

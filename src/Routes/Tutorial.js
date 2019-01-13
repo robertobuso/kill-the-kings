@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-
 import { originalDeck, kings } from '../Constants/CardObjects.js'
 import { shuffle } from '../Adapters/'
-
 import KingPile from '../Components/KingPile.js'
 import TalonPile from '../Components/TalonPile.js'
 import ReservePile from '../Components/ReservePile.js'
@@ -12,34 +10,31 @@ import TutorialPortal from '../Components/TutorialPortal.js'
 
 class Tutorial extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-    currentGame: {
-      stock: shuffle(originalDeck),
-      talon: [],
-      club: [kings[0]],
-      diamond: [kings[1]],
-      spade: [kings[2]],
-      heart: [kings[3]],
-      reserve1: [],
-      reserve2: [],
-      reserve3: [],
-      reserve4: [],
-      reserve5: [],
-      reserve6: [],
-      reserve7: [],
-      sourceClick: {},
-      targetClick: {},
-      currentPile: '',
-      idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
-      startTutorial: true,
-      emphasis: 'kings',
-      cards: [],
-      showTutorialBox: false
+  state = {
+      currentGame: {
+        stock: shuffle(originalDeck),
+        talon: [],
+        club: [kings[0]],
+        diamond: [kings[1]],
+        spade: [kings[2]],
+        heart: [kings[3]],
+        reserve1: [],
+        reserve2: [],
+        reserve3: [],
+        reserve4: [],
+        reserve5: [],
+        reserve6: [],
+        reserve7: [],
+        sourceClick: {},
+        targetClick: {},
+        currentPile: '',
+        idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
+        startTutorial: true,
+        emphasis: 'kings',
+        cards: [],
+        showTutorialBox: false
+      }
     }
-  }
-}
 
   componentDidMount() {
     setTimeout( () => this.setState( { currentGame: {
