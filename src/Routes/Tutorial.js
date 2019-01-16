@@ -11,30 +11,30 @@ import TutorialPortal from '../Components/TutorialPortal.js'
 class Tutorial extends Component {
 
   state = {
-      currentGame: {
-        stock: shuffle(originalDeck),
-        talon: [],
-        club: [kings[0]],
-        diamond: [kings[1]],
-        spade: [kings[2]],
-        heart: [kings[3]],
-        reserve1: [],
-        reserve2: [],
-        reserve3: [],
-        reserve4: [],
-        reserve5: [],
-        reserve6: [],
-        reserve7: [],
-        sourceClick: {},
-        targetClick: {},
-        currentPile: '',
-        idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
-        startTutorial: true,
-        emphasis: 'kings',
-        cards: [],
-        showTutorialBox: false
-      }
+    currentGame: {
+      stock: shuffle(originalDeck),
+      talon: [],
+      club: [kings[0]],
+      diamond: [kings[1]],
+      spade: [kings[2]],
+      heart: [kings[3]],
+      reserve1: [],
+      reserve2: [],
+      reserve3: [],
+      reserve4: [],
+      reserve5: [],
+      reserve6: [],
+      reserve7: [],
+      sourceClick: {},
+      targetClick: {},
+      currentPile: '',
+      idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
+      startTutorial: true,
+      emphasis: 'kings',
+      cards: [],
+      showTutorialBox: false
     }
+  }
 
   componentDidMount() {
     setTimeout( () => this.setState( { currentGame: {
@@ -52,8 +52,7 @@ class Tutorial extends Component {
         [currentPile]: pileArray.concat(cards),
         [oldPile]: []
       }
-    }
-    )
+    } )
   }
 
 render() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card.js'
+import {Button} from 'semantic-ui-react'
 
 class TalonPile extends Component {
 
@@ -16,7 +17,7 @@ class TalonPile extends Component {
   }
 
   render() {
-    const { card, handleDrop, handleTalonClick } = this.props;
+    const { card, handleDrop, handleTalonClick, handleReserveClick } = this.props;
 
     return (
       <div
@@ -29,7 +30,10 @@ class TalonPile extends Component {
             handleTalonClick={ handleTalonClick }
             draggable='true'
           />
-      </div>
+          <Button size='tiny' basic color='yellow' onClick={() => handleReserveClick(card)}>
+          Place on Reserve
+          </Button>
+          </div>
     )
   }
 }

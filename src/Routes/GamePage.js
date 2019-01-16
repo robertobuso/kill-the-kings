@@ -17,6 +17,7 @@ class GamePage extends Component {
   constructor(props) {
     super(props)
     this.handleKingDrop = this.handleKingDrop.bind(this)
+    this.handleReserveClick = this.handleReserveClick.bind(this)
 
     this.state = {
       currentGame: {
@@ -176,6 +177,28 @@ class GamePage extends Component {
           }
         }
       )
+    }
+  }
+
+  handleReserveClick = (card) => {
+//We need to change the forEach to a simple for loop so that the return breaks the loop
+for(let i = 0; i < this.state.currentGame.idArray.length; i++) {
+let pile = this.state.currentGame.idArray[i]
+      if(pile.charAt(0) === 'r') {
+        if(this.state.currentGame[pile].length === 0) {
+          console.log(pile)
+           return this.setState(
+            {currentGame:
+              { ...this.state.currentGame,
+                [pile]: [...this.state.currentGame[pile], card],
+                talon: {},
+                sourceClick: {},
+                targetClick: {}
+              }
+            }, () => console.log(this.state.currentGame)
+          )
+        }
+      } else {return alert('All the reserve piles are full!')}
     }
   }
 
@@ -428,6 +451,7 @@ class GamePage extends Component {
             handleDrop={ this.handleKingDrop }
             newGame={this.state.currentGame.newGame}
             gameOver={this.state.currentGame.gameOver}
+            handleReserveClick={this.handleReserveClick}
             /> :
           <TalonPile
             card={{id: 'green_two'}}
@@ -435,6 +459,7 @@ class GamePage extends Component {
             handleDrop={ this.handleKingDrop }
             newGame={this.state.currentGame.newGame}
             gameOver={this.state.currentGame.gameOver}
+            handleReserveClick={this.handleReserveClick}
           />
         }
         {this.state.currentGame.gameOver === 'win'  || this.state.currentGame.gameOver === 'lose' ?

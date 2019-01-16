@@ -16,8 +16,8 @@ class WinModal extends Component {
       <Segment style={{ left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }}>
       {this.props.gameOver === 'lose' ?
         <>
-        <Header>LOSER</Header>
-        <p>The Kings are safe and you are not. But there's still hope: play another game!</p>
+        <Header>The Kings Survived Your Attack</Header>
+        <p>But there's still hope: play another game and try again!</p>
         </>
         :
         this.props.gameOver === 'win' ?
