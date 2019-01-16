@@ -181,7 +181,17 @@ class GamePage extends Component {
   }
 
   handleReserveClick = (card) => {
-    console.log(this.state.currentGame.idArray)
+    if (card.id === 'green_two') {
+      return  this.setState(
+                        { currentGame:
+                          { ...this.state.currentGame,
+                          alertStatus: true,
+                          alertKind: 'selectCard'
+                          }
+                        }
+              )
+    }
+
     for(let i = 0; i < this.state.currentGame.idArray.length; i++) {
     let pile = this.state.currentGame.idArray[i]
           if(pile.charAt(0) === 'r') {
@@ -201,7 +211,7 @@ class GamePage extends Component {
         }
         return alert('All the reserve piles are full!')
       }
-  
+
 
   handleReserveDropWithTalonCard = () => {
       this.setState(
