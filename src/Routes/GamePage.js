@@ -209,7 +209,14 @@ class GamePage extends Component {
             }
           }
         }
-        return alert('All the reserve piles are full!')
+        return this.setState(
+                          { currentGame:
+                            { ...this.state.currentGame,
+                            alertStatus: true,
+                            alertKind: 'allReservesFull'
+                            }
+                          }
+        )
       }
 
 

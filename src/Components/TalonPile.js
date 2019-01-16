@@ -31,6 +31,7 @@ class TalonPile extends Component {
             handleTalonClick={ handleTalonClick }
             draggable='true'
           />
+          <br/><br/>
           <Button circular size='tiny' basic color='blue' onClick={() => handleReserveClick(card)}>
           Place on Reserve
           </Button>

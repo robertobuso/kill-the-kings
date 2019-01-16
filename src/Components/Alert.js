@@ -21,6 +21,8 @@ handleClose = () => this.setState({ open: false }, () => this.props.clearAlert()
         return 'This reserve pile is full.';
       case 'selectCard':
         return 'You must select a card first.';
+        case 'allReservesFull':
+          return 'All the reserve piles are full!';
       default:
         return
     }
@@ -38,6 +40,8 @@ handleClose = () => this.setState({ open: false }, () => this.props.clearAlert()
         return '40%';
       case 'selectCard':
         return '40%';
+        case 'allReservesFull':
+          return '40%';
       default:
         return
     }
