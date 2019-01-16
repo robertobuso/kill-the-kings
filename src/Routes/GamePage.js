@@ -181,26 +181,27 @@ class GamePage extends Component {
   }
 
   handleReserveClick = (card) => {
-//We need to change the forEach to a simple for loop so that the return breaks the loop
-for(let i = 0; i < this.state.currentGame.idArray.length; i++) {
-let pile = this.state.currentGame.idArray[i]
-      if(pile.charAt(0) === 'r') {
-        if(this.state.currentGame[pile].length === 0) {
-          console.log(pile)
-           return this.setState(
-            {currentGame:
-              { ...this.state.currentGame,
-                [pile]: [...this.state.currentGame[pile], card],
-                talon: {},
-                sourceClick: {},
-                targetClick: {}
-              }
-            }, () => console.log(this.state.currentGame)
-          )
+    console.log(this.state.currentGame.idArray)
+    for(let i = 0; i < this.state.currentGame.idArray.length; i++) {
+    let pile = this.state.currentGame.idArray[i]
+          if(pile.charAt(0) === 'r') {
+            if(this.state.currentGame[pile].length === 0) {
+               return this.setState(
+                {currentGame:
+                  { ...this.state.currentGame,
+                    [pile]: [...this.state.currentGame[pile], card],
+                    talon: {},
+                    sourceClick: {},
+                    targetClick: {}
+                  }
+                }
+              )
+            }
+          }
         }
-      } else {return alert('All the reserve piles are full!')}
-    }
-  }
+        return alert('All the reserve piles are full!')
+      }
+  
 
   handleReserveDropWithTalonCard = () => {
       this.setState(

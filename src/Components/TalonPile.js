@@ -22,7 +22,8 @@ class TalonPile extends Component {
     return (
       <div
         id="talon"
-        className={this.shouldWeFadeIn()}>
+        className={this.shouldWeFadeIn()}
+        onDoubleClick={() => handleReserveClick(card)}>
           <Card
             card={card}
             src={require(`../Images/Cards/${card.id}.jpg`)}
