@@ -9,6 +9,7 @@
     min-height: 1375px;
     border: 5px solid #6C5103;
     border-radius: 10px;
+    overflow: hidden;
   }
 
   .container {

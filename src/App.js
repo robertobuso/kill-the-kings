@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-dnd'
-import MultiBackend, { Preview } from 'react-dnd-multi-backend';
+import MultiBackend from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/lib/HTML5toTouch';
 import './App.css';
 
@@ -11,7 +11,6 @@ import GamePage from './Routes/GamePage.js'
 import Tutorial from './Routes/Tutorial.js'
 
 class App extends Component {
-
   render() {
     return (
       <div>
