@@ -1,5 +1,5 @@
 ##We're Live!
 
-https://ancient-garden-49090.herokuapp.com/
+http://bit.ly/2SXfHZa
 
 Disclaimer: still a work in progress
