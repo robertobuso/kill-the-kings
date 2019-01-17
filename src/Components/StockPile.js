@@ -5,15 +5,16 @@ class StockPile extends Component {
     const { src, handleStockClick } = this.props;
 
     return (
-
-          <img
-            id="stock"
-            className='stock-pile'
-            alt='Stock Pile'
-            src={src}
-            onClick={ handleStockClick }
-            draggable='false'
-          />
+      <div >
+        <img
+          id="stock"
+          className='stock-pile'
+          alt='Stock Pile'
+          src={src}
+          onClick={ handleStockClick }
+          draggable='false'
+        />
+      </div>
     )
   }
 }

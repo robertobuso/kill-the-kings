@@ -18,7 +18,7 @@
     padding-right: 15px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-gap: 10px;
     row-gap: 25px;
   }
@@ -111,12 +111,13 @@
   display: grid;
   border-radius: 10%;
    width: 100%;
+   height: auto;
    max-width: 100px;
-   max-height: 125px;
    min-height: 75px;
    min-width: 35px;
-   height: auto;
+   max-height: 130px;
 }
+
 
 .dimmed::before {
   content: '';

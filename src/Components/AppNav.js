@@ -5,7 +5,7 @@ class AppNav extends Component {
   render() {
     return <div className={ this.props.gameOver === 'winBeforeModal' ? 'animated hinge slower' : null
       }>
-    <Button.Group vertical>
+    <Button.Group vertical className='stock-pile'>
     <br/>
     <Button size ='mini' basic color='blue'
     onClick={()=> this.props.handleRulesClick(true)}>

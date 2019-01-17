@@ -29,33 +29,32 @@ class MainMenu extends Component {
         />
         <br/>
         <br/>
-        <Grid centered columns={2}>
-        <Grid.Column width ={3}>
-        <Button floated='left' size='large' basic color='red' onClick={this.handleGameClick}>{'Play Game'}</Button>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <Button floated='left' size='large' basic color='red'
-          onClick={this.handleAchievementsClick}>
-            Achievements
-        </Button>
-        </Grid.Column>
-        <Grid.Column width ={3}>
-        <Button floated='right' size='large' basic color='red'
+        <Grid>
+        <Grid.Row centered>
+        <Button size='medium' basic color='red' onClick={this.handleGameClick}>{'Play Game'}</Button>
+        <br/><br/>
+        </Grid.Row>
+        <Grid.Row centered>
+        <Button size='medium' basic color='red'
           onClick={this.handleTutorialClick}>
             Tutorial
         </Button>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        </Grid.Row>
+        <Grid.Row centered>
+        <br/><br/>
+        <Button size='medium' basic color='red'
+          onClick={this.handleAchievementsClick}>
+            Achievements
+        </Button>
+        </Grid.Row>
+        <Grid.Row centered>
+        <br/><br/>
         <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer">
-          <Button floated='right' size='large' basic color='red'>
+          <Button size='medium' basic color='red'>
             {'Full Rules'}
           </Button>
         </a>
-        </Grid.Column>
+        </Grid.Row>
         </Grid>
         <br/><br/>
         <br/><br/>
