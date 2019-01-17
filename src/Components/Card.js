@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 
 const cardSource = {
-
   beginDrag(props) {
+    console.log('In Begin Drag!', props)
     if (props.draggable==='true') {
+      console.log('First if is yes')
         props.handleTalonClick(props.card)
         return props.card
     } else if (props.showAlert){
@@ -12,6 +13,7 @@ const cardSource = {
     } else { return {} }
     },
   endDrag(props, monitor, component) {
+    console.log('In End Drag!')
     if(!monitor.didDrop() || props.draggable === 'false') {
       return {}
     }
@@ -30,15 +32,18 @@ function collect(connect, monitor) {
 class Card extends Component {
 
   render() {
-
-    const { isDragging, connectDragSource, src, multiplier } = this.props;
+    const { isDragging, connectDragSource, src, multiplier, previewStyle } = this.props;
     const opacity = isDragging ? 0.5 : 1
+
+    if (previewStyle !== undefined) { Object.assign(previewStyle, {gridArea: '1 / 1 / 1 / 1',  marginTop: 0, opacity })
+  }
+
     return connectDragSource(
         <img
           className='inserted-card'
           src={src}
           alt="Card"
-          style={ {gridArea: '1 / 1 / 1 / 1',  marginTop: multiplier, opacity} }/>
+          style={ previewStyle ? previewStyle :  {gridArea: '1 / 1 / 1 / 1',  marginTop: multiplier, opacity }}/>
     )
   }
 }

@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { DragDropContext } from 'react-dnd'
+import MultiBackend, { Preview } from 'react-dnd-multi-backend';
+import HTML5toTouch from 'react-dnd-multi-backend/lib/HTML5toTouch';
 
 import { originalDeck, kings } from '../Constants/CardObjects.js'
 import { shuffle, isNewCardHigher, isNewCardSameColorDifferentSuit, isItThreeInARow, isItFourInARow, isItFiveInARow, didYouLose } from '../Adapters/'
@@ -11,6 +14,7 @@ import Alert from '../Components/Alert.js'
 import AppNav from '../Components/AppNav.js'
 import Rules from '../Components/Rules.js'
 import StockPile from '../Components/StockPile.js'
+import Card from '../Components/Card.js'
 
 
 class GamePage extends Component {
@@ -52,6 +56,13 @@ class GamePage extends Component {
         gamesPlayed: 0
       }
     }
+  }
+
+  generatePreview(type, item, style) {
+    console.log('Item: ', item)
+    console.log('Style: ', style)
+
+  return <Card src={require(`../Images/Cards/${item.id}.jpg`)} previewStyle={style}/>;
   }
 
   handleStockClick = () => {
@@ -421,6 +432,7 @@ class GamePage extends Component {
     return (
       <div className="background">
         <div className="container">
+        <Preview generator={this.generatePreview} />
         {this.state.currentGame.alertStatus === true ?
           <Alert alertStatus={this.state.currentGame.alertStatus}
           alertKind={this.state.currentGame.alertKind}
@@ -497,4 +509,4 @@ class GamePage extends Component {
   }
 }
 
-export default GamePage;
+export default DragDropContext(MultiBackend(HTML5toTouch))(GamePage);
