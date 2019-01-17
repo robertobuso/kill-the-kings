@@ -58,11 +58,9 @@ class GamePage extends Component {
     }
   }
 
-  generatePreview(type, item, style) {
-    console.log('Item: ', item)
-    console.log('Style: ', style)
-
-  return <Card src={require(`../Images/Cards/${item.id}.jpg`)} previewStyle={style}/>;
+//Shows the card at a different opacity while dragging object via touch event (mobile)
+  generatePreview (type, item, style) {
+    return <Card src={require(`../Images/Cards/${item.id}.jpg`)} previewStyle={style}/>;
   }
 
   handleStockClick = () => {
@@ -83,20 +81,13 @@ class GamePage extends Component {
   }
 
   handleTalonClick = (talonCard) => {
-      this.setState(
-                      { currentGame:
-                        { ...this.state.currentGame,
-                        sourceClick: talonCard
-                        }
-                      }, () => didYouLose(this.state.currentGame) ?
-                      this.setState( {
-                        currentGame:
-                          { ...this.state.currentGame,
-                            gameOver: 'lose'
-                          }
-                        }
-                      ) : null
-                    )
+    this.setState(
+                    { currentGame:
+                      { ...this.state.currentGame,
+                      sourceClick: talonCard
+                      }
+                    }
+    )
   }
 
     setTarget= (card) => {
@@ -230,7 +221,6 @@ class GamePage extends Component {
         )
       }
 
-
   handleReserveDropWithTalonCard = () => {
       this.setState(
                       { currentGame:
@@ -241,7 +231,6 @@ class GamePage extends Component {
                       }
                     )
   }
-
 
   handleKingDropFromReserve = (props) => {
     const category = this.state.currentGame[this.state.currentGame.targetClick]
@@ -404,6 +393,15 @@ class GamePage extends Component {
                   }
                 }
       )
+    }
+
+    if (didYouLose(this.state.currentGame)) {
+      setTimeout(()=> this.setState( {
+        currentGame:
+          { ...this.state.currentGame,
+            gameOver: 'lose'
+          }
+      } ), 1000)
     }
   }
 

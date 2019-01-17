@@ -30,31 +30,31 @@ class MainMenu extends Component {
         <br/>
         <br/>
         <Grid>
-        <Grid.Row centered>
-        <Button size='medium' basic color='red' onClick={this.handleGameClick}>{'Play Game'}</Button>
-        <br/><br/>
-        </Grid.Row>
-        <Grid.Row centered>
-        <Button size='medium' basic color='red'
-          onClick={this.handleTutorialClick}>
-            Tutorial
-        </Button>
-        </Grid.Row>
-        <Grid.Row centered>
-        <br/><br/>
-        <Button size='medium' basic color='red'
-          onClick={this.handleAchievementsClick}>
-            Achievements
-        </Button>
-        </Grid.Row>
-        <Grid.Row centered>
-        <br/><br/>
-        <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer">
-          <Button size='medium' basic color='red'>
-            {'Full Rules'}
-          </Button>
-        </a>
-        </Grid.Row>
+          <Grid.Row centered>
+            <Button size='medium' basic color='red' onClick={this.handleGameClick}>{'Play Game'}</Button>
+            <br/><br/>
+          </Grid.Row>
+          <Grid.Row centered>
+            <Button size='medium' basic color='red'
+              onClick={this.handleTutorialClick}>
+                Tutorial
+            </Button>
+          </Grid.Row>
+          <Grid.Row centered>
+            <br/><br/>
+            <Button size='medium' basic color='red'
+              onClick={this.handleAchievementsClick}>
+                Achievements
+            </Button>
+          </Grid.Row>
+          <Grid.Row centered>
+            <br/><br/>
+            <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer">
+              <Button size='medium' basic color='red'>
+                {'Full Rules'}
+              </Button>
+            </a>
+          </Grid.Row>
         </Grid>
         <br/><br/>
         <br/><br/>
