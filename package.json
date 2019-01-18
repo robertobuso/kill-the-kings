@@ -5,6 +5,7 @@
   "dependencies": {
     "animate.css": "^3.7.0",
     "deck-of-cards": "^0.1.8",
+    "disable-scroll": "^0.4.1",
     "react": "^16.6.3",
     "react-animated-css": "^1.0.4",
     "react-dnd": "^7.0.2",

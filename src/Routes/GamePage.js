@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { DragDropContext } from 'react-dnd'
 import MultiBackend, { Preview } from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/lib/HTML5toTouch';
+import disableScroll from 'disable-scroll';
 
 import { originalDeck, kings } from '../Constants/CardObjects.js'
 import { shuffle, isNewCardHigher, isNewCardSameColorDifferentSuit, isItThreeInARow, isItFourInARow, isItFiveInARow, didYouLose } from '../Adapters/'
@@ -429,7 +430,7 @@ class GamePage extends Component {
   }
 
   render() {
-
+disableScroll.on()
     return (
       <div className="background">
         <div className="container">
