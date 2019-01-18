@@ -34,7 +34,7 @@ class TalonPile extends Component {
           <br/><br/>
           <Grid centered>
             <Button circular size='mini' basic color='blue' onClick={() => handleReserveClick(card)}>
-            Place
+            Reserve Pile
             </Button>
           </Grid>
           </div>
