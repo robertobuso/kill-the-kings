@@ -45,15 +45,30 @@ class Tutorial extends Component {
 
   showEmphasis = (pile, oldPile, currentPile, cards) => {
     const pileArray=this.state.currentGame[currentPile]
+    let oldPileContents = []
 
-    this.setState( {currentGame:
-      {...this.state.currentGame,
-        emphasis: pile,
-        [currentPile]: pileArray.concat(cards),
-        [oldPile]: []
+    if (oldPile.charAt(0) === 'r' || oldPile === 'talon' || oldPile === '') {
+      oldPileContents = []
+    } else {
+      oldPileContents = [this.state.currentGame[oldPile][0]]
+    }
+    if (oldPile==='') {
+      this.setState( {currentGame:
+        {...this.state.currentGame,
+          emphasis: pile,
+          [currentPile]: pileArray.concat(cards),
+        }
+      } )
+    } else {
+        this.setState( {currentGame:
+          {...this.state.currentGame,
+            emphasis: pile,
+            [currentPile]: pileArray.concat(cards),
+            [oldPile]: oldPileContents.concat(oldPileContents)
+          }
+        } )
       }
-    } )
-  }
+    }
 
 render() {
   return (

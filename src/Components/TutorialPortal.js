@@ -55,14 +55,14 @@ class TutorialPortal extends Component {
       return this.setState( {
         open: true,
         header: 'Three of a Kind',
-        content: 'Place 3 cards in a row of the same number.'
+        content: 'Place 3 cards in a row of the same number under a King.'
       }, () => this.props.showEmphasis('kings','','spade', [ {id: 'ca', value: 10, suit: 'club', src: './Images/Cards/ca.jpg'}, {id: 'da', value: 10, suit: 'diamond', src: './Images/Cards/da.jpg'}]) );
       case 6:
       return this.setState( {
         open: true,
-        header: 'To Be Continued',
-        content: 'More Rules to Come!'
-      }, () => this.props.showEmphasis('stock-pile','','', []) );
+        header: 'Four of the Same Suit',
+        content: 'Place 4 cards in a row of descending value and same suit under a King. Please note that the Ace is *always* low.'
+      }, () => this.props.showEmphasis('kings','spade','heart', [ {id: 'hb', value: 11, suit: 'heart', src: './Images/Cards/hb.jpg'}, {id: 'h9', value: 9, suit: 'heart', src: './Images/Cards/h9.jpg'}, {id: 'h6', value: 6, suit: 'heart', src: './Images/Cards/h6.jpg'}, {id: 'h1', value: 1, suit: 'heart', src: './Images/Cards/h1.jpg'}]) );
       default:
         return
       }
