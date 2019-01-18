@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 
 class StockPile extends Component {
   render() {
-    const { src, handleStockClick } = this.props;
+    const { handleStockClick } = this.props;
 
     return (
-      <div >
+      <div className='king-container'>
         <img
-          id="stock"
-          className='stock-pile'
           alt='Stock Pile'
-          src={src}
+          className='inserted-card'
+          src={require('../Images/Cards/logo_kk.jpg')}
           onClick={ handleStockClick }
           draggable='false'
+          style={{gridArea: '1 / 1 / 1 / 1',  marginTop: 0 }}
         />
       </div>
     )

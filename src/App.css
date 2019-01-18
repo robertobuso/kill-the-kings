@@ -23,44 +23,14 @@
     row-gap: 25px;
   }
 
-  .club-container {
+  .king-container {
     display: grid;
     width: 100%;
     height: auto;
     max-width: 100px;
     min-height: 75px;
     min-width: 35px;
-    max-height: 130px;
-  }
-
-  .diamond-container {
-    display: grid;
-    width: 100%;
-    height: auto;
-    max-width: 100px;
-    min-height: 75px;
-    min-width: 35px;
-    max-height: 130px;
-  }
-
-  .spade-container {
-    display: grid;
-    width: 100%;
-    height: auto;
-    max-width: 100px;
-    min-height: 75px;
-    min-width: 35px;
-    max-height: 130px;
-  }
-
-  .heart-container {
-    display: grid;
-    width: 100%;
-    height: auto;
-    max-width: 100px;
-    min-height: 75px;
-    min-width: 35px;
-    max-height: 130px;
+    max-height: 138px;
   }
 
   .card{
@@ -85,39 +55,42 @@
     border-radius: 10px;
   }
 
-  .talon-pile {
-    grid-column: 5/5;
-    background: rgba(203, 209, 129, 0.4);
-    border-radius: 10px;
+  .inserted-card{
     width: 100%;
     height: auto;
     max-width: 100px;
+    max-height: 125px;
+    border-radius: 10px;
+}
+
+  .talon-pile {
+    grid-column: 5/5;
+    border-radius: 10%;
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+    max-height: 125px;
     min-height: 75px;
     min-width: 35px;
-    max-height: 125px;
   }
 
   .inserted-card{
     width: 100%;
+    height: auto;
     max-width: 100px;
     max-height: 125px;
-    min-height: 75px;
-    min-width: 35px;
-    height: auto;
     border-radius: 10px;
 }
 
 .stock-pile{
   display: grid;
-  border-radius: 10%;
    width: 100%;
    height: auto;
    max-width: 100px;
+   max-height: 138px;
    min-height: 75px;
    min-width: 35px;
-   max-height: 130px;
 }
-
 
 .dimmed::before {
   content: '';

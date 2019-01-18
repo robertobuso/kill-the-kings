@@ -23,15 +23,15 @@ class KingPile extends Component {
 
 wasKingKilled = () => {
   if (this.props.gameOver === 'winBeforeModal') {
-    return `${this.props.id}-container animated flipOutY slower`
+    return `king-container animated flipOutY slower`
   } else if (this.props.kingKilled === false || (this.props.currentPile !== this.props.id)) {
     if (this.props.newGame === true) {
-      return `${this.props.id}-container animated fadeInUpBig slow`
+      return `king-container animated fadeInUpBig slow`
     } else if (this.props.emphasis === 'kings')
-      { return `${this.props.id}-container emphasis`
-    } else {return `${this.props.id}-container`}
+      { return `king-container emphasis`
+    } else {return `king-container`}
   } else {
-    return `${this.props.id}-container animated zoomOutDown slower`
+    return `king-container animated zoomOutDown slower`
   }
 }
 

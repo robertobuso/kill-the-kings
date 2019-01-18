@@ -43,7 +43,7 @@ class GamePage extends Component {
         targetClick: {},
         kingKilled: false,
         currentPile: '',
-        idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
+        idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart', 'stock', 'talon'],
         newReserveId: 4,
         fadeIn: false,
         gameOver: '',
@@ -385,6 +385,7 @@ class GamePage extends Component {
   }
 
   isItANewGame = () => {
+    //If it's a new game, make it a current one
     if (this.state.currentGame.newGame === true) {
       this.setState(
                 { currentGame:
@@ -394,7 +395,7 @@ class GamePage extends Component {
                 }
       )
     }
-
+    //Check if the game is lost
     if (didYouLose(this.state.currentGame)) {
       setTimeout(()=> this.setState( {
         currentGame:
@@ -427,6 +428,7 @@ class GamePage extends Component {
   }
 
   render() {
+
     return (
       <div className="background">
         <div className="container">
@@ -458,6 +460,7 @@ class GamePage extends Component {
           <AppNav key={id} id={id} handleGameClick={this.startNewGame}
           handleRulesClick={this.showRules}
           gameOver={this.state.currentGame.gameOver} /> :
+          id !== 'stock' && id !== 'talon' ?
           <KingPile
             key={id}
             id={id}
@@ -467,12 +470,13 @@ class GamePage extends Component {
             currentPile= {this.state.currentGame.currentPile}
             newGame={this.state.currentGame.newGame}
           />
-        })}
+          :
+          id === 'stock' ?
           <StockPile
-            src={require('../Images/Cards/logo_kk.jpg')}
             handleStockClick={this.handleStockClick}
           />
-          {this.state.currentGame.talon.src ?
+          :
+          this.state.currentGame.talon.src !== undefined ?
           <TalonPile
             card={this.state.currentGame.talon}
             handleTalonClick={this.handleTalonClick}
@@ -489,7 +493,8 @@ class GamePage extends Component {
             gameOver={this.state.currentGame.gameOver}
             handleReserveClick={this.handleReserveClick}
           />
-        }
+        })}
+
         {this.state.currentGame.gameOver === 'win'  || this.state.currentGame.gameOver === 'lose' ?
           <WinModal gameOver={this.state.currentGame.gameOver}
           startNewGame={this.startNewGame}/>
