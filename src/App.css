@@ -73,7 +73,7 @@
 
   .talon-pile {
     grid-column: 5/5;
-    border-radius: 10%;
+    border-radius: 10px;
     width: 100%;
     height: auto;
     max-width: 100px;

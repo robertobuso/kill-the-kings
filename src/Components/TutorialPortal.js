@@ -43,7 +43,7 @@ class TutorialPortal extends Component {
       return this.setState( {
         open: true,
         header: 'Reserve Piles',
-        content: 'If a Reserve Pile is free, you may drag the card and place it on that pile.'
+        content: 'If a Reserve Pile is free, you may drag (or double click) the card and place it on that pile.'
       }, () => this.props.showEmphasis('reserves','talon','reserve1', [{id: 'ha', value: 10, suit: 'heart', src: './Images/Cards/ha.jpg'}]) );
       case 4:
       return this.setState( {
@@ -63,6 +63,12 @@ class TutorialPortal extends Component {
         header: 'Four of the Same Suit',
         content: 'Place 4 cards in a row of descending value and same suit under a King. Please note that the Ace is *always* low.'
       }, () => this.props.showEmphasis('kings','spade','heart', [ {id: 'hb', value: 11, suit: 'heart', src: './Images/Cards/hb.jpg'}, {id: 'h9', value: 9, suit: 'heart', src: './Images/Cards/h9.jpg'}, {id: 'h6', value: 6, suit: 'heart', src: './Images/Cards/h6.jpg'}, {id: 'h1', value: 1, suit: 'heart', src: './Images/Cards/h1.jpg'}]) );
+      case 7:
+      return this.setState( {
+        open: true,
+        header: 'Five Alternating Colors',
+        content: 'Place 5 cards in a row of descending value but different color under a King.'
+      }, () => this.props.showEmphasis('kings','heart','diamond', [ {id: 'cc', value: 12, suit: 'club', src: './Images/Cards/cc.jpg'}, {id: 'd9', value: 9, suit: 'diamond', src: './Images/Cards/d9.jpg'}, {id: 's7', value: 7, suit: 'spade', src: './Images/Cards/s7.jpg'}, {id: 'h4', value: 4, suit: 'heart', src: './Images/Cards/h4.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}]) );
       default:
         return
       }
@@ -83,7 +89,7 @@ class TutorialPortal extends Component {
       transition={{ animation: this.chooseAnimation(), duration: 500 }}
       onClose={this.handleClose}>
 
-      <Segment style={{ position: 'fixed', left: '5%', top: '50%', zIndex: 1000 }}>
+      <Segment style={{ position: 'fixed', left: '3%', top: '55%', zIndex: 1000 }}>
       <>
         <Header>{this.state.header}</Header>
         <p>{this.state.content}</p>
@@ -101,7 +107,7 @@ class TutorialPortal extends Component {
           <Button size='tiny' basic color='red' onClick={this.handleGameClick}>{'Play Game'}</Button>
           </Grid.Column>
 
-          {this.state.lesson < 6 ?
+          {this.state.lesson < 7 ?
           <Grid.Column>
           <Button size='tiny' basic color='red' onClick={this.handleNextClick}>Next Rule</Button>
           </Grid.Column>
