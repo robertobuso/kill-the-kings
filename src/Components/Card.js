@@ -37,7 +37,7 @@ class Card extends Component {
 
     return connectDragSource(
         <img
-          className='inserted-card'
+          className={this.props.class}
           src={src}
           alt="Card"
           style={ previewStyle ? previewStyle :  {gridArea: '1 / 1 / 1 / 1',  marginTop: multiplier, opacity }}/>

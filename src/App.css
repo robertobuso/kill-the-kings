@@ -20,8 +20,25 @@
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 10px;
-    row-gap: 25px;
+    row-gap: 35px;
+    width: 100%;
+    height: auto;
   }
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 81px);
+    grid-gap: 10px;
+    row-gap: 35px;
+    width: 100%;
+    height: auto;
+  }
+}
 
   .king-container {
     display: grid;
@@ -50,17 +67,24 @@
     min-height: 75px;
     min-width: 35px;
     height: auto;
-    background: rgba(203, 209, 129, 0.4);
-    border: 2px solid yellow;
-    border-radius: 10px;
   }
 
-  .inserted-card{
+  .reserve-border {
     width: 100%;
     height: auto;
     max-width: 100px;
     max-height: 125px;
     border-radius: 10px;
+    background: rgba(203, 209, 129, 0.4);
+    border: 2px solid yellow;
+  }
+
+  .reserve-inserted-card{
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+    max-height: 125px;
+
 }
 
   .talon-pile {

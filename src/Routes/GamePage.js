@@ -43,7 +43,7 @@ class GamePage extends Component {
         targetClick: {},
         kingKilled: false,
         currentPile: '',
-        idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart', 'stock', 'talon'],
+        idArray: ['reserve1', 'reserve2', 'reserve3','reserve4', 'blank', 'club', 'diamond', 'spade', 'heart'],
         newReserveId: 4,
         fadeIn: false,
         gameOver: '',
@@ -470,13 +470,12 @@ class GamePage extends Component {
             currentPile= {this.state.currentGame.currentPile}
             newGame={this.state.currentGame.newGame}
           />
-          :
-          id === 'stock' ?
+          : null
+        }  )}
           <StockPile
             handleStockClick={this.handleStockClick}
           />
-          :
-          this.state.currentGame.talon.src !== undefined ?
+          {this.state.currentGame.talon.src !== undefined ?
           <TalonPile
             card={this.state.currentGame.talon}
             handleTalonClick={this.handleTalonClick}
@@ -493,7 +492,8 @@ class GamePage extends Component {
             gameOver={this.state.currentGame.gameOver}
             handleReserveClick={this.handleReserveClick}
           />
-        })}
+        }
+
 
         {this.state.currentGame.gameOver === 'win'  || this.state.currentGame.gameOver === 'lose' ?
           <WinModal gameOver={this.state.currentGame.gameOver}

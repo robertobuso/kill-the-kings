@@ -23,8 +23,8 @@ class TalonPile extends Component {
       <div
         className={this.shouldWeFadeIn()}
         onDoubleClick={() => handleReserveClick(card)}>
-
           <Card
+            class='inserted-card'
             card={card}
             src={require(`../Images/Cards/${card.id}.jpg`)}
             handleDrop={ handleDrop }
@@ -32,7 +32,11 @@ class TalonPile extends Component {
             draggable='true'
           />
           <br/><br/>
-      
+          <Grid centered>
+            <Button circular size='mini' basic color='blue' onClick={() => handleReserveClick(card)}>
+            Place
+            </Button>
+          </Grid>
           </div>
 
     )

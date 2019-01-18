@@ -45,6 +45,7 @@ wasKingKilled = () => {
           newCard === cards[0] ? x = 0 : x = x + 35
 
           return <Card
+                    class='inserted-card'
                     src={require(`../Images/Cards/${newCard['id']}.jpg`)}
                     key={newCard.id}
                     multiplier={x}

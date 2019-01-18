@@ -35,9 +35,11 @@ class ReservePile extends Component {
     const { connectDropTarget, id, currentCard, handleDrop, handleTalonClick, talon, showAlert } = this.props
 
     return connectDropTarget (
-      <div className={this.shouldWeFadeIn()} >
+      <div className={this.shouldWeFadeIn()}>
+      <div className='reserve-border'>
           {currentCard ?
                   <Card
+                    class='inserted-card'
                     card={currentCard}
                     src={require(`../Images/Cards/${currentCard.id}.jpg`)}
                     key={currentCard.id}
@@ -49,6 +51,7 @@ class ReservePile extends Component {
                     showAlert={ showAlert }
                    />
             : null}
+            </div>
       </div>
     )
   }
