@@ -62,30 +62,15 @@
   .reserve-pile {
     display: grid;
     width: 100%;
+    height: auto;
     max-width: 100px;
     max-height: 129px;
     min-height: 75px;
     min-width: 35px;
-    height: auto;
-  }
-
-  .reserve-border {
-    width: 100%;
-    height: auto;
-    max-width: 100px;
-    max-height: 125px;
     border-radius: 10px;
     background: rgba(203, 209, 129, 0.4);
     border: 2px solid yellow;
   }
-
-  .reserve-inserted-card{
-    width: 100%;
-    height: auto;
-    max-width: 100px;
-    max-height: 125px;
-
-}
 
   .talon-pile {
     grid-column: 5/5;
@@ -106,27 +91,27 @@
     border-radius: 10px;
 }
 
-.stock-pile{
-  display: grid;
-   width: 100%;
-   height: auto;
-   max-width: 100px;
-   max-height: 138px;
-   min-height: 75px;
-   min-width: 35px;
-}
+  .stock-pile{
+    display: grid;
+     width: 100%;
+     height: auto;
+     max-width: 100px;
+     max-height: 138px;
+     min-height: 75px;
+     min-width: 35px;
+  }
 
-.dimmed::before {
-  content: '';
-  position: fixed;
-  top: 0; right: 0;
-  bottom: 0; left: 0;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.75);
-  display: fixed
-}
+  .dimmed::before {
+    content: '';
+    position: fixed;
+    top: 0; right: 0;
+    bottom: 0; left: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.75);
+    display: fixed
+  }
 
-.emphasis {
-  position: relative;
-  z-index: 2;
-}
+  .emphasis {
+    position: relative;
+    z-index: 2;
+  }

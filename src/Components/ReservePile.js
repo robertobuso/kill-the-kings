@@ -36,7 +36,6 @@ class ReservePile extends Component {
 
     return connectDropTarget (
       <div className={this.shouldWeFadeIn()}>
-      <div className='reserve-border'>
           {currentCard ?
                   <Card
                     class='inserted-card'
@@ -51,7 +50,6 @@ class ReservePile extends Component {
                     showAlert={ showAlert }
                    />
             : null}
-            </div>
       </div>
     )
   }
