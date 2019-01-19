@@ -29,6 +29,12 @@ handleClose = () => this.setState({ open: false }, () => this.props.clearAlert()
   }
 
   leftMargin = () => {
+    if (window.screen.width <= 415 && (this.props.alertKind ==='talon' || this.props.alertKind === 'cardIsHigher'|| this.props.alertKind === 'sameColorDifferentSuit')) {
+      return '5%'
+    } else if (window.screen.width <= 415) {
+      return '25%'
+    }
+
     switch (this.props.alertKind) {
       case 'talon':
         return '35%';
