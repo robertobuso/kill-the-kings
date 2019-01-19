@@ -9,11 +9,19 @@ class WinModal extends Component {
     this.props.history.push('/')
   }
 
+  responsiveStyle = () => {
+    if (window.screen.width <= 360) {
+      return { left: '1%', position: 'fixed', top: '40%', zIndex: 1000 }
+    } else {
+      return { left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }
+    }
+  }
+
   render() {
     return                                            <TransitionablePortal
         open={true}
         transition={{ animation: 'zoom', duration: 500 }}>
-      <Segment style={{ left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }}>
+      <Segment style={this.responsiveStyle()}>
       {this.props.gameOver === 'lose' ?
         <>
         <Header>The Kings Survived Your Attack</Header>
