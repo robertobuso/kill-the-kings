@@ -10,7 +10,7 @@ class WinModal extends Component {
   }
 
   responsiveStyle = () => {
-    if (window.screen.width <= 360) {
+    if (window.screen.width <= 415) {
       return { left: '1%', position: 'fixed', top: '40%', zIndex: 1000 }
     } else {
       return { left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }
