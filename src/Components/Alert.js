@@ -29,6 +29,7 @@ handleClose = () => this.setState({ open: false }, () => this.props.clearAlert()
   }
 
   leftMargin = () => {
+    //Check if it's mobile
     if (window.screen.width <= 415 && (this.props.alertKind ==='talon' || this.props.alertKind === 'cardIsHigher'|| this.props.alertKind === 'sameColorDifferentSuit')) {
       return '5%'
     } else if (window.screen.width <= 415) {

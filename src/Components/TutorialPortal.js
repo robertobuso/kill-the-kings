@@ -21,6 +21,15 @@ class TutorialPortal extends Component {
     this.setState({ open: false, lesson: this.state.lesson + 1 }, () => setTimeout( ()=> this.changeEmphasis(this.state.lesson), 500) )
   }
 
+  handleTutorialClick = () => {
+    this.setState ( {
+      header: 'Kill the Kings!',
+      content: 'Your goal is to kill all four kings by placing specific combinations of cards under them.',
+      lesson: 0,
+      open: true
+    })
+  }
+
   handleClose = () => {
     this.setState({ open: false, lesson: this.state.lesson + 1 }, ()=> this.changeEmphasis(this.state.lesson) )
   }
@@ -69,6 +78,18 @@ class TutorialPortal extends Component {
         header: 'Five Alternating Colors',
         content: 'Place 5 cards in a row of descending value but different color under a King.'
       }, () => this.props.showEmphasis('kings','heart','diamond', [ {id: 'cc', value: 12, suit: 'club', src: './Images/Cards/cc.jpg'}, {id: 'd9', value: 9, suit: 'diamond', src: './Images/Cards/d9.jpg'}, {id: 's7', value: 7, suit: 'spade', src: './Images/Cards/s7.jpg'}, {id: 'h4', value: 4, suit: 'heart', src: './Images/Cards/h4.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}]) );
+      case 8:
+      return this.setState( {
+        open: true,
+        header: 'A Card Under a King',
+        content: 'Once you place a card on a King Pile, it cannot be moved again.'
+      }, () => this.props.showEmphasis('kings','heart','diamond', []) );
+      case 9:
+      return this.setState( {
+        open: true,
+        header: 'Changing the Streak',
+        content: 'You can change your streak at any time. For example, start a four of the same suit after two of a kind.'
+      }, () => this.props.showEmphasis('kings','diamond','spade', [ {id: 'd5', value: 5, suit: 'diamond', src: './Images/Cards/d5.jpg'}, {id: 'c5', value: 5, suit: 'club', src: './Images/Cards/c5.jpg'}, {id: 'c4', value: 4, suit: 'club', src: './Images/Cards/c4.jpg'}, {id: 'c3', value: 3, suit: 'club', src: './Images/Cards/ce.jpg'}]) );
       default:
         return
       }
@@ -107,9 +128,15 @@ class TutorialPortal extends Component {
           <Button size='tiny' basic color='red' onClick={this.handleGameClick}>{'Play Game'}</Button>
           </Grid.Column>
 
-          {this.state.lesson < 7 ?
+          {this.state.lesson < 9 ?
           <Grid.Column>
           <Button size='tiny' basic color='red' onClick={this.handleNextClick}>Next Rule</Button>
+          </Grid.Column>
+          : null }
+
+          {this.state.lesson === 9 ?
+          <Grid.Column>
+          <Button size='tiny' basic color='red' onClick={this.handleTutorialClick}>{'See Tutorial Again'}</Button>
           </Grid.Column>
           : null }
 
