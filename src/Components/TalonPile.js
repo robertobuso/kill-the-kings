@@ -18,8 +18,7 @@ class TalonPile extends Component {
 
   render() {
     const { card, handleDrop, handleTalonClick, handleReserveClick } = this.props;
-    console.log('TalonPile Props: ', this.props)
-
+    
     return (
       <div
         className={this.shouldWeFadeIn()}

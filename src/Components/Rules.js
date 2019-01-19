@@ -12,13 +12,22 @@ class Rules extends Component {
     this.props.history.push('/')
   }
 
+  responsiveStyle = () => {
+    if (window.screen.width <= 360) {
+      return { left: '1%', position: 'fixed', top: '40%', zIndex: 1000 }
+    } else {
+      return { left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }
+    }
+  }
+
   render() {
-    return (
+    console.log(window.screen.height, window.screen.width);
+        return (
     <TransitionablePortal
         open={true}
         onClose={() => this.props.handleClose(false)}
         transition={{ animation: 'slide up', duration: 500 }}>
-      <Segment style={{ left: '33%', position: 'fixed', top: '40%', zIndex: 1000 }}>
+      <Segment  style={this.responsiveStyle()}>
         <Header textAlign='center'>HOW TO KILL A KING</Header>
         <p>Place 3 cards in a row of the same number.</p>
         <p>Place 4 cards in a row of descending value and same suit.</p>
