@@ -9,6 +9,7 @@ import { Route, Switch } from 'react-router-dom';
 import MainMenu from './Routes/MainMenu.js'
 import GamePage from './Routes/GamePage.js'
 import Tutorial from './Routes/Tutorial.js'
+import Achievements from './Routes/Achievements.js'
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
         <Route path='/' exact component={ MainMenu } />
         <Route path='/game' exact component={ GamePage } />
         <Route path='/tutorial' exact component ={ Tutorial } />
+        <Route path='/achievements' exact component ={ Achievements } />
       </Switch>
       </div>
 

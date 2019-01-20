@@ -14,7 +14,7 @@ class MainMenu extends Component {
   }
 
   handleAchievementsClick = () => {
-    alert('Awesome Achievements Page Coming Soon!')
+    this.props.history.push('/achievements')
   }
 
   render() {
