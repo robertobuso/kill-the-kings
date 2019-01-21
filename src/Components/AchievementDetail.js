@@ -13,10 +13,8 @@ class AchievementDetail extends Component {
 
   render() {
     return (
-      <Container
-        style={ {width:'100%',
-        height:'55%'} }
-        className='animated' >
+      <Container style={ {width:'100%',
+        height:'55%'} } >
           <Image centered src={ require('../Images/OtherImages/achievements.png') } alt='Achievements'/>
           <br/>
           <Button floated='right' size='mini' basic color='red' onClick={this.handleMainMenuClick}>
@@ -26,11 +24,11 @@ class AchievementDetail extends Component {
           onClick={this.handleGameClick}>
             {'Play Game'}
           </Button>
-          <Container style={{backgroundColor: 'rgb(0, 66, 51)', width:'50%', marginTop:'20px', borderRadius:'10%'}}>
+          <Container style={{backgroundColor: 'rgb(	173, 255, 47)', width:'50%', marginTop:'20px', borderRadius:'10%'}}>
           <Image centered size='small' src={require('../Images/OtherImages/killthekings_header.png')} />
-          <Header textAlign='center' style={{color: 'yellow'}}>{this.props.item.title}</Header>
-          <Header textAlign='center' style={{color: 'white'}}>{this.props.item.description}</Header>
-          <Header textAlign='center' style={{color: 'white'}}>{this.props.item.id}</Header>
+          <Header textAlign='center' style={{color: 'black'}}>{this.props.item.title}</Header>
+          <Header textAlign='center' style={{color: 'red'}}>{this.props.item.description}</Header>
+          <Header textAlign='center' style={{color: 'red'}}>{this.props.item.id}</Header>
         </Container>
     </Container>
     )

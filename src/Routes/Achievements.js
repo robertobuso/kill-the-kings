@@ -9,6 +9,10 @@ class Achievements extends Component {
       {id: 0, title: 'Games Won', description: ''}
   }
 
+  componentDidMount() {
+    alert('Full Achievements Coming Soon! Heres a peek at the page.')
+  }
+
   handleMenuClick = (item) => {
     this.setState( {
       item: item})
