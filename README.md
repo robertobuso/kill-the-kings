@@ -2,4 +2,4 @@
 
 http://bit.ly/2SXfHZa
 
-Disclaimer: still a work in progress
+Still a work in progress, but please give it a try and tell us what you think!
