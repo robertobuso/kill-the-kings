@@ -25,8 +25,10 @@ class App extends Component {
 
     updateGamesWon = (data) => {
       this.setState( {
-        gamesPlayed: data
-      }, () => console.log('Games Played in App: ', this.state.gamesPlayed) )
+        gamesPlayed: this.state.gamesPlayed + 1
+      }, () => localStorage.setItem('gamesPlayed', parseInt(this.state.gamesPlayed)) )
+
+
     }
 
     renderGamePage = () => {
