@@ -18,7 +18,8 @@ class MainMenu extends Component {
   }
 
   render() {
-    return                                          <div className='main-menu-background animated fadeIn slower'>
+    return (
+      <div className='main-menu-background animated fadeIn slower'>
       <Container textAlign='center'>
         <br/><br/>
         <Image
@@ -61,6 +62,7 @@ class MainMenu extends Component {
         <Image src={ require('../Images/OtherImages/four_kings_one.jpg')} />
       </Container>
     </div>
+    )
   }
 }
 

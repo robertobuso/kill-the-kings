@@ -12,12 +12,36 @@ import Tutorial from './Routes/Tutorial.js'
 import Achievements from './Routes/Achievements.js'
 
 class App extends Component {
+
+  constructor() {
+    super()
+
+    this.state = {
+      gamesWon: 0,
+      gamesWonInARow: 0,
+      gamesPlayed: 0
+    }
+  }
+
+    updateGamesWon = (data) => {
+      this.setState( {
+        gamesPlayed: data
+      }, () => console.log('Games Played in App: ', this.state.gamesPlayed) )
+    }
+
+    renderGamePage = () => {
+      return (
+      <GamePage
+        updateGamesWon={this.updateGamesWon}
+      />
+    )
+    }
   render() {
     return (
       <div>
       <Switch>
         <Route path='/' exact component={ MainMenu } />
-        <Route path='/game' exact component={ GamePage } />
+        <Route path='/game' exact render={this.renderGamePage} />
         <Route path='/tutorial' exact component ={ Tutorial } />
         <Route path='/achievements' exact component ={ Achievements } />
       </Switch>

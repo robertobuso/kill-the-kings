@@ -53,8 +53,9 @@ class GamePage extends Component {
         alertKind: '',
         showRules: false
       },
-      history: {
-        gamesPlayed: 0
+      stats: {
+        gamesPlayed: 0,
+        currentGamesWonInARow: 0
       }
     }
   }
@@ -380,10 +381,10 @@ class GamePage extends Component {
         alertKind: '',
         showRules: false
       },
-      history: {
-        gamesPlayed: this.state.history.gamesPlayed + 1
+      stats: {
+        gamesPlayed: this.state.stats.gamesPlayed + 1
       }
-    })
+    }, () => this.props.updateGamesWon(this.state.stats.gamesPlayed))
   }
 
   isItANewGame = () => {
@@ -495,7 +496,6 @@ disableScroll.on()
             handleReserveClick={this.handleReserveClick}
           />
         }
-
 
         {this.state.currentGame.gameOver === 'win'  || this.state.currentGame.gameOver === 'lose' ?
           <WinModal gameOver={this.state.currentGame.gameOver}
