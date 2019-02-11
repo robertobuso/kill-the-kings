@@ -17,18 +17,16 @@ class App extends Component {
     super()
 
     this.state = {
-      gamesWon: 0,
+      gamesWon: localStorage.hasOwnProperty('gamesWon') ? parseInt(localStorage.getItem('gamesWon')) : 0,
       gamesWonInARow: 0,
-      gamesPlayed: 0
+      gamesPlayed: localStorage.hasOwnProperty('gamesPlayed') ? parseInt(localStorage.getItem('gamesPlayed')) : 0
     }
   }
 
-    updateGamesWon = (data) => {
+    updateGamesWon = (key) => {
       this.setState( {
-        gamesPlayed: this.state.gamesPlayed + 1
-      }, () => localStorage.setItem('gamesPlayed', parseInt(this.state.gamesPlayed)) )
-
-
+        [key]: this.state[key] + 1
+      }, () => localStorage.setItem(key, parseInt(this.state[key])) )
     }
 
     renderGamePage = () => {

@@ -27,7 +27,7 @@ class GamePage extends Component {
     this.state = {
       currentGame: {
         inProgress: false,
-        stock: shuffle(originalDeck),
+        stock:[ {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}],
         talon: {},
         club: [kings[0]],
         diamond: [kings[1]],
@@ -55,6 +55,7 @@ class GamePage extends Component {
       },
       stats: {
         gamesPlayed: 0,
+        gamesWon: 0,
         currentGamesWonInARow: 0
       }
     }
@@ -335,8 +336,11 @@ class GamePage extends Component {
       currentGame:
         { ...this.state.currentGame,
           gameOver: 'win'
-        }
-      }), 2000 )
+        },
+      stats:
+        { ...this.state.stats,
+          gamesWon: this.state.stats.gamesWon + 1}
+      }, () => this.props.updateGamesWon('gamesWon')), 2000 )
   }
 
   changeKingIntoReservePile = (newIdArr, newId, currentPile) => {
@@ -384,7 +388,7 @@ class GamePage extends Component {
       stats: {
         gamesPlayed: this.state.stats.gamesPlayed + 1
       }
-    }, () => this.props.updateGamesWon(this.state.stats.gamesPlayed))
+    }, () => this.props.updateGamesWon('gamesPlayed'))
   }
 
   isItANewGame = () => {
