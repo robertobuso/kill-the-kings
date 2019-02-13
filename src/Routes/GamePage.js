@@ -54,9 +54,14 @@ class GamePage extends Component {
         showRules: false
       },
       stats: {
-        gamesPlayed: 0,
         gamesWon: 0,
-        currentGamesWonInARow: 0
+        gamesWonInARow: 0,
+        kingsKilled3InARow: 0,
+        kingsKilled4InARow: 0,
+        kingsKilled5InARow: 0,
+        totalKingsKilled: 0,
+        leastCardsUsedToKillKing: 52,
+        reserveSpotsUsedBeforeWin: 0
       }
     }
   }
@@ -339,8 +344,9 @@ class GamePage extends Component {
         },
       stats:
         { ...this.state.stats,
-          gamesWon: this.state.stats.gamesWon + 1}
-      }, () => this.props.updateGamesWon('gamesWon')), 2000 )
+          gamesWon: this.state.stats.gamesWon + 1,
+          gamesWonInARow: this.state.stats.gamesWonInARow + 1}
+      }, () => this.props.updateGamesWon(this.state.stats)), 2000 )
   }
 
   changeKingIntoReservePile = (newIdArr, newId, currentPile) => {
@@ -356,6 +362,7 @@ class GamePage extends Component {
   }
 
   startNewGame = () => {
+    console.log('In Start New Game')
     this.setState({
       currentGame: {
         inProgress: false,
@@ -386,11 +393,18 @@ class GamePage extends Component {
         showRules: false
       },
       stats: {
-        gamesPlayed: this.state.stats.gamesPlayed + 1
+        ...this.state.stats,
+        kingsKilled3InARow: 0,
+        kingsKilled4InARow: 0,
+        kingsKilled5InARow: 0,
+        totalKingsKilled: 0,
+        leastCardsUsedToKillKing: 52,
+        reserveSpotsUsedBeforeWin: 0
       }
-    }, () => this.props.updateGamesWon('gamesPlayed'))
   }
+)}
 
+  //Checks new talon card to see if it's a new game or if player lost
   isItANewGame = () => {
     //If it's a new game, make it a current one
     if (this.state.currentGame.newGame === true) {
@@ -404,13 +418,33 @@ class GamePage extends Component {
     }
     //Check if the game is lost
     if (didYouLose(this.state.currentGame)) {
-      setTimeout(()=> this.setState( {
-        currentGame:
-          { ...this.state.currentGame,
-            gameOver: 'lose'
-          }
-      } ), 1000)
+      this.gameIsLost()
     }
+  }
+
+  gameIsLost = (reason) => {
+
+    if(!reason){
+    setTimeout(()=> this.setState( {
+      currentGame:
+        { ...this.state.currentGame,
+          gameOver: 'lose'
+        },
+        stats:
+        { ...this.state.stats,
+          gamesWonInARow: 0
+        }
+      }, () => this.props.updateGamesWon(this.state.stats)
+    ), 1000)
+   }
+     else {
+       this.setState( {
+           stats:
+           { ...this.state.stats,
+             gamesWonInARow: 0
+           }
+         }, () => this.props.updateGamesWon(this.state.stats), this.startNewGame() )
+     }
   }
 
   clearAlert = () => {
@@ -464,7 +498,7 @@ disableScroll.on()
           />
           :
           id === 'blank' ?
-          <AppNav key={id} id={id} handleGameClick={this.startNewGame}
+          <AppNav key={id} id={id} handleGameClick={() => this.gameIsLost('button')}
           handleRulesClick={this.showRules}
           gameOver={this.state.currentGame.gameOver} /> :
           id !== 'stock' && id !== 'talon' ?

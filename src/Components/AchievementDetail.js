@@ -35,7 +35,7 @@ class AchievementDetail extends Component {
           <Image centered size='small' src={require('../Images/OtherImages/killthekings_header.png')} />
           <Header textAlign='center' style={{color: 'black'}}>{this.props.item.title}</Header>
           <Header textAlign='center' style={{color: 'red'}}>{this.props.item.description}</Header>
-          <Header textAlign='center' style={{color: 'red'}}>{this.props.item.id}</Header>
+          <Header textAlign='center' style={{color: 'red'}}>{this.props.stats.winPercentage}</Header>
         </Container>
         </Grid.Column>
         </Grid>

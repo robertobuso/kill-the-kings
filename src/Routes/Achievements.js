@@ -20,7 +20,8 @@ class Achievements extends Component {
         <Container style={ {width:'100vh',
       height:'100vh'} }>
           <AchievementDetail
-            item={this.state.item}/>
+            item={this.state.item}
+            stats={this.props.stats}/>
           <AchievementMenu
             handleMenuClick={this.handleMenuClick}/>
        </Container>
