@@ -31,17 +31,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.hydrateStateWithLocalStorage()
+    this.setState(  JSON.parse(localStorage.getItem('state')))
   }
 
   hydrateStateWithLocalStorage() {
     // for all items in state
     for (let key in this.state) {
       // if the key exists in localStorage
+      
       if (localStorage.hasOwnProperty(key)) {
         // get the key's value from localStorage
         let value = localStorage.getItem(key);
-
         // parse the localStorage string and setState
         try {
           value = JSON.parse(value);
@@ -65,18 +65,7 @@ class App extends Component {
         totalKingsKilled: stats.totalKingsKilled,
         leastCardsUsedToKillKing: stats.leastCardsUsedToKillKing < 52 ? stats.leastCardsUsedToKillKing : this.state.leastCardsUsedToKillKing,
         reserveSpotsUsedBeforeWin: stats.reserveSpotsUsedBeforeWin
-      }, () => console.log(this.state))
-
-      // {
-      //   gamesWon: 0,
-      //   gamesWonInARow: 0,
-      //   kingsKilled3InARow: 0,
-      //   kingsKilled4InARow: 0,
-      //   kingsKilled5InARow: 0,
-      //   totalKingsKilled: 0,
-      //   leastCardsUsedToKillKing: 52,
-      //   reserveSpotsUsedBeforeWin: 0
-      // }
+      }, () => localStorage.setItem("state", JSON.stringify(this.state)))
 
       // key === 'gamesWon' ?
       // this.setState( {

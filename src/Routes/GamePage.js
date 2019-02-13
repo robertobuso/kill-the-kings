@@ -423,7 +423,6 @@ class GamePage extends Component {
   }
 
   gameIsLost = (reason) => {
-
     if(!reason){
     setTimeout(()=> this.setState( {
       currentGame:
@@ -434,16 +433,15 @@ class GamePage extends Component {
         { ...this.state.stats,
           gamesWonInARow: 0
         }
-      }, () => this.props.updateGamesWon(this.state.stats)
-    ), 1000)
-   }
+    }, () => this.props.updateGamesWon(this.state.stats)
+    ), 1000) }
      else {
        this.setState( {
-           stats:
-           { ...this.state.stats,
-             gamesWonInARow: 0
-           }
-         }, () => this.props.updateGamesWon(this.state.stats), this.startNewGame() )
+         stats:
+         { ...this.state.stats,
+           gamesWonInARow: 0
+         }
+       }, () => this.props.updateGamesWon(this.state.stats), this.startNewGame() )
      }
   }
 
