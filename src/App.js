@@ -17,7 +17,11 @@ class App extends Component {
     super()
     this.state = {
         gamesWon: 0,
+        gamesPlayed: 0,
         winPercentage: '0%',
+        currentKingsKilled3InARow: 0,
+        currentKingsKilled4InARow: 0,
+        currentKingsKilled5InARow: 0,
         kingsKilled3InARow: 0,
         kingsKilled4InARow: 0,
         kingsKilled5InARow: 0,
@@ -30,20 +34,20 @@ class App extends Component {
         totalKingsKilled: 0,
         maximumCardsToKillKing: 0,
         fewestReservesToWin: 0,
-        renegade: false,
-        revolutionary: false,
-        threvolution: false,
-        sevenUp: false,
-        bastilleMyHeart: false,
-        tripleNinja: false,
-        suitedUp: false,
-        rainbowRebel: false,
-        cleanKill: false,
-        patience: false,
-        showOfForce: false,
-        farFarBetter:false,
-        rabbleRouse: false,
-        voiceOfThePeople: false
+        renegade: 'Not Achieved',
+        revolutionary: 'Not Achieved',
+        threvolution: 'Not Achieved',
+        sevenUp: 'Not Achieved',
+        bastilleMyHeart: 'Not Achieved',
+        tripleNinja: 'Not Achieved',
+        suitedUp: 'Not Achieved',
+        rainbowRebel: 'Not Achieved',
+        cleanKill: 'Not Achieved',
+        patience: 'Not Achieved',
+        showOfForce: 'Not Achieved',
+        farFarBetter:'Not Achieved',
+        rabbleRouse: 'Not Achieved',
+        voiceOfThePeople: 'Not Achieved'
     }
   }
 
@@ -61,8 +65,11 @@ class App extends Component {
         kingsKilled4InARow: this.state.kingsKilled4InARow + stats.kingsKilled4InARow,
         kingsKilled5InARow: this.state.kingsKilled5InARow + stats.kingsKilled5InARow,
         totalKingsKilled: this.state.totalKingsKilled + stats.totalKingsKilled,
-        leastCardsUsedToKillKing: stats.leastCardsUsedToKillKing < 52 ? stats.leastCardsUsedToKillKing : this.state.leastCardsUsedToKillKing,
-        reserveSpotsUsedBeforeWin: stats.reserveSpotsUsedBeforeWin
+        maximumCardsToKillKing: stats.maximumCardsToKillKing > this.state.maximumCardsToKillKing ? stats.maximumCardsToKillKing : this.state.maximumCardsToKillKing,
+        reserveSpotsUsedBeforeWin: stats.reserveSpotsUsedBeforeWin,
+        currentKingsKilled3InARow: stats.kingsKilled3InARow,
+        currentKingsKilled4InARow: stats.kingsKilled4InARow,
+        currentKingsKilled5InARow: stats.kingsKilled5InARow,
       }, () => this.updatePercentages())
     }
 
@@ -72,7 +79,17 @@ class App extends Component {
         threeInARowPercentage: this.state.kingsKilled3InARow !== '0%' ? parseInt((parseInt(this.state.kingsKilled3InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : 0,
         fourInARowPercentage: this.state.kingsKilled3InARow !== '0%' ? parseInt((parseInt(this.state.kingsKilled4InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : 0,
         fiveInARowPercentage: this.state.kingsKilled3InARow !== '0%' ? parseInt((parseInt(this.state.kingsKilled5InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : 0,
-        averageKingsKilled: this.state.totalKingsKilled !== 0 ? (this.state.averageKingsKilled / this.state.gamesPlayed) * 100 : 0
+        averageKingsKilled: this.state.totalKingsKilled !== 0 ? (this.state.totalKingsKilled / this.state.gamesPlayed) : 0,
+        renegade: this.state.gamesWon > 0 ? 'Achieved' : 'Not Achieved',
+        revolutionary: this.state.gamesWon >= 5 ? 'Achieved' : 'Not Achieved',
+        threvolution: this.state.totalWinStreak >= 3 ? 'Achieved' : 'Not Achieved',
+        sevenUp: this.state.totalWinStreak >= 7 ? 'Achieved' : 'Not Achieved',
+        bastilleMyHeart: this.state.gamesWon >= 14 ? 'Achieved' : 'Not Achieved',
+        tripleNinja: this.state.currentKingsKilled3InARow === 4 ? 'Achieved' : 'Not Achieved',
+        suitedUp: this.state.currentKingsKilled4InARow === 4 ? 'Achieved' : 'Not Achieved',
+        rainbowRebel: this.state.currentKingsKilled5InARow === 4 ? 'Achieved' : 'Not Achieved',
+        patience: this.state.maximumCardsToKillKing >= 14 ?
+        'Achieved' : 'Not Achieved'
       }, () => localStorage.setItem("state", JSON.stringify(this.state)) )
     }
 

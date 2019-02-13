@@ -60,7 +60,7 @@ class GamePage extends Component {
         kingsKilled4InARow: 0,
         kingsKilled5InARow: 0,
         totalKingsKilled: 0,
-        leastCardsUsedToKillKing: 52,
+        maximumCardsToKillKing: 0,
         reserveSpotsUsedBeforeWin: 0
       }
     }
@@ -280,7 +280,7 @@ class GamePage extends Component {
   checkKillKing = (category) => {
     const currentPile = this.state.currentGame[category[0]['suit']]
     const pileLength = currentPile.length
-    const killCards = pileLength - 1 < this.state.stats.leastCardsUsedToKillKing ? pileLength - 1 : this.state.stats.leastCardsUsedToKillKing
+    const killCards = pileLength - 1 > this.state.stats.maximumCardsToKillKing ? pileLength - 1 : this.state.stats.maximumCardsToKillKing
 
     if (pileLength < 4 ) {
       return
@@ -288,21 +288,21 @@ class GamePage extends Component {
         if (isItThreeInARow(currentPile.slice(-3))) {
           this.setState({
             stats: {...this.state.stats,
-                    leastCardsUsedToKillKing: killCards,
+                    maximumCardsToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled3InARow: this.state.stats.kingsKilled3InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
         } else if (isItFourInARow(currentPile.slice(-4))) {
           this.setState({
             stats: {...this.state.stats,
-                    leastCardsUsedToKillKing: killCards,
+                    maximumCardsToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled4InARow: this.state.stats.kingsKilled4InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
         } else if (isItFiveInARow(currentPile.slice(-5))) {
           this.setState({
             stats: {...this.state.stats,
-                    leastCardsUsedToKillKing: killCards,
+                    maximumCardsToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled5InARow: this.state.stats.kingsKilled5InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
@@ -312,14 +312,14 @@ class GamePage extends Component {
         if (isItThreeInARow(currentPile.slice(-3))) {
           this.setState({
             stats: {...this.state.stats,
-                    leastCardsUsedToKillKing: killCards,
+                    maximumCardsToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled3InARow: this.state.stats.kingsKilled3InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
         } else if (isItFourInARow(currentPile.slice(-4))) {
           this.setState({
             stats: {...this.state.stats,
-                    leastCardsUsedToKillKing: killCards,
+                    maximumCardsToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled4InARow: this.state.stats.kingsKilled4InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
@@ -328,7 +328,7 @@ class GamePage extends Component {
         if (isItThreeInARow(currentPile.slice(-3))) {
           this.setState({
             stats: {...this.state.stats,
-                    leastCardsUsedToKillKing: killCards,
+                    maximumCardsToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled3InARow: this.state.stats.kingsKilled3InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
@@ -397,7 +397,7 @@ class GamePage extends Component {
     this.setState({
       currentGame: {
         inProgress: false,
-        stock: shuffle(originalDeck),
+        stock: [ {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}],
         talon: {},
         club: [kings[0]],
         diamond: [kings[1]],
@@ -429,7 +429,7 @@ class GamePage extends Component {
         kingsKilled4InARow: 0,
         kingsKilled5InARow: 0,
         totalKingsKilled: 0,
-        leastCardsUsedToKillKing: 52,
+        maximumCardsToKillKing: 0,
         reserveSpotsUsedBeforeWin: 0,
         gamesWon: 0
       }
