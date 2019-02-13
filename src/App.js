@@ -34,48 +34,19 @@ class App extends Component {
     this.setState(  JSON.parse(localStorage.getItem('state')))
   }
 
-  hydrateStateWithLocalStorage() {
-    // for all items in state
-    for (let key in this.state) {
-      // if the key exists in localStorage
-      
-      if (localStorage.hasOwnProperty(key)) {
-        // get the key's value from localStorage
-        let value = localStorage.getItem(key);
-        // parse the localStorage string and setState
-        try {
-          value = JSON.parse(value);
-          this.setState({ [key]: value });
-        } catch (e) {
-          // handle empty string
-          this.setState({ [key]: value });
-        }
-      }
-    }
-  }
-
     updateGamesWon = (stats) => {
       this.setState({
         gamesPlayed: this.state.gamesPlayed + 1,
         gamesWon: stats.gamesWon,
         gamesWonInARow: stats.gamesWon > this.state.gamesWonInARow ? stats.gamesWon : this.state.gamesWonInARow,
-        kingsKilled3InARow: stats.kingsKilled3InARow,
-        kingsKilled4InARow: stats.kingsKilled4InARow,
-        kingsKilled5InARow: stats.kingsKilled5InARow,
-        totalKingsKilled: stats.totalKingsKilled,
+        kingsKilled3InARow: this.state.kingsKilled3InARow + stats.kingsKilled3InARow,
+        kingsKilled4InARow: this.state.kingsKilled4InARow + stats.kingsKilled4InARow,
+        kingsKilled5InARow: this.state.kingsKilled5InARow + stats.kingsKilled5InARow,
+        totalKingsKilled: this.state.totalKingsKilled + stats.totalKingsKilled,
         leastCardsUsedToKillKing: stats.leastCardsUsedToKillKing < 52 ? stats.leastCardsUsedToKillKing : this.state.leastCardsUsedToKillKing,
         reserveSpotsUsedBeforeWin: stats.reserveSpotsUsedBeforeWin
       }, () => localStorage.setItem("state", JSON.stringify(this.state)))
 
-      // key === 'gamesWon' ?
-      // this.setState( {
-      //   [key]: this.state[key] + 1,
-      //   gamesPlayed: this.state.gamesPlayed + 1
-      // }, () => localStorage.setItem(key, parseInt(this.state[key])) )
-      // :
-      // this.setState( {
-      //   [key]: this.state[key] + 1
-      // }, () => localStorage.setItem(key, parseInt(this.state[key])) )
     }
 
     updatePercentage = () => {

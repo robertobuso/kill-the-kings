@@ -285,22 +285,46 @@ class GamePage extends Component {
       return
     } else if (pileLength > 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          this.theKingIsDead(currentPile[0]['suit'])
+          this.setState({
+            stats: {...this.state.stats,
+                    totalKingsKilled: this.state.stats.totalKingsKilled + 1,
+                    kingsKilled3InARow: this.state.stats.kingsKilled3InARow + 1}
+          }, () => this.theKingIsDead(currentPile[0]['suit']))
         } else if (isItFourInARow(currentPile.slice(-4))) {
-          this.theKingIsDead(currentPile[0]['suit'])
+          this.setState({
+            stats: {...this.state.stats,
+                    totalKingsKilled: this.state.stats.totalKingsKilled + 1,
+                    kingsKilled4InARow: this.state.stats.kingsKilled4InARow + 1}
+          }, () => this.theKingIsDead(currentPile[0]['suit']))
         } else if (isItFiveInARow(currentPile.slice(-5))) {
-          this.theKingIsDead(currentPile[0]['suit'])
+          this.setState({
+            stats: {...this.state.stats,
+                    totalKingsKilled: this.state.stats.totalKingsKilled + 1,
+                    kingsKilled5InARow: this.state.stats.kingsKilled5InARow + 1}
+          }, () => this.theKingIsDead(currentPile[0]['suit']))
         }
       }
       else if (pileLength === 5) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          this.theKingIsDead(currentPile[0]['suit'])
+          this.setState({
+            stats: {...this.state.stats,
+                    totalKingsKilled: this.state.stats.totalKingsKilled + 1,
+                    kingsKilled3InARow: this.state.stats.kingsKilled3InARow + 1}
+          }, () => this.theKingIsDead(currentPile[0]['suit']))
         } else if (isItFourInARow(currentPile.slice(-4))) {
-          this.theKingIsDead(currentPile[0]['suit'])
+          this.setState({
+            stats: {...this.state.stats,
+                    totalKingsKilled: this.state.stats.totalKingsKilled + 1,
+                    kingsKilled4InARow: this.state.stats.kingsKilled4InARow + 1}
+          }, () => this.theKingIsDead(currentPile[0]['suit']))
       }
     } else if (pileLength === 4) {
         if (isItThreeInARow(currentPile.slice(-3))) {
-          this.theKingIsDead(currentPile[0]['suit'])
+          this.setState({
+            stats: {...this.state.stats,
+                    totalKingsKilled: this.state.stats.totalKingsKilled + 1,
+                    kingsKilled3InARow: this.state.stats.kingsKilled3InARow + 1}
+          }, () => this.theKingIsDead(currentPile[0]['suit']))
         }
       }
     }
