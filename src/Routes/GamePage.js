@@ -375,7 +375,7 @@ class GamePage extends Component {
         },
       stats:
         { ...this.state.stats,
-          gamesWon: this.state.stats.gamesWon + 1,
+          gamesWon: 1,
           gamesWonInARow: this.state.stats.gamesWonInARow + 1}
       }, () => this.props.updateAchievements(this.state.stats)), 2000 )
   }
@@ -430,7 +430,8 @@ class GamePage extends Component {
         kingsKilled5InARow: 0,
         totalKingsKilled: 0,
         leastCardsUsedToKillKing: 52,
-        reserveSpotsUsedBeforeWin: 0
+        reserveSpotsUsedBeforeWin: 0,
+        gamesWon: 0
       }
   }
 )}
@@ -462,7 +463,8 @@ class GamePage extends Component {
         },
         stats:
         { ...this.state.stats,
-          gamesWonInARow: 0
+          gamesWonInARow: 0,
+          gamesWon: 0
         }
     }, () => this.props.updateAchievements(this.state.stats)
     ), 1000) }
@@ -470,7 +472,8 @@ class GamePage extends Component {
        this.setState( {
          stats:
          { ...this.state.stats,
-           gamesWonInARow: 0
+           gamesWonInARow: 0,
+           gamesWon: 0
          }
        }, () => this.props.updateAchievements(this.state.stats), this.startNewGame() )
      }

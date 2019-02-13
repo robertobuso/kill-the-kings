@@ -15,7 +15,6 @@ class App extends Component {
 
   constructor() {
     super()
-
     this.state = {
       gamesPlayed: 0,
       gamesWon: 0,
@@ -40,7 +39,7 @@ class App extends Component {
     updateAchievements = (stats) => {
       this.setState({
         gamesPlayed: this.state.gamesPlayed + 1,
-        gamesWon: stats.gamesWon,
+        gamesWon: this.state.gamesWon + stats.gamesWon,
         gamesWonInARow: stats.gamesWon > this.state.gamesWonInARow ? stats.gamesWon : this.state.gamesWonInARow,
         kingsKilled3InARow: this.state.kingsKilled3InARow + stats.kingsKilled3InARow,
         kingsKilled4InARow: this.state.kingsKilled4InARow + stats.kingsKilled4InARow,
@@ -53,10 +52,10 @@ class App extends Component {
 
     updatePercentages = () => {
       this.setState({
-        winPercentage: this.state.gamesWon != 0 ? (this.state.gamesWon / this.state.gamesPlayed) * 100 : 0,
-        threeInARowPercentage: this.state.kingsKilled3InARow != 0 ? (this.state.kingsKilled3InARow / this.state.totalKingsKilled) * 100 : 0,
-        fourInARowPercentage: this.state.kingsKilled4InARow != 0 ? (this.state.kingsKilled4InARow / this.state.totalKingsKilled) * 100 : 0,
-        fiveInARowPercentage: this.state.kingsKilled5InARow != 0 ? (this.state.kingsKilled5InARow / this.state.totalKingsKilled) * 100 : 0
+        winPercentage: this.state.gamesWon !== 0 ? (this.state.gamesWon / this.state.gamesPlayed) * 100 : 0,
+        threeInARowPercentage: this.state.kingsKilled3InARow !== 0 ? (this.state.kingsKilled3InARow / this.state.totalKingsKilled) * 100 : 0,
+        fourInARowPercentage: this.state.kingsKilled4InARow !== 0 ? (this.state.kingsKilled4InARow / this.state.totalKingsKilled) * 100 : 0,
+        fiveInARowPercentage: this.state.kingsKilled5InARow !== 0 ? (this.state.kingsKilled5InARow / this.state.totalKingsKilled) * 100 : 0
       }, () => localStorage.setItem("state", JSON.stringify(this.state)) )
     }
 
