@@ -6,7 +6,7 @@ import AchievementMenu from '../Components/AchievementMenu.js'
 
 class Achievements extends Component {
   state = { item:
-      {id: 0, title: 'Games Won', description: ''}
+      {}
   }
 
   handleMenuClick = (item) => {

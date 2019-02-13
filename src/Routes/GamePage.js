@@ -27,7 +27,7 @@ class GamePage extends Component {
     this.state = {
       currentGame: {
         inProgress: false,
-        stock:[ {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}],
+        stock:[ {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}],
         talon: {},
         club: [kings[0]],
         diamond: [kings[1]],
@@ -55,7 +55,7 @@ class GamePage extends Component {
       },
       stats: {
         gamesWon: 0,
-        gamesWonInARow: 0,
+        currentWinStreak: 0,
         kingsKilled3InARow: 0,
         kingsKilled4InARow: 0,
         kingsKilled5InARow: 0,
@@ -376,7 +376,7 @@ class GamePage extends Component {
       stats:
         { ...this.state.stats,
           gamesWon: 1,
-          gamesWonInARow: this.state.stats.gamesWonInARow + 1}
+          currentWinStreak: this.state.stats.currentWinStreak + 1}
       }, () => this.props.updateAchievements(this.state.stats)), 2000 )
   }
 
@@ -463,7 +463,7 @@ class GamePage extends Component {
         },
         stats:
         { ...this.state.stats,
-          gamesWonInARow: 0,
+          currentWinStreak: 0,
           gamesWon: 0
         }
     }, () => this.props.updateAchievements(this.state.stats)
@@ -472,7 +472,7 @@ class GamePage extends Component {
        this.setState( {
          stats:
          { ...this.state.stats,
-           gamesWonInARow: 0,
+           currentWinStreak: 0,
            gamesWon: 0
          }
        }, () => this.props.updateAchievements(this.state.stats), this.startNewGame() )
