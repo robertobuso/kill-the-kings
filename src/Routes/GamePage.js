@@ -280,6 +280,7 @@ class GamePage extends Component {
   checkKillKing = (category) => {
     const currentPile = this.state.currentGame[category[0]['suit']]
     const pileLength = currentPile.length
+    const killCards = pileLength - 1 < this.state.stats.leastCardsUsedToKillKing ? pileLength - 1 : this.state.stats.leastCardsUsedToKillKing
 
     if (pileLength < 4 ) {
       return
@@ -287,18 +288,21 @@ class GamePage extends Component {
         if (isItThreeInARow(currentPile.slice(-3))) {
           this.setState({
             stats: {...this.state.stats,
+                    leastCardsUsedToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled3InARow: this.state.stats.kingsKilled3InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
         } else if (isItFourInARow(currentPile.slice(-4))) {
           this.setState({
             stats: {...this.state.stats,
+                    leastCardsUsedToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled4InARow: this.state.stats.kingsKilled4InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
         } else if (isItFiveInARow(currentPile.slice(-5))) {
           this.setState({
             stats: {...this.state.stats,
+                    leastCardsUsedToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled5InARow: this.state.stats.kingsKilled5InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
@@ -308,12 +312,14 @@ class GamePage extends Component {
         if (isItThreeInARow(currentPile.slice(-3))) {
           this.setState({
             stats: {...this.state.stats,
+                    leastCardsUsedToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled3InARow: this.state.stats.kingsKilled3InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
         } else if (isItFourInARow(currentPile.slice(-4))) {
           this.setState({
             stats: {...this.state.stats,
+                    leastCardsUsedToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled4InARow: this.state.stats.kingsKilled4InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
@@ -322,6 +328,7 @@ class GamePage extends Component {
         if (isItThreeInARow(currentPile.slice(-3))) {
           this.setState({
             stats: {...this.state.stats,
+                    leastCardsUsedToKillKing: killCards,
                     totalKingsKilled: this.state.stats.totalKingsKilled + 1,
                     kingsKilled3InARow: this.state.stats.kingsKilled3InARow + 1}
           }, () => this.theKingIsDead(currentPile[0]['suit']))
@@ -370,7 +377,7 @@ class GamePage extends Component {
         { ...this.state.stats,
           gamesWon: this.state.stats.gamesWon + 1,
           gamesWonInARow: this.state.stats.gamesWonInARow + 1}
-      }, () => this.props.updateGamesWon(this.state.stats)), 2000 )
+      }, () => this.props.updateAchievements(this.state.stats)), 2000 )
   }
 
   changeKingIntoReservePile = (newIdArr, newId, currentPile) => {
@@ -457,7 +464,7 @@ class GamePage extends Component {
         { ...this.state.stats,
           gamesWonInARow: 0
         }
-    }, () => this.props.updateGamesWon(this.state.stats)
+    }, () => this.props.updateAchievements(this.state.stats)
     ), 1000) }
      else {
        this.setState( {
@@ -465,7 +472,7 @@ class GamePage extends Component {
          { ...this.state.stats,
            gamesWonInARow: 0
          }
-       }, () => this.props.updateGamesWon(this.state.stats), this.startNewGame() )
+       }, () => this.props.updateAchievements(this.state.stats), this.startNewGame() )
      }
   }
 

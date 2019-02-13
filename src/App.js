@@ -26,7 +26,10 @@ class App extends Component {
       totalKingsKilled: 0,
       leastCardsUsedToKillKing: 52,
       reserveSpotsUsedBeforeWin: 0,
-      winPercentage: 0
+      winPercentage: 0,
+      threeInARowPercentage: 0,
+      fourInARowPercentage: 0,
+      fiveInARowPercentage: 0
     }
   }
 
@@ -34,7 +37,7 @@ class App extends Component {
     this.setState(  JSON.parse(localStorage.getItem('state')))
   }
 
-    updateGamesWon = (stats) => {
+    updateAchievements = (stats) => {
       this.setState({
         gamesPlayed: this.state.gamesPlayed + 1,
         gamesWon: stats.gamesWon,
@@ -45,21 +48,23 @@ class App extends Component {
         totalKingsKilled: this.state.totalKingsKilled + stats.totalKingsKilled,
         leastCardsUsedToKillKing: stats.leastCardsUsedToKillKing < 52 ? stats.leastCardsUsedToKillKing : this.state.leastCardsUsedToKillKing,
         reserveSpotsUsedBeforeWin: stats.reserveSpotsUsedBeforeWin
-      }, () => localStorage.setItem("state", JSON.stringify(this.state)))
-
+      }, () => this.updatePercentages())
     }
 
-    updatePercentage = () => {
+    updatePercentages = () => {
       this.setState({
-        winPercentage: this.state.gamesWon ? (this.state.gamesWon / this.state.gamesPlayed) * 100 : 0
-      }, () => localStorage.setItem('winPercentage', parseInt(this.state.winPercentage)) )
+        winPercentage: this.state.gamesWon != 0 ? (this.state.gamesWon / this.state.gamesPlayed) * 100 : 0,
+        threeInARowPercentage: this.state.kingsKilled3InARow != 0 ? (this.state.kingsKilled3InARow / this.state.totalKingsKilled) * 100 : 0,
+        fourInARowPercentage: this.state.kingsKilled4InARow != 0 ? (this.state.kingsKilled4InARow / this.state.totalKingsKilled) * 100 : 0,
+        fiveInARowPercentage: this.state.kingsKilled5InARow != 0 ? (this.state.kingsKilled5InARow / this.state.totalKingsKilled) * 100 : 0
+      }, () => localStorage.setItem("state", JSON.stringify(this.state)) )
     }
 
 
     renderGamePage = () => {
       return (
       <GamePage
-        updateGamesWon={this.updateGamesWon}
+        updateAchievements={this.updateAchievements}
       />
     )
     }
