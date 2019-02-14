@@ -93,11 +93,6 @@ class App extends Component {
       }, () => localStorage.setItem("state", JSON.stringify(this.state)) )
     }
 
-    kingsKilledPercentage = () => {
-
-    }
-
-
     renderGamePage = () => {
       return (
       <GamePage

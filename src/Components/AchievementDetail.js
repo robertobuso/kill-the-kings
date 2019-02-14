@@ -11,7 +11,22 @@ class AchievementDetail extends Component {
     this.props.history.push('/')
   }
 
+  achievementNumber = () => {
+    let achievement
+    const specificAchievement = this.props.item.id
+
+    if (localStorage.getItem('state') && this.props.item.id) {
+
+      return achievement = JSON.parse(localStorage.getItem('state')).specificAchievement
+    }
+      else {
+        return achievement = {id: 'gamesWon', title: 'Games Won', description: ''}
+      }
+  }
+
   render() {
+    const achievementId = this.props.item.id
+    
     return (
       <Container style={ {width:'100%',
         height:'55%'} } >
@@ -35,7 +50,7 @@ class AchievementDetail extends Component {
           <Image centered size='small' src={require('../Images/OtherImages/killthekings_header.png')} />
           <Header textAlign='center' style={{color: 'black'}}>{this.props.item.title}</Header>
           <Header textAlign='center' style={{color: 'red'}}>{this.props.item.description}</Header>
-          <Header textAlign='center' style={{color: 'red'}}>{this.props.stats.winPercentage}</Header>
+          <Header textAlign='center' style={{color: 'red'}}>{JSON.parse(localStorage.getItem('state'))[achievementId]}</Header>
         </Container>
         </Grid.Column>
         </Grid>
