@@ -33,7 +33,7 @@ class App extends Component {
         averageKingsKilled: 0,
         totalKingsKilled: 0,
         maximumCardsToKillKing: 0,
-        fewestReservesToWin: 0,
+        fewestReservesToWin: 7,
         renegade: 'Not Achieved',
         revolutionary: 'Not Achieved',
         threvolution: 'Not Achieved',
@@ -70,8 +70,11 @@ class App extends Component {
         currentKingsKilled3InARow: stats.kingsKilled3InARow,
         currentKingsKilled4InARow: stats.kingsKilled4InARow,
         currentKingsKilled5InARow: stats.kingsKilled5InARow,
-        fewestReservesToWin: stats.fewestReservesToWin > this.state.fewestReservesToWin ? stats.fewestReservesToWin : this.state.fewestReservesToWin,
-        showOfForce: (this.state.showOfForce === 'Not Achieved' && stats.reservePilesUsed <= 4) ? 'Achieved' : 'Not Achieved'
+        fewestReservesToWin: (stats.gamesWon === 1 && stats.reserveSpotsUsedBeforeWin.length < this.state.fewestReservesToWin) ? stats.reserveSpotsUsedBeforeWin.length : this.state.fewestReservesToWin,
+        cleanKill: (this.state.cleanKill === 'Achieved' || stats.currentReservePilesUsed.length < 1) ? 'Achieved' : 'Not Achieved',
+        showOfForce: (this.state.gamesWon !== 0 && stats.reserveSpotsUsedBeforeWin.length <= 4) || this.state.showOfForce === 'Achieved' ? 'Achieved' : 'Not Achieved',
+        farFarBetter: (this.state.gamesWon !== 0 && stats.reserveSpotsUsedBeforeWin.length <= 1) || this.state.farFarBetter === 'Achieved' ? 'Achieved' : 'Not Achieved'
+
       }, () => this.updatePercentages())
     }
 
@@ -104,6 +107,7 @@ class App extends Component {
     }
 
     renderAchievements= () => {
+      console.log(this.state.fewestReservesToWin)
       return (
         <Achievements
           stats={this.state}

@@ -19,10 +19,10 @@ export const listOfAchievements= [
   {id: 'tripleNinja', title: 'Triple Ninja', description: 'Killed All 4 Kings with the Same Value'},
   {id: 'suitedUp', title: 'Suited Up', description: 'Killed All 4 Kings with Same Suit'},
   {id: 'rainbowRebel', title: 'Rainbow Rebel', description: 'Killed All 4 Kings with Alternating Colors'},
-  {id: 19, title: 'Clean Kill', description: 'Win Game with No Cards Left in Reserve Spots'},
+  {id: 'cleanKill', title: 'Clean Kill', description: 'Win Game with No Cards Left in Reserve Spots'},
   {id: 'patience', title: 'Patience', description: 'Used 14 or More Cards in the Killing of a King'},
-  {id: 21, title: 'Show of Force', description: 'Killed All 4 Kings Only Using 4 Reserve Spots'},
-  {id: 22, title: 'Far, Far Better', description: 'Only Used 1 Reserve at A Time'},
+  {id: 'showOfForce', title: 'Show of Force', description: 'Killed All 4 Kings Only Using 4 Reserve Spots'},
+  {id: 'farFarBetter', title: 'Far, Far Better', description: 'Only Used 1 Reserve at A Time'},
   {id: 23, title: 'Rabble Rouser', description: 'Followed Standard Games on Twitter'},
   {id: 24, title: 'Voice of the People', description: 'Tweeted A Victory'}
 ]

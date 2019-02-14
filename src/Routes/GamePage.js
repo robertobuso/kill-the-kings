@@ -27,7 +27,7 @@ class GamePage extends Component {
     this.state = {
       currentGame: {
         inProgress: false,
-        stock:shuffle(originalDeck),
+        stock:[ {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}],
         talon: {},
         club: [kings[0]],
         diamond: [kings[1]],
@@ -61,8 +61,8 @@ class GamePage extends Component {
         kingsKilled5InARow: 0,
         totalKingsKilled: 0,
         maximumCardsToKillKing: 0,
-        reserveSpotsUsedBeforeWin: 0,
-        reservePilesUsed: []
+        reserveSpotsUsedBeforeWin: [],
+        currentReservePilesUsed: []
       }
     }
   }
@@ -244,6 +244,9 @@ class GamePage extends Component {
 
   handleKingDropFromReserve = (props) => {
     const category = this.state.currentGame[this.state.currentGame.targetClick]
+
+    const newReserveArray = this.state.stats.currentReservePilesUsed.splice( this.state.stats.currentReservePilesUsed.indexOf(props.id), 1)
+
     if (this.state.currentGame.targetClick.charAt(0) === 'r' ){
       return
     } else if (isNewCardHigher(this.state.currentGame.sourceClick, category[category.length-1])) {
@@ -272,7 +275,11 @@ class GamePage extends Component {
             sourceClick: {},
             targetClick: {},
             [props.id]: []
-          }
+          },
+          stats:
+            {...this.state.stats,
+              countReservePile: newReserveArray
+            }
         }, () => this.checkKillKing(category)
       )
     }
@@ -394,7 +401,6 @@ class GamePage extends Component {
   }
 
   startNewGame = () => {
-    console.log('In Start New Game')
     this.setState({
       currentGame: {
         inProgress: false,
@@ -431,9 +437,9 @@ class GamePage extends Component {
         kingsKilled5InARow: 0,
         totalKingsKilled: 0,
         maximumCardsToKillKing: 0,
-        reserveSpotsUsedBeforeWin: 0,
+        reserveSpotsUsedBeforeWin: [],
         gamesWon: 0,
-        reservePilesUsed: []
+        currentReservePilesUsed: []
       }
   }
 )}
@@ -467,7 +473,7 @@ class GamePage extends Component {
         { ...this.state.stats,
           currentWinStreak: 0,
           gamesWon: 0,
-          reservePilesUsed: []
+          currentReservePilesUsed: []
         }
     }, () => this.props.updateAchievements(this.state.stats)
     ), 1000) }
@@ -477,7 +483,7 @@ class GamePage extends Component {
          { ...this.state.stats,
            currentWinStreak: 0,
            gamesWon: 0,
-           reservePilesUsed: []
+           currentReservePilesUsed: []
          }
        }, () => this.props.updateAchievements(this.state.stats), this.startNewGame() )
      }
@@ -505,12 +511,14 @@ class GamePage extends Component {
   }
 
   countReservePile = (reservePile) => {
-    for (let i = 0; i < this.state.stats.reservePilesUsed.length; i++)
-    {if (this.state.stats.reservePilesUsed[i] === reservePile) { return }}
-
-    this.setState( { stats: {...this.state.stats,
-                    reservePilesUsed: this.state.stats.reservePilesUsed.concat(reservePile)} }, () => console.log('New Reserve Pile Used! ', this.state.stats.reservePilesUsed))
-  }
+          this.setState( {
+                  stats: {
+                      ...this.state.stats,
+                      currentReservePilesUsed: this.state.stats.currentReservePilesUsed.concat(reservePile),
+                      reserveSpotsUsedBeforeWin: [...new Set(this.state.stats.reserveSpotsUsedBeforeWin.concat(reservePile)) ]
+                    }
+                  }, () => console.log(this.state.stats) )
+                }
 
   render() {
 disableScroll.on()
