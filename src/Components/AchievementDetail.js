@@ -43,7 +43,7 @@ class AchievementDetail extends Component {
           <Image centered size='medium' src={require('../Images/OtherImages/achievements.png')} />
           <Header textAlign='center' style={{color: 'black'}}>{this.props.item.title}</Header>
           <Header textAlign='center' style={{color: 'red'}}>{this.props.item.description}</Header>
-          <Header textAlign='center' style={{color: 'red'}}>{JSON.parse(localStorage.getItem('state'))[achievementId]}</Header>
+          <Header textAlign='center' style={{color: 'red'}}>{JSON.parse(localStorage.getItem('state'))? JSON.parse(localStorage.getItem('state'))[achievementId] : 0}</Header>
         </Container>
     </Container>
     )
