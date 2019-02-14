@@ -12,6 +12,7 @@ function collect(connect, monitor) {
 
 const cardTarget = {
   drop(props, monitor) {
+    props.countReservePile(props.id)
     props.setTarget(props)
   }
 };

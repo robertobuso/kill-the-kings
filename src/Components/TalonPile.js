@@ -18,11 +18,12 @@ class TalonPile extends Component {
 
   render() {
     const { card, handleDrop, handleTalonClick, handleReserveClick } = this.props;
-    
+
     return (
       <div
         className={this.shouldWeFadeIn()}
-        onDoubleClick={() => handleReserveClick(card)}>
+        // onDoubleClick={() => handleReserveClick(card)}
+        >
           <Card
             class='inserted-card'
             card={card}

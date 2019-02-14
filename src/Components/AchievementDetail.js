@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Image, Button, Header, Grid } from 'semantic-ui-react'
+import { Container, Image, Button, Header } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 
 class AchievementDetail extends Component {
@@ -9,19 +9,6 @@ class AchievementDetail extends Component {
 
   handleMainMenuClick = () => {
     this.props.history.push('/')
-  }
-
-  achievementNumber = () => {
-    let achievement
-    const specificAchievement = this.props.item.id
-
-    if (localStorage.getItem('state') && this.props.item.id) {
-
-      return achievement = JSON.parse(localStorage.getItem('state')).specificAchievement
-    }
-      else {
-        return achievement = {id: 'gamesWon', title: 'Games Won', description: ''}
-      }
   }
 
   render() {

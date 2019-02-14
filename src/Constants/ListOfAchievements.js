@@ -10,7 +10,7 @@ export const listOfAchievements= [
   {id: 'averageKingsKilled', title: 'Average Kings Killed', description: ''},
   {id: 'totalKingsKilled', title: 'Total Kings Killed', description: ''},
   {id: 'maximumCardsToKillKing', title: 'Maximum Cards Used in the Killing of a King', description: ''},
-  {id: 10, title: 'Fewest Reserve Spots Used in a Win', description: ''},
+  {id: 'fewestReservesToWin', title: 'Fewest Reserve Spots Used in a Win', description: ''},
   {id: 'renegade', title: 'Renegade', description: 'Killed All 4 Kings'},
   {id: 'revolutionary', title: 'Revolutionary', description: 'Won 5 Games'},
   {id: 'threvolution', title: 'Threvolution', description: 'Won 3 Games in a Row'},

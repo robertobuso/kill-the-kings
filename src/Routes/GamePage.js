@@ -61,7 +61,8 @@ class GamePage extends Component {
         kingsKilled5InARow: 0,
         totalKingsKilled: 0,
         maximumCardsToKillKing: 0,
-        reserveSpotsUsedBeforeWin: 0
+        reserveSpotsUsedBeforeWin: 0,
+        reservePilesUsed: []
       }
     }
   }
@@ -215,7 +216,7 @@ class GamePage extends Component {
                     sourceClick: {},
                     targetClick: {}
                   }
-                }
+                }, () => this.countReservePile(pile)
               )
             }
           }
@@ -431,7 +432,8 @@ class GamePage extends Component {
         totalKingsKilled: 0,
         maximumCardsToKillKing: 0,
         reserveSpotsUsedBeforeWin: 0,
-        gamesWon: 0
+        gamesWon: 0,
+        reservePilesUsed: []
       }
   }
 )}
@@ -464,7 +466,8 @@ class GamePage extends Component {
         stats:
         { ...this.state.stats,
           currentWinStreak: 0,
-          gamesWon: 0
+          gamesWon: 0,
+          reservePilesUsed: []
         }
     }, () => this.props.updateAchievements(this.state.stats)
     ), 1000) }
@@ -473,7 +476,8 @@ class GamePage extends Component {
          stats:
          { ...this.state.stats,
            currentWinStreak: 0,
-           gamesWon: 0
+           gamesWon: 0,
+           reservePilesUsed: []
          }
        }, () => this.props.updateAchievements(this.state.stats), this.startNewGame() )
      }
@@ -498,6 +502,14 @@ class GamePage extends Component {
               }
             }
     )
+  }
+
+  countReservePile = (reservePile) => {
+    for (let i = 0; i < this.state.stats.reservePilesUsed.length; i++)
+    {if (this.state.stats.reservePilesUsed[i] === reservePile) { return }}
+
+    this.setState( { stats: {...this.state.stats,
+                    reservePilesUsed: this.state.stats.reservePilesUsed.concat(reservePile)} }, () => console.log('New Reserve Pile Used! ', this.state.stats.reservePilesUsed))
   }
 
   render() {
@@ -527,10 +539,12 @@ disableScroll.on()
             gameOver={this.state.currentGame.gameOver}
             talon={this.state.currentGame.talon}
             showAlert={this.handleReserveDropWithTalonCard}
+            countReservePile={this.countReservePile}
           />
           :
           id === 'blank' ?
-          <AppNav key={id} id={id} handleGameClick={() => this.gameIsLost('button')}
+          <AppNav key={id} id={id}
+          handleGameClick={() => this.gameIsLost('button')}
           handleRulesClick={this.showRules}
           gameOver={this.state.currentGame.gameOver} /> :
           id !== 'stock' && id !== 'talon' ?

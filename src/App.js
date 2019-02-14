@@ -70,15 +70,17 @@ class App extends Component {
         currentKingsKilled3InARow: stats.kingsKilled3InARow,
         currentKingsKilled4InARow: stats.kingsKilled4InARow,
         currentKingsKilled5InARow: stats.kingsKilled5InARow,
+        fewestReservesToWin: stats.fewestReservesToWin > this.state.fewestReservesToWin ? stats.fewestReservesToWin : this.state.fewestReservesToWin,
+        showOfForce: (this.state.showOfForce === 'Not Achieved' && stats.reservePilesUsed <= 4) ? 'Achieved' : 'Not Achieved'
       }, () => this.updatePercentages())
     }
 
     updatePercentages = () => {
       this.setState({
-        winPercentage: this.state.gamesWon !== '0%' ? parseInt((parseInt(this.state.gamesWon) / parseInt(this.state.gamesPlayed)) * 100) + '%' : 0,
-        threeInARowPercentage: this.state.kingsKilled3InARow !== '0%' ? parseInt((parseInt(this.state.kingsKilled3InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : 0,
-        fourInARowPercentage: this.state.kingsKilled3InARow !== '0%' ? parseInt((parseInt(this.state.kingsKilled4InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : 0,
-        fiveInARowPercentage: this.state.kingsKilled3InARow !== '0%' ? parseInt((parseInt(this.state.kingsKilled5InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : 0,
+        winPercentage: this.state.gamesWon !== '0%' ? parseInt((parseInt(this.state.gamesWon) / parseInt(this.state.gamesPlayed)) * 100) + '%' : '0%',
+        threeInARowPercentage: this.state.kingsKilled3InARow !== 0 ? parseInt((parseInt(this.state.kingsKilled3InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : '0%',
+        fourInARowPercentage: this.state.kingsKilled3InARow !== 0 ? parseInt((parseInt(this.state.kingsKilled4InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : '0%',
+        fiveInARowPercentage: this.state.kingsKilled5InARow !== 0 ? parseInt((parseInt(this.state.kingsKilled5InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : '0%',
         averageKingsKilled: this.state.totalKingsKilled !== 0 ? (this.state.totalKingsKilled / this.state.gamesPlayed) : 0,
         renegade: this.state.gamesWon > 0 ? 'Achieved' : 'Not Achieved',
         revolutionary: this.state.gamesWon >= 5 ? 'Achieved' : 'Not Achieved',
@@ -95,18 +97,18 @@ class App extends Component {
 
     renderGamePage = () => {
       return (
-      <GamePage
-        updateAchievements={this.updateAchievements}
-      />
-    )
+        <GamePage
+          updateAchievements={this.updateAchievements}
+        />
+      )
     }
 
     renderAchievements= () => {
       return (
-      <Achievements
-        stats={this.state}
-      />
-    )
+        <Achievements
+          stats={this.state}
+        />
+      )
     }
 
   render() {
