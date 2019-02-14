@@ -26,11 +26,11 @@ class AchievementDetail extends Component {
 
   render() {
     const achievementId = this.props.item.id
-    
+
     return (
-      <Container style={ {width:'100%',
+      <Container style={ {width:'75%',
         height:'55%'} } >
-          <Image centered src={ require('../Images/OtherImages/achievements.png') } alt='Achievements'/>
+          <Image centered src={ require('../Images/OtherImages/killthekings_header.png') } size='medium' alt='Achievements'/>
           <br/>
           <Button floated='right' size='mini' basic color='red' onClick={this.handleGameClick}>
             {'Play Game'}
@@ -39,21 +39,11 @@ class AchievementDetail extends Component {
           onClick={this.handleMainMenuClick}>
             Main Menu
           </Button>
-          <Container>
-          <Grid columns={2}>
-          <Grid.Column>
-            <Image size='small' src={require('../Images/OtherImages/king_face.svg')}
-            style={{marginTop:'20px', borderRadius:'10%'}} />
-          </Grid.Column>
-          <Grid.Column>
-          <Container style={{backgroundColor: 'rgb(	173, 255, 47)', marginTop:'20px', borderRadius:'10%'}}>
-          <Image centered size='small' src={require('../Images/OtherImages/killthekings_header.png')} />
+          <Container style={{borderStyle: 'solid', borderWidth: '2px', borderColor: 'rgb(253, 206, 125)', marginTop:'20px', borderRadius:'10%', height: '65%'}}>
+          <Image centered size='medium' src={require('../Images/OtherImages/achievements.png')} />
           <Header textAlign='center' style={{color: 'black'}}>{this.props.item.title}</Header>
           <Header textAlign='center' style={{color: 'red'}}>{this.props.item.description}</Header>
           <Header textAlign='center' style={{color: 'red'}}>{JSON.parse(localStorage.getItem('state'))[achievementId]}</Header>
-        </Container>
-        </Grid.Column>
-        </Grid>
         </Container>
     </Container>
     )
