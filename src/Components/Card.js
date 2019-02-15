@@ -33,7 +33,7 @@ class Card extends Component {
     const opacity = isDragging ? 0.5 : 1
 
     if (previewStyle !== undefined) { Object.assign(previewStyle, {gridArea: '1 / 1 / 1 / 1',  marginTop: 0, opacity })
-  }
+    }
 
     return connectDragSource(
         <img

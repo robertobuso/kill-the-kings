@@ -11,6 +11,8 @@ import GamePage from './Routes/GamePage.js'
 import Tutorial from './Routes/Tutorial.js'
 import Achievements from './Routes/Achievements.js'
 
+import * as blobUtil from 'blob-util'
+
 class App extends Component {
 
   constructor() {
@@ -52,8 +54,32 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState(  JSON.parse(localStorage.getItem('state')) )
+    this.setState(  JSON.parse(localStorage.getItem('state')) );
+    // this.imageUpload()
   }
+
+//   imageUpload = () => {
+//    const url = './Images/Cards/c8.jpg';
+//
+//    const file = new Image()
+//
+//    file.src = url
+//
+//    this.getBase64(file).then(base64 => {
+//      localStorage["fileBase64"] = base64
+//      console.debug("file stored", base64)
+//    })
+//  }
+//
+//  getBase64 = (file) => {
+//   return new Promise((resolve,reject) => {
+//   let reader = new FileReader();
+//   reader.onload = () => resolve(reader.result);
+//   reader.onerror = error => reject(error);
+//   reader.readAsDataURL(file);
+// });
+// }
+
 
     updateAchievements = (stats) => {
       this.setState({
@@ -107,7 +133,6 @@ class App extends Component {
     }
 
     renderAchievements= () => {
-      console.log(this.state.fewestReservesToWin)
       return (
         <Achievements
           stats={this.state}
@@ -116,6 +141,7 @@ class App extends Component {
     }
 
   render() {
+
     return (
       <div>
       <Switch>
