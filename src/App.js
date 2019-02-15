@@ -55,93 +55,92 @@ class App extends Component {
 
   componentDidMount() {
     this.setState(  JSON.parse(localStorage.getItem('state')) );
-    this.imageUpload()
+    // this.imageUpload()
   }
 
-  imageUpload = () => {
-   const url = './Images/Cards/c8.jpg';
+//   imageUpload = () => {
+//    const url = './Images/Cards/c8.jpg';
+//
+//    const file = new Image()
+//
+//    file.src = url
+//
+//    this.getBase64(file).then(base64 => {
+//      localStorage["fileBase64"] = base64
+//      console.debug("file stored", base64)
+//    })
+//  }
+//
+//  getBase64 = (file) => {
+//   return new Promise((resolve,reject) => {
+//   let reader = new FileReader();
+//   reader.onload = () => resolve(reader.result);
+//   reader.onerror = error => reject(error);
+//   reader.readAsDataURL(file);
+// });
+// }
 
-   const file = new Image()
 
-   file.src = url
+  updateAchievements = (stats) => {
+    this.setState({
+      gamesPlayed: this.state.gamesPlayed + 1,
+      gamesWon: this.state.gamesWon + stats.gamesWon,
+      currentWinStreak: stats.currentWinStreak,
+      totalWinStreak: stats.currentWinStreak > this.state.totalWinStreak ? stats.currentWinStreak : this.state.totalWinStreak,
+      kingsKilled3InARow: this.state.kingsKilled3InARow + stats.kingsKilled3InARow,
+      kingsKilled4InARow: this.state.kingsKilled4InARow + stats.kingsKilled4InARow,
+      kingsKilled5InARow: this.state.kingsKilled5InARow + stats.kingsKilled5InARow,
+      totalKingsKilled: this.state.totalKingsKilled + stats.totalKingsKilled,
+      maximumCardsToKillKing: stats.maximumCardsToKillKing > this.state.maximumCardsToKillKing ? stats.maximumCardsToKillKing : this.state.maximumCardsToKillKing,
+      reserveSpotsUsedBeforeWin: stats.reserveSpotsUsedBeforeWin,
+      currentKingsKilled3InARow: stats.kingsKilled3InARow,
+      currentKingsKilled4InARow: stats.kingsKilled4InARow,
+      currentKingsKilled5InARow: stats.kingsKilled5InARow,
+      fewestReservesToWin: (stats.gamesWon === 1 && stats.reserveSpotsUsedBeforeWin.length < this.state.fewestReservesToWin) ? stats.reserveSpotsUsedBeforeWin.length : this.state.fewestReservesToWin,
+      cleanKill: (this.state.cleanKill === 'Achieved' || stats.currentReservePilesUsed.length < 1) ? 'Achieved' : 'Not Achieved',
+      showOfForce: (this.state.gamesWon !== 0 && stats.reserveSpotsUsedBeforeWin.length <= 4) || this.state.showOfForce === 'Achieved' ? 'Achieved' : 'Not Achieved',
+      farFarBetter: (this.state.gamesWon !== 0 && stats.reserveSpotsUsedBeforeWin.length <= 1) || this.state.farFarBetter === 'Achieved' ? 'Achieved' : 'Not Achieved'
 
-   this.getBase64(file).then(base64 => {
-     localStorage["fileBase64"] = base64
-     console.debug("file stored", base64)
-   })
- }
+    }, () => this.updatePercentages())
+  }
 
- getBase64 = (file) => {
-  return new Promise((resolve,reject) => {
-  let reader = new FileReader();
-  reader.onload = () => resolve(reader.result);
-  reader.onerror = error => reject(error);
-  reader.readAsDataURL(file);
-});
-}
+  updatePercentages = () => {
+    this.setState({
+      winPercentage: this.state.gamesWon !== '0%' ? parseInt((parseInt(this.state.gamesWon) / parseInt(this.state.gamesPlayed)) * 100) + '%' : '0%',
+      threeInARowPercentage: this.state.kingsKilled3InARow !== 0 ? parseInt((parseInt(this.state.kingsKilled3InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : '0%',
+      fourInARowPercentage: this.state.kingsKilled3InARow !== 0 ? parseInt((parseInt(this.state.kingsKilled4InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : '0%',
+      fiveInARowPercentage: this.state.kingsKilled5InARow !== 0 ? parseInt((parseInt(this.state.kingsKilled5InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : '0%',
+      averageKingsKilled: this.state.totalKingsKilled !== 0 ? (this.state.totalKingsKilled / this.state.gamesPlayed) : 0,
+      renegade: this.state.gamesWon > 0 ? 'Achieved' : 'Not Achieved',
+      revolutionary: this.state.gamesWon >= 5 ? 'Achieved' : 'Not Achieved',
+      threvolution: this.state.totalWinStreak >= 3 ? 'Achieved' : 'Not Achieved',
+      sevenUp: this.state.totalWinStreak >= 7 ? 'Achieved' : 'Not Achieved',
+      bastilleMyHeart: this.state.gamesWon >= 14 ? 'Achieved' : 'Not Achieved',
+      tripleNinja: this.state.currentKingsKilled3InARow === 4 ? 'Achieved' : 'Not Achieved',
+      suitedUp: this.state.currentKingsKilled4InARow === 4 ? 'Achieved' : 'Not Achieved',
+      rainbowRebel: this.state.currentKingsKilled5InARow === 4 ? 'Achieved' : 'Not Achieved',
+      patience: this.state.maximumCardsToKillKing >= 14 ?
+      'Achieved' : 'Not Achieved'
+    }, () => localStorage.setItem("state", JSON.stringify(this.state)) )
+  }
 
+  renderGamePage = () => {
+    return (
+      <GamePage
+        updateAchievements={this.updateAchievements}
+      />
+    )
+  }
 
-    updateAchievements = (stats) => {
-      this.setState({
-        gamesPlayed: this.state.gamesPlayed + 1,
-        gamesWon: this.state.gamesWon + stats.gamesWon,
-        currentWinStreak: stats.currentWinStreak,
-        totalWinStreak: stats.currentWinStreak > this.state.totalWinStreak ? stats.currentWinStreak : this.state.totalWinStreak,
-        kingsKilled3InARow: this.state.kingsKilled3InARow + stats.kingsKilled3InARow,
-        kingsKilled4InARow: this.state.kingsKilled4InARow + stats.kingsKilled4InARow,
-        kingsKilled5InARow: this.state.kingsKilled5InARow + stats.kingsKilled5InARow,
-        totalKingsKilled: this.state.totalKingsKilled + stats.totalKingsKilled,
-        maximumCardsToKillKing: stats.maximumCardsToKillKing > this.state.maximumCardsToKillKing ? stats.maximumCardsToKillKing : this.state.maximumCardsToKillKing,
-        reserveSpotsUsedBeforeWin: stats.reserveSpotsUsedBeforeWin,
-        currentKingsKilled3InARow: stats.kingsKilled3InARow,
-        currentKingsKilled4InARow: stats.kingsKilled4InARow,
-        currentKingsKilled5InARow: stats.kingsKilled5InARow,
-        fewestReservesToWin: (stats.gamesWon === 1 && stats.reserveSpotsUsedBeforeWin.length < this.state.fewestReservesToWin) ? stats.reserveSpotsUsedBeforeWin.length : this.state.fewestReservesToWin,
-        cleanKill: (this.state.cleanKill === 'Achieved' || stats.currentReservePilesUsed.length < 1) ? 'Achieved' : 'Not Achieved',
-        showOfForce: (this.state.gamesWon !== 0 && stats.reserveSpotsUsedBeforeWin.length <= 4) || this.state.showOfForce === 'Achieved' ? 'Achieved' : 'Not Achieved',
-        farFarBetter: (this.state.gamesWon !== 0 && stats.reserveSpotsUsedBeforeWin.length <= 1) || this.state.farFarBetter === 'Achieved' ? 'Achieved' : 'Not Achieved'
-
-      }, () => this.updatePercentages())
-    }
-
-    updatePercentages = () => {
-      this.setState({
-        winPercentage: this.state.gamesWon !== '0%' ? parseInt((parseInt(this.state.gamesWon) / parseInt(this.state.gamesPlayed)) * 100) + '%' : '0%',
-        threeInARowPercentage: this.state.kingsKilled3InARow !== 0 ? parseInt((parseInt(this.state.kingsKilled3InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : '0%',
-        fourInARowPercentage: this.state.kingsKilled3InARow !== 0 ? parseInt((parseInt(this.state.kingsKilled4InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : '0%',
-        fiveInARowPercentage: this.state.kingsKilled5InARow !== 0 ? parseInt((parseInt(this.state.kingsKilled5InARow) / parseInt(this.state.totalKingsKilled)) * 100) + '%' : '0%',
-        averageKingsKilled: this.state.totalKingsKilled !== 0 ? (this.state.totalKingsKilled / this.state.gamesPlayed) : 0,
-        renegade: this.state.gamesWon > 0 ? 'Achieved' : 'Not Achieved',
-        revolutionary: this.state.gamesWon >= 5 ? 'Achieved' : 'Not Achieved',
-        threvolution: this.state.totalWinStreak >= 3 ? 'Achieved' : 'Not Achieved',
-        sevenUp: this.state.totalWinStreak >= 7 ? 'Achieved' : 'Not Achieved',
-        bastilleMyHeart: this.state.gamesWon >= 14 ? 'Achieved' : 'Not Achieved',
-        tripleNinja: this.state.currentKingsKilled3InARow === 4 ? 'Achieved' : 'Not Achieved',
-        suitedUp: this.state.currentKingsKilled4InARow === 4 ? 'Achieved' : 'Not Achieved',
-        rainbowRebel: this.state.currentKingsKilled5InARow === 4 ? 'Achieved' : 'Not Achieved',
-        patience: this.state.maximumCardsToKillKing >= 14 ?
-        'Achieved' : 'Not Achieved'
-      }, () => localStorage.setItem("state", JSON.stringify(this.state)) )
-    }
-
-    renderGamePage = () => {
-      return (
-        <GamePage
-          updateAchievements={this.updateAchievements}
-        />
-      )
-    }
-
-    renderAchievements= () => {
-      return (
-        <Achievements
-          stats={this.state}
-        />
-      )
-    }
+  renderAchievements= () => {
+    return (
+      <Achievements
+        stats={this.state}
+      />
+    )
+  }
 
   render() {
-
     return (
       <div>
       <Switch>
