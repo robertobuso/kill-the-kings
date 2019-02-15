@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import { TransitionablePortal, Segment, Header, Button } from 'semantic-ui-react'
+import { TransitionablePortal, Segment, Header, Button, Grid } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 
 
 class WinModal extends Component {
 
-  handleClick = () => {
+  handleMenuClick = () => {
     this.props.history.push('/')
+  }
+
+  handleAchievementsClick = () => {
+    this.props.history.push('/achievements')
   }
 
   responsiveStyle = () => {
     if (window.screen.width <= 415) {
-      return { left: '7%', position: 'fixed', top: '40%', zIndex: 1000 }
+      return { left: '4%', position: 'fixed', top: '40%', zIndex: 1000 }
     } else {
       return { left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }
     }
@@ -35,12 +39,25 @@ class WinModal extends Component {
         </>
       : null }
       <br/>
-      <Button floated='left' basic color='green' onClick={this.handleClick}>
+      <Grid columns={3}>
+        <Grid.Row>
+          <Grid.Column>
+      <Button floated='left' basic color='green' size='tiny' onClick={this.handleMenuClick}>
         Main Menu
       </Button>
-      <Button floated='right' basic color='green' onClick={this.props.startNewGame}>
+      </Grid.Column>
+      <Grid.Column>
+      <Button basic color='green' size='tiny' onClick={this.handleAchievementsClick}>
+        Achievements
+      </Button>
+      </Grid.Column>
+      <Grid.Column>
+      <Button floated='right' basic color='green' size='tiny' onClick={this.props.startNewGame}>
         New Game
       </Button>
+      </Grid.Column>
+      </Grid.Row>
+      </Grid>
       </Segment>
     </TransitionablePortal>
   }
