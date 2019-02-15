@@ -27,7 +27,7 @@ class GamePage extends Component {
     this.state = {
       currentGame: {
         inProgress: false,
-        stock:shuffle(originalDeck),
+        stock: shuffle(originalDeck),
         talon: {},
         club: [kings[0]],
         diamond: [kings[1]],
@@ -389,6 +389,8 @@ class GamePage extends Component {
   }
 
   changeKingIntoReservePile = (newIdArr, newId, currentPile) => {
+    console.log('In changeKingIntoReservePile')
+
      setTimeout(() => this.setState( {
        currentGame:
        { ...this.state.currentGame,

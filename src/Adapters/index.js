@@ -84,6 +84,7 @@ export const isItFourInARow = (pile) => {
 
     for (let i=0; i < allPiles.length; i++) {
       const pile = allPiles[i]
+      debugger
       if (reservePileIsAvailable === 'true') {
         reservePileIsAvailable = 'false'
         return false

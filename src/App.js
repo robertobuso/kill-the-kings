@@ -55,30 +55,30 @@ class App extends Component {
 
   componentDidMount() {
     this.setState(  JSON.parse(localStorage.getItem('state')) );
-    // this.imageUpload()
+    this.imageUpload()
   }
 
-//   imageUpload = () => {
-//    const url = './Images/Cards/c8.jpg';
-//
-//    const file = new Image()
-//
-//    file.src = url
-//
-//    this.getBase64(file).then(base64 => {
-//      localStorage["fileBase64"] = base64
-//      console.debug("file stored", base64)
-//    })
-//  }
-//
-//  getBase64 = (file) => {
-//   return new Promise((resolve,reject) => {
-//   let reader = new FileReader();
-//   reader.onload = () => resolve(reader.result);
-//   reader.onerror = error => reject(error);
-//   reader.readAsDataURL(file);
-// });
-// }
+  imageUpload = () => {
+   const url = './Images/Cards/c8.jpg';
+
+   const file = new Image()
+
+   file.src = url
+
+   this.getBase64(file).then(base64 => {
+     localStorage["fileBase64"] = base64
+     console.debug("file stored", base64)
+   })
+ }
+
+ getBase64 = (file) => {
+  return new Promise((resolve,reject) => {
+  let reader = new FileReader();
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = error => reject(error);
+  reader.readAsDataURL(file);
+});
+}
 
 
     updateAchievements = (stats) => {
