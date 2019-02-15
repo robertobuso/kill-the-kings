@@ -60,7 +60,7 @@ class App extends Component {
 
   imageUpload = () => {
     const cardsArray = originalDeck.map(card => card.id)
-
+    cardsArray.push('green_two')
     for(let i = 0; i < cardsArray.length; i++) {
       let cardId = cardsArray[i]
       let cardFile = require(`./Images/Cards/${cardId}.jpg`)

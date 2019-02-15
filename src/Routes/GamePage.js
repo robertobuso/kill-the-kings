@@ -70,7 +70,8 @@ class GamePage extends Component {
 //Shows the card at a different opacity while dragging object via touch event (mobile)
   generatePreview (type, item, style) {
     Object.assign(style, { height:'80px', width: '58px'})
-    return <Card src={require(`../Images/Cards/${item.id}.jpg`)} previewStyle={style}/>;
+    const savedCard = localStorage.getItem(item.id)
+    return <Card src={savedCard} previewStyle={style}/>;
   }
 
   handleStockClick = () => {
