@@ -35,13 +35,16 @@ class ReservePile extends Component {
   render() {
     const { connectDropTarget, id, currentCard, handleDrop, handleTalonClick, talon, showAlert } = this.props
 
+    const savedCard =
+    currentCard ? localStorage.getItem(currentCard.id) ? localStorage.getItem(currentCard.id) : require(`../Images/Cards/${currentCard.id}.jpg`) : null
+
     return connectDropTarget (
       <div className={this.shouldWeFadeIn()}>
           {currentCard ?
                   <Card
                     class='inserted-card'
                     card={currentCard}
-                    src={require(`../Images/Cards/${currentCard.id}.jpg`)}
+                    src={savedCard}
                     key={currentCard.id}
                     multiplier='0'
                     handleDrop={ handleDrop }

@@ -11,7 +11,7 @@ import GamePage from './Routes/GamePage.js'
 import Tutorial from './Routes/Tutorial.js'
 import Achievements from './Routes/Achievements.js'
 
-import * as blobUtil from 'blob-util'
+import { originalDeck } from './Constants/CardObjects.js'
 
 class App extends Component {
 
@@ -55,31 +55,36 @@ class App extends Component {
 
   componentDidMount() {
     this.setState(  JSON.parse(localStorage.getItem('state')) );
-    // this.imageUpload()
+    this.imageUpload()
   }
 
-//   imageUpload = () => {
-//    const url = './Images/Cards/c8.jpg';
-//
-//    const file = new Image()
-//
-//    file.src = url
-//
-//    this.getBase64(file).then(base64 => {
-//      localStorage["fileBase64"] = base64
-//      console.debug("file stored", base64)
-//    })
-//  }
-//
-//  getBase64 = (file) => {
-//   return new Promise((resolve,reject) => {
-//   let reader = new FileReader();
-//   reader.onload = () => resolve(reader.result);
-//   reader.onerror = error => reject(error);
-//   reader.readAsDataURL(file);
-// });
-// }
+  imageUpload = () => {
+    const cardsArray = originalDeck.map(card => card.id)
 
+    for(let i = 0; i < cardsArray.length; i++) {
+      let cardId = cardsArray[i]
+      let cardFile = require(`./Images/Cards/${cardId}.jpg`)
+
+      fetch(cardFile)
+      .then( response => {
+       return response.blob()
+     })
+      .then(newFile => this.getBase64(newFile)
+         .then(convertedFile => {
+           localStorage.setItem(cardId, convertedFile)
+         })
+       )
+    }
+ }
+
+ getBase64 = (file) => {
+  return new Promise((resolve,reject) => {
+  let reader = new FileReader();
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = error => reject(error);
+  reader.readAsDataURL(file);
+});
+}
 
   updateAchievements = (stats) => {
     this.setState({

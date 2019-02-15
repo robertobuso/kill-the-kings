@@ -39,14 +39,17 @@ wasKingKilled = () => {
     let x = 0
     const { connectDropTarget, cards } = this.props
 
+
+
     return connectDropTarget (
       <div className={this.wasKingKilled()} >
         {cards.map( newCard => {
           newCard === cards[0] ? x = 0 : x = x + 35
+              const savedCard = localStorage.getItem(newCard.id) ? localStorage.getItem(newCard.id) : require(`../Images/Cards/${newCard.id}.jpg`)
 
           return <Card
                     class='inserted-card'
-                    src={require(`../Images/Cards/${newCard['id']}.jpg`)}
+                    src={savedCard}
                     key={newCard.id}
                     multiplier={x}
                     draggable='false'/>

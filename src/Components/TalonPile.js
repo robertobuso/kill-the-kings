@@ -19,6 +19,8 @@ class TalonPile extends Component {
   render() {
     const { card, handleDrop, handleTalonClick, handleReserveClick } = this.props;
 
+    const savedCard = localStorage.getItem(card.id) ? localStorage.getItem(card.id) : require(`../Images/Cards/${card.id}.jpg`)
+
     return (
       <div
         className={this.shouldWeFadeIn()}
@@ -27,7 +29,7 @@ class TalonPile extends Component {
           <Card
             class='inserted-card'
             card={card}
-            src={require(`../Images/Cards/${card.id}.jpg`)}
+            src={savedCard}
             handleDrop={ handleDrop }
             handleTalonClick={ handleTalonClick }
             draggable='true'
