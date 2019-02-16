@@ -390,7 +390,6 @@ class GamePage extends Component {
   }
 
   changeKingIntoReservePile = (newIdArr, newId, currentPile) => {
-    console.log('In changeKingIntoReservePile')
 
      setTimeout(() => this.setState( {
        currentGame:

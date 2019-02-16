@@ -80,26 +80,35 @@ export const isItFourInARow = (pile) => {
     let playableCards = [props.talon]
     const pileCards = []
     const allPiles = [...props.idArray]
-    let reservePileIsAvailable = 'false'
+    let reservePileIsAvailable = ''
 
     for (let i=0; i < allPiles.length; i++) {
       const pile = allPiles[i]
+      console.log('OUTSIDE first if')
+      console.log('allPiles: ', allPiles)
+      console.log('pile: ', pile)
+      console.log('props[pile]', props[pile])
+
       if (reservePileIsAvailable === 'true') {
-        reservePileIsAvailable = 'false'
+        console.log('in first if')
+        console.log('allPiles: ', allPiles)
+        console.log('pile: ', pile)
+
+        // reservePileIsAvailable = 'false'
         return false
-      } else if (pile.charAt(0) === 'r') {
-          if (props[pile][0]) {
-            playableCards.push(props[pile][0])
-          } else {
-          reservePileIsAvailable = 'true'}
       } else if (pile === 'blank') {
           const index = allPiles.indexOf(pile)
           allPiles.splice(index, 1)
           i--;
+      } else if (pile.charAt(0) === 'r') {
+          if (props[pile][0]) {
+            playableCards.push(props[pile][0])
+          } else {
+          return false}
       } else if (props[pile]) {
           pileCards.push(props[pile][props[pile].length-1])
       } else {
-      reservePileIsAvailable = 'true'
+      return false
       }
     }
 
@@ -109,6 +118,7 @@ export const isItFourInARow = (pile) => {
   if (Object.keys(props.talon).length > 0) {
     playableCards = [props.talon]
   }
+
     for (let i=0; i < playableCards.length; i++) {
       for (let x=0; x < pileCards.length; x++) {
         if (isNewCardHigher(playableCards[i], pileCards[x]) === true) {
