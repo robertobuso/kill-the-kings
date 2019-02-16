@@ -71,7 +71,7 @@ class GamePage extends Component {
   generatePreview (type, item, style) {
     Object.assign(style, { height:'80px', width: '58px'})
     const savedCard = localStorage.getItem(item.id)
-    return <Card src={savedCard} previewStyle={style}/>;
+    return <Card src={savedCard} previewStyle={style} class='insertedCard'/>;
   }
 
   handleStockClick = () => {
