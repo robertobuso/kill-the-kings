@@ -80,23 +80,11 @@ export const isItFourInARow = (pile) => {
     let playableCards = [props.talon]
     const pileCards = []
     const allPiles = [...props.idArray]
-    let reservePileIsAvailable = ''
 
     for (let i=0; i < allPiles.length; i++) {
       const pile = allPiles[i]
-      console.log('OUTSIDE first if')
-      console.log('allPiles: ', allPiles)
-      console.log('pile: ', pile)
-      console.log('props[pile]', props[pile])
 
-      if (reservePileIsAvailable === 'true') {
-        console.log('in first if')
-        console.log('allPiles: ', allPiles)
-        console.log('pile: ', pile)
-
-        // reservePileIsAvailable = 'false'
-        return false
-      } else if (pile === 'blank') {
+      if (pile === 'blank') {
           const index = allPiles.indexOf(pile)
           allPiles.splice(index, 1)
           i--;
