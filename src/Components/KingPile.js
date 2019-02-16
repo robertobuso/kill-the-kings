@@ -39,8 +39,6 @@ wasKingKilled = () => {
     let x = 0
     const { connectDropTarget, cards } = this.props
 
-
-
     return connectDropTarget (
       <div className={this.wasKingKilled()} >
         {cards.map( newCard => {

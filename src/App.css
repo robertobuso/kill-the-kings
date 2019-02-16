@@ -24,7 +24,8 @@
     height: auto;
   }
 
-@media only screen and (max-width: 768px) {
+/* This is the container css for mobile phones and tablets */
+@media only screen and (max-width: 750px) {
   .container {
     padding-left: 15px;
     padding-top: 15px;
@@ -49,13 +50,12 @@
     max-height: 138px;
   }
 
-  .card{
-   width: 100%;
-   max-width: 100px;
-   max-height: 125px;
-   min-height: 75px;
-   min-width: 35px;
-   height: auto;
+  .inserted-card{
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+    max-height: 137.5;
+    border-radius: 10px;
   }
 
   .reserve-pile {
@@ -63,8 +63,8 @@
     width: 100%;
     height: auto;
     max-width: 100px;
-    max-height: 129px;
-    min-height: 80px;
+    max-height: 138px;
+    min-height: 48px;
     min-width: 35px;
     border-radius: 10px;
     background: rgba(203, 209, 129, 0.4);
@@ -77,18 +77,10 @@
     width: 100%;
     height: auto;
     max-width: 100px;
-    max-height: 125px;
-    min-height: 75px;
+    max-height: 138.5px;
+    min-height: 48px;
     min-width: 35px;
   }
-
-  .inserted-card{
-    width: 100%;
-    height: auto;
-    max-width: 100px;
-    max-height: 125px;
-    border-radius: 10px;
-}
 
   .stock-pile{
     display: grid;
@@ -96,7 +88,7 @@
      height: auto;
      max-width: 100px;
      max-height: 138px;
-     min-height: 75px;
+     min-height: 48px;
      min-width: 35px;
   }
 
