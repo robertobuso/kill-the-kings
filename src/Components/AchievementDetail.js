@@ -13,7 +13,6 @@ class AchievementDetail extends Component {
 
   render() {
     const achievementId = this.props.item.id
-
     return (
       <Container style={ {width:'75%',
         height:'55%'} } >
@@ -28,7 +27,7 @@ class AchievementDetail extends Component {
           </Button>
           <Container style={{borderStyle: 'solid', borderWidth: '2px', borderColor: 'rgb(253, 206, 125)', marginTop:'20px', borderRadius:'10%', height: '65%'}}>
           <Image centered size='medium' src={require('../Images/OtherImages/achievements.png')} />
-          <Header textAlign='center' style={{color: 'black'}}>{this.props.item.title}</Header>
+          <Header textAlign='center' style={{color: 'black'}}>{this.props.item.title === undefined ? 'Please select from the menu below.' : this.props.item.title}</Header>
           <Header textAlign='center' style={{color: 'gray'}}>{this.props.item.description}</Header>
           <Header textAlign='center' style={{color: 'red'}}>{JSON.parse(localStorage.getItem('state'))? JSON.parse(localStorage.getItem('state'))[achievementId] : 0}</Header>
         </Container>
