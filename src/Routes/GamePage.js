@@ -27,7 +27,7 @@ class GamePage extends Component {
     this.state = {
       currentGame: {
         inProgress: false,
-        stock: stock: shuffle(originalDeck),
+        stock: shuffle(originalDeck),
         talon: {},
         club: [kings[0]],
         diamond: [kings[1]],
