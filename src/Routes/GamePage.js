@@ -27,7 +27,7 @@ class GamePage extends Component {
     this.state = {
       currentGame: {
         inProgress: false,
-        stock: [ {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}, {id: 'c2', value: 2, suit: 'club', src: './Images/Cards/c2.jpg'}, {id: 'd2', value: 2, suit: 'diamond', src: './Images/Cards/d2.jpg'}, {id: 'h2', value: 2, suit: 'heart', src: './Images/Cards/h2.jpg'}],
+        stock: stock: shuffle(originalDeck),
         talon: {},
         club: [kings[0]],
         diamond: [kings[1]],
