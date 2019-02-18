@@ -87,6 +87,7 @@ class App extends Component {
 }
 
   updateAchievements = (stats) => {
+    console.log(stats)
     this.setState({
       gamesPlayed: this.state.gamesPlayed + 1,
       gamesWon: this.state.gamesWon + stats.gamesWon,
