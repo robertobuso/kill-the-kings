@@ -68,11 +68,13 @@ class GamePage extends Component {
   }
 
   componentDidMount() {
+    if (localStorage.getItem('state')) {
     this.setState(    { stats:
         { ...this.state.stats,
         currentWinStreak: JSON.parse(localStorage.getItem('state')).currentWinStreak
         }
       } )
+    }
   }
 
 //Shows the card at a different opacity while dragging object via touch event (mobile)
