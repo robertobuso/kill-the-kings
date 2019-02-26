@@ -111,7 +111,7 @@ class GamePage extends Component {
     )
   }
 
-    setTarget= (card) => {
+    setTarget = (card) => {
       this.setState(
         {currentGame:
           { ...this.state.currentGame,
@@ -603,6 +603,7 @@ disableScroll.on()
         }
 
         {this.state.currentGame.gameOver === 'win'  || this.state.currentGame.gameOver === 'lose' ?
+        console.log(this.state.currentGame)
           <WinModal gameOver={this.state.currentGame.gameOver}
           startNewGame={this.startNewGame}/>
         : null
