@@ -19,17 +19,17 @@ class WinModal extends Component {
 
   responsiveStyle = () => {
     if (window.screen.width <= 415) {
-      return { left: '4%', position: 'fixed', top: '40%', zIndex: 1000 }
+      return { left: '2%', position: 'fixed', top: '40%', zIndex: 1000}
     } else {
-      return { left: '15%', position: 'fixed', top: '40%', zIndex: 1000 }
+      return { left: '36%', position: 'fixed', top: '40%', zIndex: 1000 }
     }
   }
 
   render() {
-
     return                                            <TransitionablePortal
         open={true}
-        transition={{ animation: 'zoom', duration: 500 }}>
+        transition={{ animation: 'zoom', duration: 500 }}
+        className='row-margin'>
       <Segment style={this.responsiveStyle()}>
       {this.props.gameOver === 'lose' ?
         <>
@@ -46,36 +46,39 @@ class WinModal extends Component {
       <br/>
       <Grid columns={3} className='twitter-wrapper'>
         <Grid.Row>
-          <Grid.Column textAlign="center">
+          <Grid.Column textAlign='center'>
       <Button basic color='green' size='tiny' onClick={this.handleMenuClick}>
         Main Menu
       </Button>
       </Grid.Column>
-      <Grid.Column textAlign="center">
+      <Grid.Column textAlign='center'>
       <Button  basic color='green' size='tiny' onClick={this.handleAchievementsClick}>
         Achievements
       </Button>
       </Grid.Column>
-      <Grid.Column textAlign="center">
+      <Grid.Column textAlign='center'>
       <Button  basic color='green' size='tiny' onClick={this.props.startNewGame}>
         New Game
       </Button>
       </Grid.Column>
       </Grid.Row>
-
+      </Grid>
       {this.props.gameOver === 'win' ?
         <>
-        <br/>
-          <div className='twitter'>
-              I killed the kings! @killthekings via @standardgames
+          <Grid className='twitter'>
+          <Grid.Row>
+              <Header textAlign='center' as='h5'>I killed the kings! @killthekings via @standardgames
+              </Header>
+            </Grid.Row>
+            <Grid.Row>
+            <span className='twitter-wrapper'>
               <a href="https://twitter.com/intent/tweet?text=I%20killed%20the%20kings!%20%23killthekings%20via%20@standardgames" class="twitter-share-button" data-show-count="false">Tweet</a>
-                <br/> <br/>
               <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
+          </span>
+          </Grid.Row>
+        </Grid>
         </>
       : null}
-
-      </Grid>
       </Segment>
     </TransitionablePortal>
   }

@@ -387,7 +387,6 @@ class GamePage extends Component {
   }
 
   showWinModal = () => {
-    debugger
     setTimeout( () => this.setState( {
       currentGame:
         { ...this.state.currentGame,

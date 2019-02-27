@@ -120,8 +120,11 @@
   .twitter {
     display: flex;
     justify-content: center;
-    border: 2px solid green;
+    border: 2px solid;
+    border-color: rgb(0, 195, 55);
     border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
+  }
+
+  .row-margin {
+    padding: 20px;
   }
