@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Grid, Container, Image, Header, Button } from 'semantic-ui-react'
+import { Grid, Container, Image, Header } from 'semantic-ui-react'
 
 class AboutUs extends Component {
 
@@ -21,7 +21,7 @@ class AboutUs extends Component {
           <br/>
           <a href='https://twitter.com/standardgames' target="_blank" rel="noopener noreferrer"><Header as='h1' textAlign='center' onClick={this.props.updateFollow} style={ {color:'rgb(34, 173, 179)'} }>Follow Us</Header></a>
           <br/>
-          <a href='#' onClick={this.handleMenuClick}><Header as='h1' textAlign='center' style={ {color:'rgb(76, 93, 206)'} }>Main Menu</Header></a>
+          <button onClick={this.handleMenuClick} style={ {backgroundColor:'transparent', border:'none'}}><Header as='h1' textAlign='center' style={ {color:'rgb(76, 93, 206)'} }>Main Menu</Header></button>
        </Container>
      </Grid>
     )
