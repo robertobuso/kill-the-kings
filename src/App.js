@@ -132,26 +132,15 @@ class App extends Component {
   }
 
   updateTwitter = () => {
-    console.log('In updateTwitter!')
     this.setState({
       voiceOfThePeople: 'Achieved'
     }, () => this.updatePercentages())
   }
 
-  renderGamePage = () => {
-    return (
-      <GamePage
-        updateAchievements={this.updateAchievements}
-      />
-    )
-  }
-
-  renderAchievements= () => {
-    return (
-      <Achievements
-        stats={this.state}
-      />
-    )
+  updateFollow = () => {
+    this.setState({
+      rabbleRouse: 'Achieved'
+    }, () => this.updatePercentages())
   }
 
   render() {
@@ -164,7 +153,7 @@ class App extends Component {
         updateTwitter={this.updateTwitter} />} />
         <Route path='/tutorial' exact component = { Tutorial } />
         <Route path='/achievements' exact render = { (props) => <Achievements {...props} stats={this.state} /> } />
-        <Route path='/aboutus' exact component = { AboutUs } />
+        <Route path='/aboutus' exact render = { (props) => <AboutUs {...props} updateFollow={this.updateFollow} /> } />
       </Switch>
       </ErrorBoundary>
       </div>

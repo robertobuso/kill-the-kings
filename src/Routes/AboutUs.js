@@ -15,18 +15,13 @@ class AboutUs extends Component {
 
           <Image style={ {padding:'50px'} } centered src={ require('../Images/OtherImages/logo_sg.png') } size='large' alt='Standard Games'/>
 
-          <Header as='h1' textAlign='center'>@standardgames</Header>
-
-          <a href='http://www.standardgames.com/' target="_blank" rel="noopener noreferrer"><Header as='h1' textAlign='center' color='blue'>standardgames.com</Header></a>
+          <a href='http://www.standardgames.com/' target="_blank" rel="noopener noreferrer"><Header as='h1' textAlign='center' style={ {color:'rgb(34, 173, 179)'} }>standardgames.com</Header></a>
           <br/>
-          <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer"><Header as='h1' textAlign='center' color='red'>Full Rules</Header></a>
-
-          <Header as='h1' textAlign='center'>(c) Standard Games 2018. All Rights Reserved</Header>
+          <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer"><Header as='h1' textAlign='center' style={ {color:'rgb(76, 93, 206)'} }>Full Rules</Header></a>
           <br/>
-          <Button basic color='red' size='small' onClick={this.handleMenuClick}>
-            Main Menu
-          </Button>
-
+          <a href='https://twitter.com/standardgames' target="_blank" rel="noopener noreferrer"><Header as='h1' textAlign='center' onClick={this.props.updateFollow} style={ {color:'rgb(34, 173, 179)'} }>Follow Us</Header></a>
+          <br/>
+          <a href='#' onClick={this.handleMenuClick}><Header as='h1' textAlign='center' style={ {color:'rgb(76, 93, 206)'} }>Main Menu</Header></a>
        </Container>
      </Grid>
     )

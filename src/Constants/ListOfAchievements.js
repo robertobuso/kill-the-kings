@@ -23,6 +23,6 @@ export const listOfAchievements= [
   {id: 'patience', title: 'Patience', description: 'Used 14 or More Cards in the Killing of a King'},
   {id: 'showOfForce', title: 'Show of Force', description: 'Killed All 4 Kings Only Using 4 Reserve Spots'},
   {id: 'farFarBetter', title: 'Far, Far Better', description: 'Only Used 1 Reserve at A Time'},
-  {id: 23, title: 'Rabble Rouser', description: 'Followed Standard Games on Twitter'},
+  {id: 'rabbleRouse', title: 'Rabble Rouser', description: 'Followed Standard Games on Twitter'},
   {id: 'voiceOfThePeople', title: 'Voice of the People', description: 'Tweeted A Victory'}
 ]
