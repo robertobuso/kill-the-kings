@@ -6,7 +6,12 @@ import { withRouter } from 'react-router-dom';
 class WinModal extends Component {
 
   componentDidMount() {
-    window.twttr.widgets.load()
+    window.twttr.widgets.load();
+    window.twttr.events.bind('click', this.handleTweet)
+  }
+
+  handleTweet(e) {
+    console.log('TWEEEET!!!!')
   }
 
   handleMenuClick = () => {
@@ -71,8 +76,9 @@ class WinModal extends Component {
               </Header>
             </Grid.Row>
             <Grid.Row>
-            <span className='twitter-wrapper'>
-              <a href="https://twitter.com/intent/tweet?text=I%20killed%20the%20kings!%20%23killthekings%20via%20@standardgames" class="twitter-share-button" data-show-count="false">Tweet</a>
+            <span
+            className='twitter-wrapper'>
+              <a onClick={this.handleTweet} href="https://twitter.com/intent/tweet?text=I%20killed%20the%20kings!%20%23killthekings%20via%20@standardgames" className="twitter-share-button" data-size='large'>Tweet</a>
               <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </span>
           </Grid.Row>
