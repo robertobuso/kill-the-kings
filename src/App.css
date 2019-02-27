@@ -106,3 +106,17 @@
     position: relative;
     z-index: 2;
   }
+
+  .twitter-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .twitter {
+    display: flex;
+    justify-content: center;
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+  }

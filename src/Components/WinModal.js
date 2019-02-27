@@ -21,7 +21,7 @@ class WinModal extends Component {
     if (window.screen.width <= 415) {
       return { left: '4%', position: 'fixed', top: '40%', zIndex: 1000 }
     } else {
-      return { left: '35%', position: 'fixed', top: '40%', zIndex: 1000 }
+      return { left: '15%', position: 'fixed', top: '40%', zIndex: 1000 }
     }
   }
 
@@ -39,15 +39,15 @@ class WinModal extends Component {
         :
         this.props.gameOver === 'win' ?
         <>
-        <Header>REGICIDE</Header>
-        <p>You killed all the kings. You are a WINNER.</p>
+        <Header textAlign='center'>REGICIDE</Header>
+        <p style={ {textAlign: 'center'} }>You killed all the kings. You are a WINNER.</p>
         </>
       : null }
       <br/>
-      <Grid columns={3}>
+      <Grid columns={3} className='twitter-wrapper'>
         <Grid.Row>
           <Grid.Column>
-      <Button floated='left' basic color='green' size='tiny' onClick={this.handleMenuClick}>
+      <Button basic color='green' size='tiny' onClick={this.handleMenuClick}>
         Main Menu
       </Button>
       </Grid.Column>
@@ -57,14 +57,24 @@ class WinModal extends Component {
       </Button>
       </Grid.Column>
       <Grid.Column>
-      <Button floated='right' basic color='green' size='tiny' onClick={this.props.startNewGame}>
+      <Button  basic color='green' size='tiny' onClick={this.props.startNewGame}>
         New Game
       </Button>
-
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
       </Grid.Column>
       </Grid.Row>
+
+      {this.props.gameOver === 'win' ?
+        <>
+        <br/>
+          <div className='twitter'>
+              I killed the kings! @killthekings via @standardgames
+              <a href="https://twitter.com/intent/tweet?text=I%20killed%20the%20kings!%20%23killthekings%20via%20@standardgames" class="twitter-share-button" data-show-count="false">Tweet</a>
+                <br/> <br/>
+              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+        </>
+      : null}
+
       </Grid>
       </Segment>
     </TransitionablePortal>
