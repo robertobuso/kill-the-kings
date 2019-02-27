@@ -603,7 +603,8 @@ disableScroll.on()
 
         {this.state.currentGame.gameOver === 'win'  || this.state.currentGame.gameOver === 'lose' ?
          <WinModal gameOver={this.state.currentGame.gameOver}
-          startNewGame={this.startNewGame}/>
+          startNewGame={this.startNewGame}
+          updateTwitter={this.props.updateTwitter}/>
         : null
         }
         {this.state.currentGame.showRules === true ?

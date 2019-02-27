@@ -131,6 +131,13 @@ class App extends Component {
     }, () => localStorage.setItem("state", JSON.stringify(this.state)) )
   }
 
+  updateTwitter = () => {
+    console.log('In updateTwitter!')
+    this.setState({
+      voiceOfThePeople: 'Achieved'
+    }, () => this.updatePercentages())
+  }
+
   renderGamePage = () => {
     return (
       <GamePage
@@ -153,7 +160,8 @@ class App extends Component {
       <ErrorBoundary>
       <Switch>
         <Route path='/' exact component={ MainMenu } />
-        <Route path='/game' exact render={(props) => <GamePage {...props} updateAchievements={this.updateAchievements} />} />
+        <Route path='/game' exact render={(props) => <GamePage {...props} updateAchievements={this.updateAchievements}
+        updateTwitter={this.updateTwitter} />} />
         <Route path='/tutorial' exact component = { Tutorial } />
         <Route path='/achievements' exact render = { (props) => <Achievements {...props} stats={this.state} /> } />
         <Route path='/aboutus' exact component = { AboutUs } />

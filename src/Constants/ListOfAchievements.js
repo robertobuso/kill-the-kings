@@ -24,5 +24,5 @@ export const listOfAchievements= [
   {id: 'showOfForce', title: 'Show of Force', description: 'Killed All 4 Kings Only Using 4 Reserve Spots'},
   {id: 'farFarBetter', title: 'Far, Far Better', description: 'Only Used 1 Reserve at A Time'},
   {id: 23, title: 'Rabble Rouser', description: 'Followed Standard Games on Twitter'},
-  {id: 24, title: 'Voice of the People', description: 'Tweeted A Victory'}
+  {id: 'voiceOfThePeople', title: 'Voice of the People', description: 'Tweeted A Victory'}
 ]

@@ -10,8 +10,9 @@ class WinModal extends Component {
     window.twttr.events.bind('click', this.handleTweet)
   }
 
-  handleTweet(e) {
+  handleTweet = () => {
     console.log('TWEEEET!!!!')
+    this.props.updateTwitter()
   }
 
   handleMenuClick = () => {
