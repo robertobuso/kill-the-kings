@@ -10,6 +10,7 @@ import MainMenu from './Routes/MainMenu.js'
 import GamePage from './Routes/GamePage.js'
 import Tutorial from './Routes/Tutorial.js'
 import Achievements from './Routes/Achievements.js'
+import AboutUs from './Routes/AboutUs.js'
 import ErrorBoundary from './Routes/ErrorBoundary.js'
 
 import { originalDeck } from './Constants/CardObjects.js'
@@ -155,6 +156,7 @@ class App extends Component {
         <Route path='/game' exact render={(props) => <GamePage {...props} updateAchievements={this.updateAchievements} />} />
         <Route path='/tutorial' exact component = { Tutorial } />
         <Route path='/achievements' exact render = { (props) => <Achievements {...props} stats={this.state} /> } />
+        <Route path='/aboutus' exact component = { AboutUs } />
       </Switch>
       </ErrorBoundary>
       </div>

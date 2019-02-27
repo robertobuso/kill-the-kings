@@ -17,6 +17,11 @@ class MainMenu extends Component {
     this.props.history.push('/achievements')
   }
 
+  handleAboutUsClick = () => {
+    this.props.history.push('/aboutus')
+  }
+
+
   render() {
     return (
       <div className='main-menu-background animated fadeIn slower'>
@@ -50,11 +55,10 @@ class MainMenu extends Component {
           </Grid.Row>
           <Grid.Row centered>
             <br/><br/>
-            <a href='https://docs.google.com/document/d/1QnmFhW6lRC-ZG1BkAZeG0tQIm4EjrSKSBKCJ9a5Wctk/edit' target="_blank" rel="noopener noreferrer">
-              <Button size='medium' basic color='red'>
-                {'Full Rules'}
-              </Button>
-            </a>
+            <Button size='medium' basic color='red'
+              onClick={this.handleAboutUsClick}>
+                About Us
+            </Button>
           </Grid.Row>
         </Grid>
         <br/><br/>
