@@ -5,6 +5,10 @@ import { withRouter } from 'react-router-dom';
 
 class WinModal extends Component {
 
+  componentDidMount() {
+    window.twttr.widgets.load()
+  }
+
   handleMenuClick = () => {
     this.props.history.push('/')
   }
@@ -22,6 +26,7 @@ class WinModal extends Component {
   }
 
   render() {
+
     return                                            <TransitionablePortal
         open={true}
         transition={{ animation: 'zoom', duration: 500 }}>
@@ -55,6 +60,9 @@ class WinModal extends Component {
       <Button floated='right' basic color='green' size='tiny' onClick={this.props.startNewGame}>
         New Game
       </Button>
+
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
       </Grid.Column>
       </Grid.Row>
       </Grid>
