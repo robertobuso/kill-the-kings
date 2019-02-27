@@ -6,11 +6,11 @@ import { withRouter } from 'react-router-dom';
 class WinModal extends Component {
 
   handleMenuClick = () => {
-    this.props.history.push('/')
+    this.props.history.location.push('/')
   }
 
   handleAchievementsClick = () => {
-    this.props.history.push('/achievements')
+    this.props.history.location.push('/achievements')
   }
 
   responsiveStyle = () => {

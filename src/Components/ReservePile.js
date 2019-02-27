@@ -38,6 +38,8 @@ class ReservePile extends Component {
     const savedCard =
     currentCard ? localStorage.getItem(currentCard.id) ? localStorage.getItem(currentCard.id) : require(`../Images/Cards/${currentCard.id}.jpg`) : null
 
+    const isItDraggable = talon === undefined ? 0 : Object.keys(talon).length
+
     return connectDropTarget (
       <div className={this.shouldWeFadeIn()}>
           {currentCard ?
@@ -50,7 +52,7 @@ class ReservePile extends Component {
                     handleDrop={ handleDrop }
                     handleTalonClick={ handleTalonClick }
                     id={ id }
-                    draggable={Object.keys(talon).length === 0  ? 'true' : 'false'}
+                    draggable={isItDraggable === 0  ? 'true' : 'false'}
                     showAlert={ showAlert }
                    />
             : null}

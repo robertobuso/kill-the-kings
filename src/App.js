@@ -10,6 +10,7 @@ import MainMenu from './Routes/MainMenu.js'
 import GamePage from './Routes/GamePage.js'
 import Tutorial from './Routes/Tutorial.js'
 import Achievements from './Routes/Achievements.js'
+import ErrorBoundary from './Routes/ErrorBoundary.js'
 
 import { originalDeck } from './Constants/CardObjects.js'
 
@@ -87,7 +88,6 @@ class App extends Component {
 }
 
   updateAchievements = (stats) => {
-    console.log(stats)
     this.setState({
       gamesPlayed: this.state.gamesPlayed + 1,
       gamesWon: this.state.gamesWon + stats.gamesWon,
@@ -149,12 +149,14 @@ class App extends Component {
   render() {
     return (
       <div>
+      <ErrorBoundary>
       <Switch>
         <Route path='/' exact component={ MainMenu } />
-        <Route path='/game' exact render={this.renderGamePage} />
-        <Route path='/tutorial' exact component ={ Tutorial } />
-        <Route path='/achievements' exact render ={ this.renderAchievements } />
+        <Route path='/game' exact render={(props) => <GamePage {...props} updateAchievements={this.updateAchievements} />} />
+        <Route path='/tutorial' exact component = { Tutorial } />
+        <Route path='/achievements' exact render = { (props) => <Achievements {...props} stats={this.state} /> } />
       </Switch>
+      </ErrorBoundary>
       </div>
 
     )

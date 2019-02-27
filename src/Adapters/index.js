@@ -1,4 +1,5 @@
-export const shuffle = (array) => {
+export const shuffle = (cards) => {
+  const array = [...cards]
   let currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
@@ -103,7 +104,7 @@ export const isItFourInARow = (pile) => {
 // Now we check if the player has lost
   let noMove = 0
 //If a card is on Talon Pile, only check against that card.
-  if (Object.keys(props.talon).length > 0) {
+  if (props.talon && Object.keys(props.talon).length > 0) {
     playableCards = [props.talon]
   }
 

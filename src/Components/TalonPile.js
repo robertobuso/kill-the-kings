@@ -17,6 +17,7 @@ class TalonPile extends Component {
   }
 
   render() {
+
     const { card, handleDrop, handleTalonClick, handleReserveClick } = this.props;
 
     const savedCard = localStorage.getItem(card.id) ? localStorage.getItem(card.id) : require(`../Images/Cards/${card.id}.jpg`)

@@ -85,7 +85,7 @@ class GamePage extends Component {
   }
 
   handleStockClick = () => {
-    if (!this.state.currentGame.talon.src) {
+    if (!this.state.currentGame.talon || !this.state.currentGame.talon.src) {
       this.setState( { currentGame: {...this.state.currentGame,
         talon: this.state.currentGame.stock.shift()
       }}, () => this.isItANewGame() )
@@ -583,7 +583,7 @@ disableScroll.on()
           <StockPile
             handleStockClick={this.handleStockClick}
           />
-          {this.state.currentGame.talon.src !== undefined ?
+          {this.state.currentGame.talon && Object.keys(this.state.currentGame.talon).length > 0 ?
           <TalonPile
             card={this.state.currentGame.talon}
             handleTalonClick={this.handleTalonClick}
@@ -603,8 +603,7 @@ disableScroll.on()
         }
 
         {this.state.currentGame.gameOver === 'win'  || this.state.currentGame.gameOver === 'lose' ?
-        console.log(this.state.currentGame)
-          <WinModal gameOver={this.state.currentGame.gameOver}
+         <WinModal gameOver={this.state.currentGame.gameOver}
           startNewGame={this.startNewGame}/>
         : null
         }
