@@ -112,6 +112,11 @@
     justify-content: center;
   }
 
+  .button-center {
+    display: flex;
+    justify-content: center;
+  }
+
   .twitter {
     display: flex;
     justify-content: center;

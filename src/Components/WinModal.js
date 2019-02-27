@@ -46,17 +46,17 @@ class WinModal extends Component {
       <br/>
       <Grid columns={3} className='twitter-wrapper'>
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column textAlign="center">
       <Button basic color='green' size='tiny' onClick={this.handleMenuClick}>
         Main Menu
       </Button>
       </Grid.Column>
-      <Grid.Column>
-      <Button basic color='green' size='tiny' onClick={this.handleAchievementsClick}>
+      <Grid.Column textAlign="center">
+      <Button  basic color='green' size='tiny' onClick={this.handleAchievementsClick}>
         Achievements
       </Button>
       </Grid.Column>
-      <Grid.Column>
+      <Grid.Column textAlign="center">
       <Button  basic color='green' size='tiny' onClick={this.props.startNewGame}>
         New Game
       </Button>
