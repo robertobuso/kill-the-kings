@@ -533,7 +533,7 @@ class GamePage extends Component {
                 }
 
   render() {
-disableScroll.on()
+    disableScroll.on()
     return (
       <div className="background">
         <div className="container">

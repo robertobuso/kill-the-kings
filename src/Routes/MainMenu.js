@@ -57,7 +57,7 @@ class MainMenu extends Component {
             <br/><br/>
             <Button size='medium' basic color='red'
               onClick={this.handleAboutUsClick}>
-                About Us
+                About
             </Button>
           </Grid.Row>
         </Grid>
