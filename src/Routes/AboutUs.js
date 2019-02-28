@@ -26,7 +26,10 @@ class AboutUs extends Component {
             onClick={this.props.updateFollow}>Follow Us</button></a>
           <br/><br/>
           <button onClick={this.handleMenuClick} style={ {borderColor:'rgb(76, 93, 206)', backgroundColor:'transparent', color:'rgb(76, 93, 206)', borderRadius:'5px', padding: '14px', textAlign: 'center', fontSize:'14px', fontFamily:'Arial'} }>Main Menu</button>
-
+          <br/><br/><br/>
+          <a href='http://bit.ly/2Prky6l' target="_blank" rel="noopener noreferrer">
+          <p float='right'>Developed by Roberto Busó-García</p>
+          </a>
        </Container>
      </Grid>
     )
