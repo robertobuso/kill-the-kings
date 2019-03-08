@@ -27,7 +27,7 @@ class TutorialPortal extends Component {
       content: 'Your goal is to kill all four kings by placing specific combinations of cards under them.',
       lesson: 0,
       open: true
-    })
+    }, () => this.props.showEmphasis('kings', 'spade', 'currentPile', []) )
   }
 
   handleClose = () => {

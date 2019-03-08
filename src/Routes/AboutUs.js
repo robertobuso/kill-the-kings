@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Grid, Container, Image, Header, Button } from 'semantic-ui-react'
+import { Grid, Container, Image } from 'semantic-ui-react'
 
 class AboutUs extends Component {
 

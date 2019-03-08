@@ -60,6 +60,9 @@ class Tutorial extends Component {
         }
       } )
     } else {
+      console.log('pileArray: ',pileArray)
+      console.log('oldPileContents: ', oldPileContents)
+      
         this.setState( {currentGame:
           {...this.state.currentGame,
             emphasis: pile,
